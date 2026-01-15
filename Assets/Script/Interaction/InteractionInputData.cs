@@ -1,36 +1,35 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[CreateAssetMenu(fileName = "InteractionInputData", menuName = "Scriptable Objects/InteractionInputData")]
 public class InteractionInputData : ScriptableObject
 {
-
-    public InputAction InteractionInput;
-
-    private bool _interactionPressed;
-
-    private bool _interactionReleased;
-
-    public bool InteractionPressed
+    public InputAction PrimaryAction;
+    public InputAction SecondaryAction;
+    public InputAction TertiaryAction;
+    public void EnableInput()
     {
-       get => _interactionPressed;
-        set => _interactionPressed = value;
+        PrimaryAction.Enable();
+        SecondaryAction.Enable();
+        TertiaryAction.Enable();
     }
-
-public bool InteractionReleased
+    public void DisableInput()
     {
-        get => _interactionReleased;
-        set => _interactionReleased = value;
+        PrimaryAction.Disable();
+        SecondaryAction.Disable();
+        TertiaryAction.Disable();
     }
+}
 
+public class InteractionInputAction
+{
+    public InputAction Action;
+    public GameObject GlyphPrefab;
     public void Enable()
     {
-        InteractionInput.Enable();
+        Action?.Enable();
     }
     public void Disable()
     {
-        InteractionInput.Disable();
+        Action?.Disable();
     }
 }
- 
-    
