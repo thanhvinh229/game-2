@@ -876,6 +876,7 @@ GameObject:
   - component: {fileID: 554469200}
   - component: {fileID: 554469203}
   - component: {fileID: 554469202}
+  - component: {fileID: 554469204}
   m_Layer: 0
   m_Name: CinemachineCamera
   m_TagString: Untagged
@@ -996,6 +997,36 @@ MonoBehaviour:
     CameraRadius: 0.2
     DampingIntoCollision: 0
     DampingFromCollision: 0.5
+--- !u!114 &554469204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 554469199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca7de3aefa901374ba29464584a3109a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineDecollider
+  CameraRadius: 0.4
+  Decollision:
+    Enabled: 0
+    ObstacleLayers:
+      serializedVersion: 2
+      m_Bits: 1
+    UseFollowTarget:
+      Enabled: 0
+      YOffset: 0
+    Damping: 0.5
+    SmoothingTime: 0
+  TerrainResolution:
+    Enabled: 1
+    TerrainLayers:
+      serializedVersion: 2
+      m_Bits: 1
+    MaximumRaycast: 10
+    Damping: 0.5
 --- !u!1001 &566834523
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1976,7 +2007,7 @@ Transform:
   m_GameObject: {fileID: 1153118964}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 46.109, y: 4.137, z: 61.571}
+  m_LocalPosition: {x: 46.109, y: 3.732, z: 61.571}
   m_LocalScale: {x: 0.105182074, y: 1, z: -0.11262531}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3124,7 +3155,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4859793466300502, guid: d259a6e18ffbf6945bdf8f04fc7da190, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.127
+      value: 3.708
       objectReference: {fileID: 0}
     - target: {fileID: 4859793466300502, guid: d259a6e18ffbf6945bdf8f04fc7da190, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3304,7 +3335,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c03bd2fa38aeac2498d020b0af88fb3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
-  moveSpeed: 2
+  moveSpeed: 5
   gravity: -20
   jumpForce: 1.5
   cam: {fileID: 1352683381}
@@ -3346,7 +3377,7 @@ Animator:
   m_GameObject: {fileID: 2002243219}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9252c3b4f6f73ac4bbaa71339a5b7abd, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
 
     PlayerState currentState;
 
+
     void Awake()
     {
         controller = GetComponent<CharacterController>();
@@ -89,9 +90,14 @@ public class PlayerController : MonoBehaviour
 
     public void RotateToMove(Vector3 move)
     {
-        if (move.magnitude < 0.1f) return;
+       
+        Vector3 forward = transform.forward;
 
-        Quaternion rot = Quaternion.LookRotation(move);
-        transform.rotation = Quaternion.Slerp(transform.rotation, rot, 10f * Time.deltaTime);
+        
+        if (Vector3.Dot(forward, move.normalized) < 0)
+            return;
+
+        Quaternion targetRot = Quaternion.LookRotation(move);
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, 10f * Time.deltaTime);
     }
 }
