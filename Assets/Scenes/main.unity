@@ -3335,13 +3335,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c03bd2fa38aeac2498d020b0af88fb3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
-  moveSpeed: 5
+  moveSpeed: 2
   gravity: -20
   jumpForce: 1.5
   cam: {fileID: 1352683381}
   animator: {fileID: 2002243223}
   controller: {fileID: 0}
   velocity: {x: 0, y: 0, z: 0}
+  _horizontalInput: 0
+  _verticalInput: 0
+  _moveDirection: {x: 0, y: 0, z: 0}
+  _moveX: 0
+  _moveY: 0
 --- !u!143 &2002243222
 CharacterController:
   m_ObjectHideFlags: 0
@@ -3376,7 +3381,7 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2002243219}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
+  m_Avatar: {fileID: 9000000, guid: 44862258acd4a3b468a889aacdd38ed6, type: 3}
   m_Controller: {fileID: 9100000, guid: 9252c3b4f6f73ac4bbaa71339a5b7abd, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
@@ -3403,7 +3408,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::InteractionController
   _interactionData: {fileID: 11400000, guid: 4071f4ff107b76543a717eb2e4ec7360, type: 2}
   _interactionInputData: {fileID: 11400000, guid: 2e92dc044942f6444a2be1a49ca7ab8c, type: 2}
-  _interactRadius: 0.2
+  _interactRadius: 1
   _interactDistance: 5
   _interactLayer:
     serializedVersion: 2

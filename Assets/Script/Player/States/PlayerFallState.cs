@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerFallState : PlayerState
+public class PlayerFallState : PlayerMoveState
 {
     public PlayerFallState(PlayerController player) : base(player) { }
 

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class PlayerState
+public abstract class PlayerState   
 {
     protected PlayerController player;
 

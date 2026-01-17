@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Unity.IO.LowLevel.Unsafe;
+using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
@@ -20,12 +21,27 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public PlayerJumpState jumpState;
     [HideInInspector] public PlayerFallState fallState;
 
+    public float _horizontalInput;
+    public float _verticalInput;
+    public Vector3 _moveDirection;
+    public float _moveX;
+    public float _moveY;
+
     PlayerState currentState;
+
+
+
+
+    public float HorizontalInput => _horizontalInput;
+    public float VerticalInput => _verticalInput;
+    public Vector3 MoveDirection => _moveDirection;
 
 
     void Awake()
     {
         controller = GetComponent<CharacterController>();
+        
+        animator = GetComponent<Animator>();
 
         idleState = new PlayerIdleState(this);
         moveState = new PlayerMoveState(this);
@@ -41,6 +57,17 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         currentState.Update();
+
+        _horizontalInput = Input.GetAxis("Horizontal");
+        _verticalInput = Input.GetAxis("Vertical");
+
+        _moveX = Mathf.MoveTowards(_moveX, _horizontalInput, Time.deltaTime * 2f);
+        _moveY = Mathf.MoveTowards(_moveY, _verticalInput, Time.deltaTime * 2f);
+
+        animator.SetFloat("MoveX", _moveX);
+        animator.SetFloat("MoveY", _moveY);
+        ApplyGravity();
+
     }
 
     public void ChangeState(PlayerState newState)
