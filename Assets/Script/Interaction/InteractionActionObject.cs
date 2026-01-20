@@ -4,7 +4,7 @@ public class InteractionActionObject : ScriptableObject
 {
     public string ActionPrompt;
     public InteractionActionSlot Slot;
-    public virtual void OnInteract() { }
+    public virtual void OnInteract(InteractionContext context) { }
 }
 
 public enum InteractionActionSlot

@@ -1,54 +1,61 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\pc\\Documents\\GitHub\\game-2\\",
+  "WorkspaceRootPath": "C:\\Users\\ntv\\Documents\\GitHub\\game-2\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\pc\\documents\\github\\game-2\\assets\\script\\player\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\ntv\\documents\\github\\game-2\\assets\\script\\player\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\player\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\pc\\documents\\github\\game-2\\assets\\script\\player\\states\\playerfallstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\player\\states\\playerfallstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\pc\\documents\\github\\game-2\\assets\\script\\player\\states\\runstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\player\\states\\runstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\pc\\documents\\github\\game-2\\assets\\script\\interaction\\interactioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\interaction\\interactioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\pc\\documents\\github\\game-2\\assets\\script\\player\\states\\playerstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\player\\states\\playerstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\pc\\documents\\github\\game-2\\assets\\script\\player\\states\\playerjumpstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\player\\states\\playerjumpstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\pc\\documents\\github\\game-2\\assets\\script\\player\\states\\walkstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\player\\states\\walkstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\pc\\documents\\github\\game-2\\assets\\script\\player\\states\\playeridlestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\player\\states\\playeridlestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\pc\\documents\\github\\game-2\\assets\\script\\interaction\\iinteractable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\interaction\\iinteractable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\pc\\documents\\github\\game-2\\assets\\script\\player\\states\\playermovestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\ntv\\documents\\github\\game-2\\assets\\script\\player\\states\\playermovestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\player\\states\\playermovestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:2:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\pc\\Documents\\GitHub\\game-2\\Assets\\Script\\Player\\PlayerController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:2:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Script\\Player\\PlayerController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\ntv\\documents\\github\\game-2\\assets\\script\\player\\states\\playerjumpstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\player\\states\\playerjumpstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\pc\\Documents\\GitHub\\game-2\\Assets\\Interaction\\InteractionController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Interaction\\InteractionController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\ntv\\documents\\github\\game-2\\assets\\script\\interaction\\interactioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\interaction\\interactioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\ntv\\documents\\github\\game-2\\assets\\script\\cameralook.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\cameralook.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\ntv\\documents\\github\\game-2\\assets\\script\\mouselook.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\mouselook.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\ntv\\documents\\github\\game-2\\assets\\script\\tpscameracontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\tpscameracontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\ntv\\documents\\github\\game-2\\assets\\script\\player\\states\\playeridlestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\player\\states\\playeridlestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\ntv\\documents\\github\\game-2\\assets\\script\\player\\states\\playerstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\player\\states\\playerstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\ntv\\documents\\github\\game-2\\assets\\script\\player\\states\\runstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\player\\states\\runstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\ntv\\documents\\github\\game-2\\assets\\script\\player\\states\\walkstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\player\\states\\walkstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\ntv\\documents\\github\\game-2\\assets\\script\\interaction\\iinteractable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\interaction\\iinteractable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\ntv\\documents\\github\\game-2\\assets\\script\\player\\states\\playerfallstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\player\\states\\playerfallstate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\pc\\Documents\\GitHub\\game-2\\Assets\\Interaction\\InteractionController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -58,67 +65,84 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 4,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "TPSCameraController.cs",
+              "DocumentMoniker": "C:\\Users\\ntv\\Documents\\GitHub\\game-2\\Assets\\Script\\TPSCameraController.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\TPSCameraController.cs",
+              "ToolTip": "C:\\Users\\ntv\\Documents\\GitHub\\game-2\\Assets\\Script\\TPSCameraController.cs",
+              "RelativeToolTip": "Assets\\Script\\TPSCameraController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-20T02:57:14.156Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "MouseLook.cs",
+              "DocumentMoniker": "C:\\Users\\ntv\\Documents\\GitHub\\game-2\\Assets\\Script\\MouseLook.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\MouseLook.cs",
+              "ToolTip": "C:\\Users\\ntv\\Documents\\GitHub\\game-2\\Assets\\Script\\MouseLook.cs",
+              "RelativeToolTip": "Assets\\Script\\MouseLook.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-19T23:05:19.3Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "CameraLook.cs",
+              "DocumentMoniker": "C:\\Users\\ntv\\Documents\\GitHub\\game-2\\Assets\\Script\\CameraLook.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\CameraLook.cs",
+              "ToolTip": "C:\\Users\\ntv\\Documents\\GitHub\\game-2\\Assets\\Script\\CameraLook.cs",
+              "RelativeToolTip": "Assets\\Script\\CameraLook.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-19T22:35:41.625Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PlayerController.cs",
+              "DocumentMoniker": "C:\\Users\\ntv\\Documents\\GitHub\\game-2\\Assets\\Script\\Player\\PlayerController.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\Player\\PlayerController.cs",
+              "ToolTip": "C:\\Users\\ntv\\Documents\\GitHub\\game-2\\Assets\\Script\\Player\\PlayerController.cs",
+              "RelativeToolTip": "Assets\\Script\\Player\\PlayerController.cs",
+              "ViewState": "AgIAADUAAAAAAAAAAAAQwJ0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-19T21:36:49.578Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 3,
               "Title": "InteractionController.cs",
-              "DocumentMoniker": "C:\\Users\\pc\\Documents\\GitHub\\game-2\\Assets\\Script\\Interaction\\InteractionController.cs",
+              "DocumentMoniker": "C:\\Users\\ntv\\Documents\\GitHub\\game-2\\Assets\\Script\\Interaction\\InteractionController.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\Interaction\\InteractionController.cs",
-              "ToolTip": "C:\\Users\\pc\\Documents\\GitHub\\game-2\\Assets\\Script\\Interaction\\InteractionController.cs",
+              "ToolTip": "C:\\Users\\ntv\\Documents\\GitHub\\game-2\\Assets\\Script\\Interaction\\InteractionController.cs",
               "RelativeToolTip": "Assets\\Script\\Interaction\\InteractionController.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAQwA4AAAAgAAAAAAAAAA==",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAAAA4AAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-17T13:40:09.688Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "RunState.cs",
-              "DocumentMoniker": "C:\\Users\\pc\\Documents\\GitHub\\game-2\\Assets\\Script\\Player\\States\\RunState.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\Player\\States\\RunState.cs",
-              "ToolTip": "C:\\Users\\pc\\Documents\\GitHub\\game-2\\Assets\\Script\\Player\\States\\RunState.cs",
-              "RelativeToolTip": "Assets\\Script\\Player\\States\\RunState.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-17T13:10:29.317Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "PlayerJumpState.cs",
-              "DocumentMoniker": "C:\\Users\\pc\\Documents\\GitHub\\game-2\\Assets\\Script\\Player\\States\\PlayerJumpState.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\Player\\States\\PlayerJumpState.cs",
-              "ToolTip": "C:\\Users\\pc\\Documents\\GitHub\\game-2\\Assets\\Script\\Player\\States\\PlayerJumpState.cs",
-              "RelativeToolTip": "Assets\\Script\\Player\\States\\PlayerJumpState.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAADAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-17T12:49:00.138Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "PlayerFallState.cs",
-              "DocumentMoniker": "C:\\Users\\pc\\Documents\\GitHub\\game-2\\Assets\\Script\\Player\\States\\PlayerFallState.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\Player\\States\\PlayerFallState.cs",
-              "ToolTip": "C:\\Users\\pc\\Documents\\GitHub\\game-2\\Assets\\Script\\Player\\States\\PlayerFallState.cs",
-              "RelativeToolTip": "Assets\\Script\\Player\\States\\PlayerFallState.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAuAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-17T12:48:45.254Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 7,
               "Title": "PlayerIdleState.cs",
-              "DocumentMoniker": "C:\\Users\\pc\\Documents\\GitHub\\game-2\\Assets\\Script\\Player\\States\\PlayerIdleState.cs",
+              "DocumentMoniker": "C:\\Users\\ntv\\Documents\\GitHub\\game-2\\Assets\\Script\\Player\\States\\PlayerIdleState.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\Player\\States\\PlayerIdleState.cs",
-              "ToolTip": "C:\\Users\\pc\\Documents\\GitHub\\game-2\\Assets\\Script\\Player\\States\\PlayerIdleState.cs",
+              "ToolTip": "C:\\Users\\ntv\\Documents\\GitHub\\game-2\\Assets\\Script\\Player\\States\\PlayerIdleState.cs",
               "RelativeToolTip": "Assets\\Script\\Player\\States\\PlayerIdleState.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -127,11 +151,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 8,
               "Title": "PlayerState.cs",
-              "DocumentMoniker": "C:\\Users\\pc\\Documents\\GitHub\\game-2\\Assets\\Script\\Player\\States\\PlayerState.cs",
+              "DocumentMoniker": "C:\\Users\\ntv\\Documents\\GitHub\\game-2\\Assets\\Script\\Player\\States\\PlayerState.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\Player\\States\\PlayerState.cs",
-              "ToolTip": "C:\\Users\\pc\\Documents\\GitHub\\game-2\\Assets\\Script\\Player\\States\\PlayerState.cs",
+              "ToolTip": "C:\\Users\\ntv\\Documents\\GitHub\\game-2\\Assets\\Script\\Player\\States\\PlayerState.cs",
               "RelativeToolTip": "Assets\\Script\\Player\\States\\PlayerState.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAqwAwAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -140,49 +164,37 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "IInteractable.cs",
-              "DocumentMoniker": "C:\\Users\\pc\\Documents\\GitHub\\game-2\\Assets\\Script\\Interaction\\IInteractable.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\Interaction\\IInteractable.cs",
-              "ToolTip": "C:\\Users\\pc\\Documents\\GitHub\\game-2\\Assets\\Script\\Interaction\\IInteractable.cs",
-              "RelativeToolTip": "Assets\\Script\\Interaction\\IInteractable.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAeAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "PlayerJumpState.cs",
+              "DocumentMoniker": "C:\\Users\\ntv\\Documents\\GitHub\\game-2\\Assets\\Script\\Player\\States\\PlayerJumpState.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\Player\\States\\PlayerJumpState.cs",
+              "ToolTip": "C:\\Users\\ntv\\Documents\\GitHub\\game-2\\Assets\\Script\\Player\\States\\PlayerJumpState.cs",
+              "RelativeToolTip": "Assets\\Script\\Player\\States\\PlayerJumpState.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-15T13:55:19.211Z",
+              "WhenOpened": "2026-01-17T12:49:00.138Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "PlayerController.cs",
-              "DocumentMoniker": "C:\\Users\\pc\\Documents\\GitHub\\game-2\\Assets\\Script\\Player\\PlayerController.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\Player\\PlayerController.cs",
-              "ToolTip": "C:\\Users\\pc\\Documents\\GitHub\\game-2\\Assets\\Script\\Player\\PlayerController.cs",
-              "RelativeToolTip": "Assets\\Script\\Player\\PlayerController.cs",
-              "ViewState": "AgIAACIAAAAAAAAAAAAkwEMAAAAgAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "PlayerMoveState.cs",
+              "DocumentMoniker": "C:\\Users\\ntv\\Documents\\GitHub\\game-2\\Assets\\Script\\Player\\States\\PlayerMoveState.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\Player\\States\\PlayerMoveState.cs",
+              "ToolTip": "C:\\Users\\ntv\\Documents\\GitHub\\game-2\\Assets\\Script\\Player\\States\\PlayerMoveState.cs",
+              "RelativeToolTip": "Assets\\Script\\Player\\States\\PlayerMoveState.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAgwCQAAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-17T11:57:50.376Z",
+              "WhenOpened": "2026-01-17T10:32:26.744Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 10,
-              "Title": "PlayerController.cs",
-              "DocumentMoniker": "C:\\Users\\pc\\Documents\\GitHub\\game-2\\Assets\\Script\\Player\\PlayerController.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\Player\\PlayerController.cs",
-              "ToolTip": "C:\\Users\\pc\\Documents\\GitHub\\game-2\\Assets\\Script\\Player\\PlayerController.cs",
-              "RelativeToolTip": "Assets\\Script\\Player\\PlayerController.cs",
-              "ViewState": "AgIAACwAAAAAAAAAAAAwwBgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-17T09:00:58.844Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
               "Title": "WalkState.cs",
-              "DocumentMoniker": "C:\\Users\\pc\\Documents\\GitHub\\game-2\\Assets\\Script\\Player\\States\\WalkState.cs",
+              "DocumentMoniker": "C:\\Users\\ntv\\Documents\\GitHub\\game-2\\Assets\\Script\\Player\\States\\WalkState.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\Player\\States\\WalkState.cs",
-              "ToolTip": "C:\\Users\\pc\\Documents\\GitHub\\game-2\\Assets\\Script\\Player\\States\\WalkState.cs",
+              "ToolTip": "C:\\Users\\ntv\\Documents\\GitHub\\game-2\\Assets\\Script\\Player\\States\\WalkState.cs",
               "RelativeToolTip": "Assets\\Script\\Player\\States\\WalkState.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -192,27 +204,52 @@
             {
               "$type": "Document",
               "DocumentIndex": 11,
-              "Title": "InteractionController.cs",
-              "DocumentMoniker": "C:\\Users\\pc\\Documents\\GitHub\\game-2\\Assets\\Interaction\\InteractionController.cs",
-              "RelativeDocumentMoniker": "Assets\\Interaction\\InteractionController.cs",
-              "ToolTip": "C:\\Users\\pc\\Documents\\GitHub\\game-2\\Assets\\Interaction\\InteractionController.cs",
-              "RelativeToolTip": "Assets\\Interaction\\InteractionController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAzAAAAAAAAAA==",
+              "Title": "IInteractable.cs",
+              "DocumentMoniker": "C:\\Users\\ntv\\Documents\\GitHub\\game-2\\Assets\\Script\\Interaction\\IInteractable.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\Interaction\\IInteractable.cs",
+              "ToolTip": "C:\\Users\\ntv\\Documents\\GitHub\\game-2\\Assets\\Script\\Interaction\\IInteractable.cs",
+              "RelativeToolTip": "Assets\\Script\\Interaction\\IInteractable.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-15T13:57:59.782Z"
+              "WhenOpened": "2026-01-15T13:55:19.211Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "PlayerFallState.cs",
+              "DocumentMoniker": "C:\\Users\\ntv\\Documents\\GitHub\\game-2\\Assets\\Script\\Player\\States\\PlayerFallState.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\Player\\States\\PlayerFallState.cs",
+              "ToolTip": "C:\\Users\\ntv\\Documents\\GitHub\\game-2\\Assets\\Script\\Player\\States\\PlayerFallState.cs",
+              "RelativeToolTip": "Assets\\Script\\Player\\States\\PlayerFallState.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-17T12:48:45.254Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 9,
-              "Title": "PlayerMoveState.cs",
-              "DocumentMoniker": "C:\\Users\\pc\\Documents\\GitHub\\game-2\\Assets\\Script\\Player\\States\\PlayerMoveState.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\Player\\States\\PlayerMoveState.cs",
-              "ToolTip": "C:\\Users\\pc\\Documents\\GitHub\\game-2\\Assets\\Script\\Player\\States\\PlayerMoveState.cs",
-              "RelativeToolTip": "Assets\\Script\\Player\\States\\PlayerMoveState.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAABAAAAAAAAAA==",
+              "Title": "RunState.cs",
+              "DocumentMoniker": "C:\\Users\\ntv\\Documents\\GitHub\\game-2\\Assets\\Script\\Player\\States\\RunState.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\Player\\States\\RunState.cs",
+              "ToolTip": "C:\\Users\\ntv\\Documents\\GitHub\\game-2\\Assets\\Script\\Player\\States\\RunState.cs",
+              "RelativeToolTip": "Assets\\Script\\Player\\States\\RunState.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-17T10:32:26.744Z",
+              "WhenOpened": "2026-01-17T13:10:29.317Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "InteractionController.cs",
+              "DocumentMoniker": "C:\\Users\\pc\\Documents\\GitHub\\game-2\\Assets\\Interaction\\InteractionController.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\pc\\Documents\\GitHub\\game-2\\Assets\\Interaction\\InteractionController.cs",
+              "ToolTip": "C:\\Users\\pc\\Documents\\GitHub\\game-2\\Assets\\Interaction\\InteractionController.cs",
+              "RelativeToolTip": "..\\..\\..\\..\\pc\\Documents\\GitHub\\game-2\\Assets\\Interaction\\InteractionController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-15T13:57:59.782Z"
             }
           ]
         }

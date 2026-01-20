@@ -71,7 +71,7 @@ public class InteractionController : MonoBehaviour
         if (currentInteractable.CanInteract)
         {
             _isInteracting = true;
-            slot.OnInteract();
+            slot.OnInteract(new InteractionContext (gameObject, currentInteractable));
         }
         // if (_interactionInputData.InteractReleased)
         // {
