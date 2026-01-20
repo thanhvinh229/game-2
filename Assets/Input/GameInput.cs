@@ -1077,6 +1077,76 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""CameraControll"",
+            ""id"": ""34683cda-63f4-4eca-858e-b5284b24a784"",
+            ""actions"": [
+                {
+                    ""name"": ""MouseZoom"",
+                    ""type"": ""Value"",
+                    ""id"": ""6bdcbd3f-49df-4631-89ca-51994b28ec55"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""GamepadZoom"",
+                    ""type"": ""Value"",
+                    ""id"": ""3db5dd78-3c1f-471b-8c6a-f3f0649b64e9"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""0e48d241-ee60-45d4-93ba-bd2b9c8c5399"",
+                    ""path"": ""<Mouse>/scroll"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MouseZoom"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""56d6d714-1523-4f3f-a13e-f22518fd1854"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""GamepadZoom"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""924517f4-2e74-4ab0-bb99-a93c5a02bbf2"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""GamepadZoom"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""3f9af0a1-209e-4d6f-bf87-45b59be4bd98"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""GamepadZoom"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -1165,12 +1235,17 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         m_UI_ScrollWheel = m_UI.FindAction("ScrollWheel", throwIfNotFound: true);
         m_UI_TrackedDevicePosition = m_UI.FindAction("TrackedDevicePosition", throwIfNotFound: true);
         m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
+        // CameraControll
+        m_CameraControll = asset.FindActionMap("CameraControll", throwIfNotFound: true);
+        m_CameraControll_MouseZoom = m_CameraControll.FindAction("MouseZoom", throwIfNotFound: true);
+        m_CameraControll_GamepadZoom = m_CameraControll.FindAction("GamepadZoom", throwIfNotFound: true);
     }
 
     ~@GameInput()
     {
         UnityEngine.Debug.Assert(!m_Player.enabled, "This will cause a leak and performance issues, GameInput.Player.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_UI.enabled, "This will cause a leak and performance issues, GameInput.UI.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_CameraControll.enabled, "This will cause a leak and performance issues, GameInput.CameraControll.Disable() has not been called.");
     }
 
     /// <summary>
@@ -1621,6 +1696,113 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
     /// Provides a new <see cref="UIActions" /> instance referencing this action map.
     /// </summary>
     public UIActions @UI => new UIActions(this);
+
+    // CameraControll
+    private readonly InputActionMap m_CameraControll;
+    private List<ICameraControllActions> m_CameraControllActionsCallbackInterfaces = new List<ICameraControllActions>();
+    private readonly InputAction m_CameraControll_MouseZoom;
+    private readonly InputAction m_CameraControll_GamepadZoom;
+    /// <summary>
+    /// Provides access to input actions defined in input action map "CameraControll".
+    /// </summary>
+    public struct CameraControllActions
+    {
+        private @GameInput m_Wrapper;
+
+        /// <summary>
+        /// Construct a new instance of the input action map wrapper class.
+        /// </summary>
+        public CameraControllActions(@GameInput wrapper) { m_Wrapper = wrapper; }
+        /// <summary>
+        /// Provides access to the underlying input action "CameraControll/MouseZoom".
+        /// </summary>
+        public InputAction @MouseZoom => m_Wrapper.m_CameraControll_MouseZoom;
+        /// <summary>
+        /// Provides access to the underlying input action "CameraControll/GamepadZoom".
+        /// </summary>
+        public InputAction @GamepadZoom => m_Wrapper.m_CameraControll_GamepadZoom;
+        /// <summary>
+        /// Provides access to the underlying input action map instance.
+        /// </summary>
+        public InputActionMap Get() { return m_Wrapper.m_CameraControll; }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
+        public void Enable() { Get().Enable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
+        public void Disable() { Get().Disable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
+        public bool enabled => Get().enabled;
+        /// <summary>
+        /// Implicitly converts an <see ref="CameraControllActions" /> to an <see ref="InputActionMap" /> instance.
+        /// </summary>
+        public static implicit operator InputActionMap(CameraControllActions set) { return set.Get(); }
+        /// <summary>
+        /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <param name="instance">Callback instance.</param>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
+        /// </remarks>
+        /// <seealso cref="CameraControllActions" />
+        public void AddCallbacks(ICameraControllActions instance)
+        {
+            if (instance == null || m_Wrapper.m_CameraControllActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_CameraControllActionsCallbackInterfaces.Add(instance);
+            @MouseZoom.started += instance.OnMouseZoom;
+            @MouseZoom.performed += instance.OnMouseZoom;
+            @MouseZoom.canceled += instance.OnMouseZoom;
+            @GamepadZoom.started += instance.OnGamepadZoom;
+            @GamepadZoom.performed += instance.OnGamepadZoom;
+            @GamepadZoom.canceled += instance.OnGamepadZoom;
+        }
+
+        /// <summary>
+        /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <remarks>
+        /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
+        /// </remarks>
+        /// <seealso cref="CameraControllActions" />
+        private void UnregisterCallbacks(ICameraControllActions instance)
+        {
+            @MouseZoom.started -= instance.OnMouseZoom;
+            @MouseZoom.performed -= instance.OnMouseZoom;
+            @MouseZoom.canceled -= instance.OnMouseZoom;
+            @GamepadZoom.started -= instance.OnGamepadZoom;
+            @GamepadZoom.performed -= instance.OnGamepadZoom;
+            @GamepadZoom.canceled -= instance.OnGamepadZoom;
+        }
+
+        /// <summary>
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="CameraControllActions.UnregisterCallbacks(ICameraControllActions)" />.
+        /// </summary>
+        /// <seealso cref="CameraControllActions.UnregisterCallbacks(ICameraControllActions)" />
+        public void RemoveCallbacks(ICameraControllActions instance)
+        {
+            if (m_Wrapper.m_CameraControllActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        /// <summary>
+        /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
+        /// </summary>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
+        /// </remarks>
+        /// <seealso cref="CameraControllActions.AddCallbacks(ICameraControllActions)" />
+        /// <seealso cref="CameraControllActions.RemoveCallbacks(ICameraControllActions)" />
+        /// <seealso cref="CameraControllActions.UnregisterCallbacks(ICameraControllActions)" />
+        public void SetCallbacks(ICameraControllActions instance)
+        {
+            foreach (var item in m_Wrapper.m_CameraControllActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_CameraControllActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    /// <summary>
+    /// Provides a new <see cref="CameraControllActions" /> instance referencing this action map.
+    /// </summary>
+    public CameraControllActions @CameraControll => new CameraControllActions(this);
     private int m_KeyboardMouseSchemeIndex = -1;
     /// <summary>
     /// Provides access to the input control scheme.
@@ -1834,5 +2016,27 @@ public partial class @GameInput: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnTrackedDeviceOrientation(InputAction.CallbackContext context);
+    }
+    /// <summary>
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "CameraControll" which allows adding and removing callbacks.
+    /// </summary>
+    /// <seealso cref="CameraControllActions.AddCallbacks(ICameraControllActions)" />
+    /// <seealso cref="CameraControllActions.RemoveCallbacks(ICameraControllActions)" />
+    public interface ICameraControllActions
+    {
+        /// <summary>
+        /// Method invoked when associated input action "MouseZoom" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnMouseZoom(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "GamepadZoom" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnGamepadZoom(InputAction.CallbackContext context);
     }
 }

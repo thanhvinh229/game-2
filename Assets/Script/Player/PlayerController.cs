@@ -1,18 +1,31 @@
-﻿using Unity.IO.LowLevel.Unsafe;
+﻿using NUnit.Framework.Interfaces;
+using Unity.Cinemachine;
+using Unity.IO.LowLevel.Unsafe;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
     [Header("Movement")]
+    [SerializeField] private Transform _cameraTransform;
+    [SerializeField] private bool _shouldFaceMoveDirection = false;
     public float moveSpeed = 5f;
     public float gravity = -20f;
     public float jumpForce = 1.5f;
 
+
+    public float walkSpeed = 2.5f;
+    public float runSpeed = 5f;
+
     [Header("References")]
-    public Transform cam;
+    
     public Animator animator;
 
+
+
     [HideInInspector] public CharacterController controller;
+    private Vector2 _moveInput;
+    private Vector3 _velocity;
     [HideInInspector] public Vector3 velocity;
 
     // States
@@ -20,12 +33,22 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public PlayerMoveState moveState;
     [HideInInspector] public PlayerJumpState jumpState;
     [HideInInspector] public PlayerFallState fallState;
+    [HideInInspector] public RunState runState;
 
     public float _horizontalInput;
     public float _verticalInput;
     public Vector3 _moveDirection;
     public float _moveX;
     public float _moveY;
+    
+    public float rotateSpeed = 10f;
+
+    
+    public float aimRotateSpeed = 15f;
+
+   
+
+    public bool isAiming;
 
     PlayerState currentState;
 
@@ -40,17 +63,18 @@ public class PlayerController : MonoBehaviour
     void Awake()
     {
         controller = GetComponent<CharacterController>();
-        
-        animator = GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
 
         idleState = new PlayerIdleState(this);
         moveState = new PlayerMoveState(this);
+        runState = new RunState(this);
         jumpState = new PlayerJumpState(this);
-        fallState = new PlayerFallState(this);
     }
 
     void Start()
     {
+        controller.Move(Vector3.up * 0.1f);
+
         ChangeState(idleState);
     }
 
@@ -58,20 +82,41 @@ public class PlayerController : MonoBehaviour
     {
         currentState.Update();
 
-        _horizontalInput = Input.GetAxis("Horizontal");
-        _verticalInput = Input.GetAxis("Vertical");
+        Vector3 foward = _cameraTransform.forward;
+        Vector3 right = _cameraTransform.right;
 
-        _moveX = Mathf.MoveTowards(_moveX, _horizontalInput, Time.deltaTime * 2f);
-        _moveY = Mathf.MoveTowards(_moveY, _verticalInput, Time.deltaTime * 2f);
+        foward.y = 0;
+        right.y = 0;
 
-        animator.SetFloat("MoveX", _moveX);
-        animator.SetFloat("MoveY", _moveY);
-        ApplyGravity();
+        foward.Normalize();
+        right.Normalize();
+
+        Vector3 moveDirection = foward * _moveInput.y + right * _moveInput.x;
+        controller.Move(moveDirection * moveSpeed * Time.deltaTime);
+
+        if(_shouldFaceMoveDirection && moveDirection.sqrMagnitude > 0.001f)
+        {
+            Quaternion toRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
+            transform.rotation = Quaternion.Slerp(transform.rotation, toRotation, 10f * Time.deltaTime);
+        }
+
+        Vector3 move =new Vector3(_moveInput.x,0,  _moveInput.y);
+        controller.Move(move * moveSpeed * Time.deltaTime);
+
+        
+
+
 
     }
 
     public void ChangeState(PlayerState newState)
     {
+        if (newState == null)
+        {
+            Debug.LogError("State is NULL");
+            return;
+        }
+
         currentState?.Exit();
         currentState = newState;
         currentState.Enter();
@@ -80,19 +125,16 @@ public class PlayerController : MonoBehaviour
     // ===== HÀM DÙNG CHUNG =====
     public Vector3 GetMoveInput()
     {
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
+        float h = Input.GetAxisRaw("Horizontal");
+        float v = Input.GetAxisRaw("Vertical");
 
-        Vector3 forward = cam.forward;
-        Vector3 right = cam.right;
+        Vector3 camForward = Camera.main.transform.forward;
+        Vector3 camRight = Camera.main.transform.right;
 
-        forward.y = 0;
-        right.y = 0;
+        camForward.y = 0;
+        camRight.y = 0;
 
-        forward.Normalize();
-        right.Normalize();
-
-        return forward * z + right * x;
+        return (camForward.normalized * v + camRight.normalized * h).normalized;
     }
 
     public bool HasMoveInput()
@@ -104,27 +146,17 @@ public class PlayerController : MonoBehaviour
     {
         if (controller.isGrounded)
         {
-            if (velocity.y < 0)
-                velocity.y = -2f; // giữ chạm đất
+            // giữ nhân vật dính đất nhưng KHÔNG ép mạnh
+            if (velocity.y < -2f)
+                velocity.y = -2f;
         }
         else
         {
             velocity.y += gravity * Time.deltaTime;
         }
-
-        controller.Move(Vector3.up * velocity.y * Time.deltaTime);
     }
 
-    public void RotateToMove(Vector3 move)
-    {
-       
-        Vector3 forward = transform.forward;
-
-        
-        if (Vector3.Dot(forward, move.normalized) < 0)
-            return;
-
-        Quaternion targetRot = Quaternion.LookRotation(move);
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, 10f * Time.deltaTime);
+    
     }
-}
+    
+

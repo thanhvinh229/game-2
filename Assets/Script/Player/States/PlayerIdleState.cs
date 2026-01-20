@@ -9,6 +9,7 @@ public class PlayerIdleState : PlayerMoveState
         player.animator?.SetFloat("Speed", 0);
     }
 
+
     public override void Update()
     {
         player.ApplyGravity();
@@ -19,4 +20,6 @@ public class PlayerIdleState : PlayerMoveState
         if (Input.GetButtonDown("Jump") && player.controller.isGrounded)
             player.ChangeState(player.jumpState);
     }
+
+
 }

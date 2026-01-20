@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerMoveState : PlayerState
 {
@@ -9,9 +9,14 @@ public class PlayerMoveState : PlayerState
     [SerializeField] float dampTime = 0.1f;
 
 
+   
+
     public override void Update()
     {
+
         Vector3 move = player.GetMoveInput();
+
+        //Debug.Log(move);
 
         if (move.magnitude < 0.1f)
         {
@@ -19,30 +24,45 @@ public class PlayerMoveState : PlayerState
             return;
         }
 
+        bool isRun = Input.GetKey(KeyCode.LeftShift);
+        float speed = isRun ? player.runSpeed : player.walkSpeed;
+
         player.controller.Move(move * player.moveSpeed * Time.deltaTime);
-        player.RotateToMove(move);
+       
         player.ApplyGravity();
 
-        player.animator?.SetFloat("Speed", move.magnitude);
+        UpdateAnimator(move, isRun);
+
+        Vector3 finalMove = move * speed + Vector3.up * player.velocity.y;
+        player.controller.Move(finalMove * Time.deltaTime);
+
+
+
 
         if (Input.GetButtonDown("Jump") && player.controller.isGrounded)
             player.ChangeState(player.jumpState);
+             return;
     }
 
 
-    void UpdateAnimator(Vector3 input)
+    void UpdateAnimator(Vector3 move, bool isRun)
     {
-        animator.SetFloat("MoveX", input.x, dampTime, Time.deltaTime);
-        animator.SetFloat("MoveY", input.z, dampTime, Time.deltaTime);
 
-        float speed = input.magnitude;
-        animator.SetFloat("Speed", speed);
+        
+
+        Vector3 local = player.transform.InverseTransformDirection(move);
+
+        player.animator.SetFloat("MoveX", local.x, 0.1f, Time.deltaTime);
+        player.animator.SetFloat("MoveY", local.z, 0.1f, Time.deltaTime);
+
+        player.animator.SetBool("IsRun", isRun);
+        player.animator.SetFloat("Speed", isRun ? 1f : 0.5f, 0.1f, Time.deltaTime);
     }
 
     Vector3 GetMoveInput()
     {
-        float h = Input.GetAxis("Horizontal");
-        float v = Input.GetAxis("Vertical");
+        float h = Input.GetAxisRaw("Horizontal");
+        float v = Input.GetAxisRaw("Vertical");
 
         Vector3 camForward = Camera.main.transform.forward;
         Vector3 camRight = Camera.main.transform.right;
@@ -56,4 +76,6 @@ public class PlayerMoveState : PlayerState
         Vector3 move = camForward * v + camRight * h;
         return move;
     }
+
+
 }

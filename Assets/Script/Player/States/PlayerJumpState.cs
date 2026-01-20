@@ -1,7 +1,8 @@
 using UnityEngine;
 
-public class PlayerJumpState : PlayerMoveState
+public class PlayerJumpState : PlayerState
 {
+    
     public PlayerJumpState(PlayerController player) : base(player) { }
 
     public override void Enter()
@@ -12,12 +13,17 @@ public class PlayerJumpState : PlayerMoveState
 
     public override void Update()
     {
-        Vector3 move = player.GetMoveInput();
-        player.controller.Move(move * player.moveSpeed * Time.deltaTime);
-        player.RotateToMove(move);
         player.ApplyGravity();
 
-        if (player.velocity.y < 0)
-            player.ChangeState(player.fallState);
+        Vector3 verticalMove = Vector3.up * player.velocity.y;
+        player.controller.Move(verticalMove * Time.deltaTime);
+
+        if (player.controller.isGrounded && player.velocity.y < 0)
+        {
+            player.ChangeState(player.idleState);
+        }
     }
+
+    public override void Exit() { }
 }
+
