@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "C:\\Users\\pc\\Documents\\GitHub\\game-2\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\pc\\documents\\github\\game-2\\assets\\script\\interaction\\interactioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\interaction\\interactioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\pc\\Documents\\GitHub\\game-2\\Assets\\Script\\Player\\PlayerController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Script\\Player\\PlayerController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\pc\\documents\\github\\game-2\\assets\\script\\interaction\\interactioncontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\interaction\\interactioncontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -39,10 +47,6 @@
       "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\interaction\\interactionactions\\consumeaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\pc\\documents\\github\\game-2\\assets\\script\\interaction\\interactioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\interaction\\interactioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\pc\\documents\\github\\game-2\\assets\\script\\interaction\\interactionactionobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\interaction\\interactionactionobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -69,10 +73,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\pc\\documents\\github\\game-2\\assets\\script\\cameralook.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\cameralook.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\pc\\documents\\github\\game-2\\assets\\script\\player\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|solutionrelative:assets\\script\\player\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B4CD19DA-EE08-5225-FB19-1D0DFA4113DD}|Assembly-CSharp.csproj|c:\\users\\pc\\documents\\github\\game-2\\assets\\script\\player\\states\\playermovestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -113,6 +113,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\pc\\Documents\\GitHub\\game-2\\Assets\\Interaction\\InteractionController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Interaction\\InteractionController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:2:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\pc\\Documents\\GitHub\\game-2\\Assets\\Script\\Player\\PlayerController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:2:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Script\\Player\\PlayerController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -122,37 +126,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 7,
-              "Title": "CollectObjective.cs",
-              "DocumentMoniker": "C:\\Users\\pc\\Documents\\GitHub\\game-2\\Assets\\Script\\Quest\\Data\\CollectObjective.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\Quest\\Data\\CollectObjective.cs",
-              "ToolTip": "C:\\Users\\pc\\Documents\\GitHub\\game-2\\Assets\\Script\\Quest\\Data\\CollectObjective.cs",
-              "RelativeToolTip": "Assets\\Script\\Quest\\Data\\CollectObjective.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAQAAAA8AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-20T13:18:16.501Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "InspectAction.cs",
-              "DocumentMoniker": "C:\\Users\\pc\\Documents\\GitHub\\game-2\\Assets\\Script\\Interaction\\InteractionActions\\InspectAction.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\Interaction\\InteractionActions\\InspectAction.cs",
-              "ToolTip": "C:\\Users\\pc\\Documents\\GitHub\\game-2\\Assets\\Script\\Interaction\\InteractionActions\\InspectAction.cs",
-              "RelativeToolTip": "Assets\\Script\\Interaction\\InteractionActions\\InspectAction.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-20T13:16:46.238Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
               "Title": "GrabAction.cs",
               "DocumentMoniker": "C:\\Users\\pc\\Documents\\GitHub\\game-2\\Assets\\Script\\Interaction\\InteractionActions\\GrabAction.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\Interaction\\InteractionActions\\GrabAction.cs",
@@ -160,12 +138,11 @@
               "RelativeToolTip": "Assets\\Script\\Interaction\\InteractionActions\\GrabAction.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-20T13:16:36.356Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-20T13:16:36.356Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "TalkAction.cs",
               "DocumentMoniker": "C:\\Users\\pc\\Documents\\GitHub\\game-2\\Assets\\Script\\Interaction\\TalkAction.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\Interaction\\TalkAction.cs",
@@ -173,12 +150,11 @@
               "RelativeToolTip": "Assets\\Script\\Interaction\\TalkAction.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-20T12:41:27.473Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-20T12:41:27.473Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "InteractionContext.cs",
               "DocumentMoniker": "C:\\Users\\pc\\Documents\\GitHub\\game-2\\Assets\\Script\\Interaction\\InteractionContext.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\Interaction\\InteractionContext.cs",
@@ -191,7 +167,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "CollectObjectiveData.cs",
               "DocumentMoniker": "C:\\Users\\pc\\Documents\\GitHub\\game-2\\Assets\\Script\\Quest\\Data\\CollectObjectiveData.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\Quest\\Data\\CollectObjectiveData.cs",
@@ -199,12 +175,11 @@
               "RelativeToolTip": "Assets\\Script\\Quest\\Data\\CollectObjectiveData.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-20T12:27:29.425Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-20T12:27:29.425Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "ObjectiveData.cs",
               "DocumentMoniker": "C:\\Users\\pc\\Documents\\GitHub\\game-2\\Assets\\Script\\Quest\\Data\\ObjectiveData.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\Quest\\Data\\ObjectiveData.cs",
@@ -212,12 +187,11 @@
               "RelativeToolTip": "Assets\\Script\\Quest\\Data\\ObjectiveData.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-20T12:11:05.854Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-20T12:11:05.854Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Objective.cs",
               "DocumentMoniker": "C:\\Users\\pc\\Documents\\GitHub\\game-2\\Assets\\Script\\Quest\\Data\\Objective.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\Quest\\Data\\Objective.cs",
@@ -225,12 +199,61 @@
               "RelativeToolTip": "Assets\\Script\\Quest\\Data\\Objective.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAqwAMAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-20T12:08:08.811Z",
+              "WhenOpened": "2026-01-20T12:08:08.811Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PlayerController.cs",
+              "DocumentMoniker": "C:\\Users\\pc\\Documents\\GitHub\\game-2\\Assets\\Script\\Player\\PlayerController.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\Player\\PlayerController.cs",
+              "ToolTip": "C:\\Users\\pc\\Documents\\GitHub\\game-2\\Assets\\Script\\Player\\PlayerController.cs",
+              "RelativeToolTip": "Assets\\Script\\Player\\PlayerController.cs",
+              "ViewState": "AgIAAEwAAAAAAAAAAAAcwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-22T12:34:27.478Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "InteractionController.cs",
+              "DocumentMoniker": "C:\\Users\\pc\\Documents\\GitHub\\game-2\\Assets\\Script\\Interaction\\InteractionController.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\Interaction\\InteractionController.cs",
+              "ToolTip": "C:\\Users\\pc\\Documents\\GitHub\\game-2\\Assets\\Script\\Interaction\\InteractionController.cs",
+              "RelativeToolTip": "Assets\\Script\\Interaction\\InteractionController.cs",
+              "ViewState": "AgIAACIAAAAAAAAAAAAWwD0AAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-17T13:40:09.688Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 8,
+              "Title": "InspectAction.cs",
+              "DocumentMoniker": "C:\\Users\\pc\\Documents\\GitHub\\game-2\\Assets\\Script\\Interaction\\InteractionActions\\InspectAction.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\Interaction\\InteractionActions\\InspectAction.cs",
+              "ToolTip": "C:\\Users\\pc\\Documents\\GitHub\\game-2\\Assets\\Script\\Interaction\\InteractionActions\\InspectAction.cs",
+              "RelativeToolTip": "Assets\\Script\\Interaction\\InteractionActions\\InspectAction.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-20T13:16:46.238Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "CollectObjective.cs",
+              "DocumentMoniker": "C:\\Users\\pc\\Documents\\GitHub\\game-2\\Assets\\Script\\Quest\\Data\\CollectObjective.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\Quest\\Data\\CollectObjective.cs",
+              "ToolTip": "C:\\Users\\pc\\Documents\\GitHub\\game-2\\Assets\\Script\\Quest\\Data\\CollectObjective.cs",
+              "RelativeToolTip": "Assets\\Script\\Quest\\Data\\CollectObjective.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAQAAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-20T13:18:16.501Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "ConsumeAction.cs",
               "DocumentMoniker": "C:\\Users\\pc\\Documents\\GitHub\\game-2\\Assets\\Script\\Interaction\\InteractionActions\\ConsumeAction.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\Interaction\\InteractionActions\\ConsumeAction.cs",
@@ -238,25 +261,11 @@
               "RelativeToolTip": "Assets\\Script\\Interaction\\InteractionActions\\ConsumeAction.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAqwAgAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-20T12:49:08.224Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-20T12:49:08.224Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "InteractionController.cs",
-              "DocumentMoniker": "C:\\Users\\pc\\Documents\\GitHub\\game-2\\Assets\\Script\\Interaction\\InteractionController.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\Interaction\\InteractionController.cs",
-              "ToolTip": "C:\\Users\\pc\\Documents\\GitHub\\game-2\\Assets\\Script\\Interaction\\InteractionController.cs",
-              "RelativeToolTip": "Assets\\Script\\Interaction\\InteractionController.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAQwEwAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-17T13:40:09.688Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "InteractionActionObject.cs",
               "DocumentMoniker": "C:\\Users\\pc\\Documents\\GitHub\\game-2\\Assets\\Script\\Interaction\\InteractionActionObject.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\Interaction\\InteractionActionObject.cs",
@@ -264,12 +273,11 @@
               "RelativeToolTip": "Assets\\Script\\Interaction\\InteractionActionObject.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAqwAYAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-20T13:11:33.929Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-20T13:11:33.929Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "QuestManager.cs",
               "DocumentMoniker": "C:\\Users\\pc\\Documents\\GitHub\\game-2\\Assets\\Script\\Quest\\QuestManager.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\Quest\\QuestManager.cs",
@@ -277,12 +285,11 @@
               "RelativeToolTip": "Assets\\Script\\Quest\\QuestManager.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-20T12:13:08.564Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-20T12:13:08.564Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "QuestHolder.cs",
               "DocumentMoniker": "C:\\Users\\pc\\Documents\\GitHub\\game-2\\Assets\\Script\\Quest\\QuestHolder.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\Quest\\QuestHolder.cs",
@@ -290,12 +297,11 @@
               "RelativeToolTip": "Assets\\Script\\Quest\\QuestHolder.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAqwAYAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-20T12:23:05.963Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-20T12:23:05.963Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "QuestData.cs",
               "DocumentMoniker": "C:\\Users\\pc\\Documents\\GitHub\\game-2\\Assets\\Script\\Quest\\Data\\QuestData.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\Quest\\Data\\QuestData.cs",
@@ -303,12 +309,11 @@
               "RelativeToolTip": "Assets\\Script\\Quest\\Data\\QuestData.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-20T12:09:55.007Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-20T12:09:55.007Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "MouseLook.cs",
               "DocumentMoniker": "C:\\Users\\pc\\Documents\\GitHub\\game-2\\Assets\\Script\\MouseLook.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\MouseLook.cs",
@@ -316,12 +321,11 @@
               "RelativeToolTip": "Assets\\Script\\MouseLook.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-19T23:05:19.3Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-19T23:05:19.3Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 17,
               "Title": "CameraLook.cs",
               "DocumentMoniker": "C:\\Users\\pc\\Documents\\GitHub\\game-2\\Assets\\Script\\CameraLook.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\CameraLook.cs",
@@ -329,12 +333,11 @@
               "RelativeToolTip": "Assets\\Script\\CameraLook.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-19T22:35:41.625Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-19T22:35:41.625Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "Quest.cs",
               "DocumentMoniker": "C:\\Users\\pc\\Documents\\GitHub\\game-2\\Assets\\Script\\Quest\\Quest.cs",
               "RelativeDocumentMoniker": "Assets\\Script\\Quest\\Quest.cs",
@@ -342,21 +345,7 @@
               "RelativeToolTip": "Assets\\Script\\Quest\\Quest.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAqwA8AAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-20T12:04:10.242Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "PlayerController.cs",
-              "DocumentMoniker": "C:\\Users\\pc\\Documents\\GitHub\\game-2\\Assets\\Script\\Player\\PlayerController.cs",
-              "RelativeDocumentMoniker": "Assets\\Script\\Player\\PlayerController.cs",
-              "ToolTip": "C:\\Users\\pc\\Documents\\GitHub\\game-2\\Assets\\Script\\Player\\PlayerController.cs",
-              "RelativeToolTip": "Assets\\Script\\Player\\PlayerController.cs",
-              "ViewState": "AgIAADUAAAAAAAAAAAAQwJ0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-19T21:36:49.578Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-20T12:04:10.242Z"
             },
             {
               "$type": "Document",
@@ -477,6 +466,18 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-15T13:57:59.782Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "PlayerController.cs",
+              "DocumentMoniker": "C:\\Users\\pc\\Documents\\GitHub\\game-2\\Assets\\Script\\Player\\PlayerController.cs",
+              "RelativeDocumentMoniker": "Assets\\Script\\Player\\PlayerController.cs",
+              "ToolTip": "C:\\Users\\pc\\Documents\\GitHub\\game-2\\Assets\\Script\\Player\\PlayerController.cs",
+              "RelativeToolTip": "Assets\\Script\\Player\\PlayerController.cs",
+              "ViewState": "AgIAADUAAAAAAAAAAAAQwJ0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-19T21:36:49.578Z"
             }
           ]
         }
