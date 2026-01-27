@@ -2,10 +2,11 @@ using UnityEngine;
 
 public class QuestHolder : MonoBehaviour
 {
-    public QuestData Data;
+    [SerializeField] private QuestEventChannel _questEventChannel;
+    [SerializeField] private QuestData _questData;
 
     public void GiveQuest()
     {
-        QuestManager.Instance.StartQuest(Data);
+        _questEventChannel.OnReceivedQuest?.Invoke(_questData);
     }
 }

@@ -1,30 +1,47 @@
+using System;
 using UnityEngine;
 
 public class QuestManager : MonoBehaviour
 {
     private static QuestManager _instance;
 
-    public static QuestManager Instance => _instance;
-
-    private void Awake()
+    public static QuestManager Instance
     {
-        if(_instance != null && _instance != this)
+        get
         {
-            Destroy(gameObject);
-            return;
+            if (_instance == null)
+            {
+                _instance = new GameObject().AddComponent<QuestManager>();
+                DontDestroyOnLoad(_instance.gameObject);
+            }
+            return _instance;
         }
-        _instance = this;
-        DontDestroyOnLoad(gameObject);
     }
 
+    public QuestEventChannel _questEventChannel;
 
-    private Quest _quest;
-    public Quest CurrentQuest => _quest;
+    private QuestLog _questLog;
 
-    public void StartQuest( QuestData questData)
+    
+
+    void Awake()
     {
-        _quest = new Quest(questData);
-        _quest.Start();
+        _questEventChannel.OnReceivedQuest += OnReceivedQuest;
+    }
+
+   
+    private void OnReceivedQuest(QuestData questData)
+    {
+        var newQuest = new Quest(questData);
+        _questLog.AddNewQuest(newQuest);
+        StartQuest(newQuest.Data.Id);
+    }
+
+    public void StartQuest(String questId)
+    {
+        var quest = _questLog.GetQuestById(questId);
+        quest?.Start();
     }
 
 }
+
