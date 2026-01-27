@@ -14,7 +14,7 @@ public class QuestItemUI : MonoBehaviour
 
     }
 
-    public bool UpdateStatus(bool isCompleted)
+    public void UpdateStatus(bool isCompleted)
     {
         _statusToggle.isOn= isCompleted;
     }

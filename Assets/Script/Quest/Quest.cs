@@ -16,6 +16,11 @@ public class Quest : MonoBehaviour
         Data = data;
     }
 
+    internal void Complete()
+    {
+        throw new NotImplementedException();
+    }
+
     internal void Start()
     {
         Debug.Log("start quest");
