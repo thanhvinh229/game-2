@@ -22,6 +22,7 @@ public class InteractionController : MonoBehaviour
     void Update()
     {
         CheckInteractionRaycast();
+
     }
     void OnEnable()
     {
@@ -67,11 +68,10 @@ public class InteractionController : MonoBehaviour
     private void HandleAction(InteractionActionSlot actionSlot)
     {
         var currentInteractable = _interactionData.Interactable;
-        var slot = currentInteractable.Actions.FirstOrDefault(x => x.Slot == actionSlot);
-        if (currentInteractable.CanInteract)
+        
+        if (currentInteractable != null && currentInteractable.CanInteract)
         {
-            _isInteracting = true;
-            slot.OnInteract(new InteractionContext (gameObject, currentInteractable));
+            currentInteractable.Interact(gameObject, actionSlot);
         }
         // if (_interactionInputData.InteractReleased)
         // {
