@@ -1,11 +1,16 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "CollectObjectiveData", menuName = "Scriptable Objects/CollectObjectiveData")]
-public  class CollectObjectiveData : ObjectiveData
+public class CollectObjectiveData : ObjectiveData
 {
+    public string TargetId;
+    public int RequiredAmount;
 
-    public override Objective CreateInstance(ObjectiveData data)
+    public override Objective CreateInstance()
     {
-        return new CollectObjective(data);  
+        return new CollectObjective(this);
     }
+
+
 }
+    

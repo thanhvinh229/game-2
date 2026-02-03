@@ -975,6 +975,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 366306813}
+  - component: {fileID: 366306815}
+  - component: {fileID: 366306814}
   m_Layer: 5
   m_Name: Content
   m_TagString: Untagged
@@ -999,9 +1001,49 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00026953098, y: -0.0007237611}
-  m_SizeDelta: {x: 0.00021362, y: 448.77}
+  m_AnchoredPosition: {x: -0.00026953098, y: -0.0006648116}
+  m_SizeDelta: {x: 0.00021362, y: 0}
   m_Pivot: {x: 0, y: 1}
+--- !u!114 &366306814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 366306812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.VerticalLayoutGroup
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 0
+  m_Spacing: 5
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
+  m_ChildControlWidth: 1
+  m_ChildControlHeight: 1
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
+--- !u!114 &366306815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 366306812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.ContentSizeFitter
+  m_HorizontalFit: 0
+  m_VerticalFit: 1
 --- !u!1 &400689106
 GameObject:
   m_ObjectHideFlags: 0
@@ -1921,6 +1963,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10f6650a1d32f87428893f58cc2718df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::QuestHolder
+  _questEventChannel: {fileID: 0}
   _questData: {fileID: 0}
 --- !u!1 &1151806831
 GameObject:
@@ -2343,7 +2386,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 254641813}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.99999994
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3607,7 +3650,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1872379874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4570,11 +4613,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3456344754117140415, guid: facf9b740cf118a45a2d3696296c1c89, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3456344754117140415, guid: facf9b740cf118a45a2d3696296c1c89, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3456344754117140415, guid: facf9b740cf118a45a2d3696296c1c89, type: 3}
       propertyPath: m_AnchorMin.x
@@ -4590,7 +4633,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3456344754117140415, guid: facf9b740cf118a45a2d3696296c1c89, type: 3}
       propertyPath: m_SizeDelta.y
-      value: -384.5305
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3456344754117140415, guid: facf9b740cf118a45a2d3696296c1c89, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4622,11 +4665,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3456344754117140415, guid: facf9b740cf118a45a2d3696296c1c89, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 3.899994
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3456344754117140415, guid: facf9b740cf118a45a2d3696296c1c89, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 192.30002
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3456344754117140415, guid: facf9b740cf118a45a2d3696296c1c89, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

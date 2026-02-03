@@ -14,3 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CollectObjectiveData
   Id: 
   Description: 
+  Status: 0
+  EventChannel: {fileID: 11400000, guid: d439c91f745d2054ba33e880aeab51ff, type: 2}
+  TargetId: 
+  RequiredAmount: 0

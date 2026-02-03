@@ -1,9 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class QuestLog : MonoBehaviour
+public class QuestLog 
 {
     private Dictionary<string, Quest> _activeQuests = new();
+    private Dictionary<string, Quest> _completedQuests = new();
     public IReadOnlyCollection<Quest>  ActiveQuests => _activeQuests.Values;
 
     public void AddNewQuest(Quest quest)
@@ -21,11 +22,14 @@ public class QuestLog : MonoBehaviour
         }
        return null;
     }
-    public void CompleteQuest(string questId)
+    public bool CompleteQuest(string questId)
     {
         if (_activeQuests.TryGetValue(questId, out Quest quest))
         {
             quest.Complete();
+            _completedQuests.Add(questId, quest);
+            return true;    
         }
+        return false;
     }
 }

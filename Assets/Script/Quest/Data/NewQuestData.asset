@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c97fc1de3a0fed4dbd9813a3bb93c3d, type: 3}
   m_Name: NewQuestData
   m_EditorClassIdentifier: Assembly-CSharp::QuestData
-  Id: .
+  Id: need a drink
   Description: need a drink
+  Status: 0
   ObjectiveData:
   - {fileID: 11400000, guid: c2dcb2a202e133b41bf9030911b4b652, type: 2}

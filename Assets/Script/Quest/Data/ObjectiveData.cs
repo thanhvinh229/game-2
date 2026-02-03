@@ -7,5 +7,7 @@ public abstract class ObjectiveData : ScriptableObject
 
     public string Description;
 
-    public abstract Objective CreateInstance(ObjectiveData data);
+    public QuestStatus Status;
+    public QuestEventChannel EventChannel;
+    public abstract Objective CreateInstance();
 }

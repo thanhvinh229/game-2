@@ -1,14 +1,11 @@
-using UnityEngine;
-
-[CreateAssetMenu(fileName = "Objective", menuName = "Scriptable Objects/Objective")]
-public class Objective : ScriptableObject
+public abstract class Objective
 {
-    public ObjectiveData Data;
-
-    public bool IsComplete {  get;  set; }
-
-    public Objective(ObjectiveData data)
+    protected ObjectiveData _data;
+    public abstract bool IsCompleted { get; }
+    protected Objective(ObjectiveData data)
     {
-        Data = data; 
+        _data = data;
     }
+    public abstract void Register();
+    public abstract void Unregister();
 }

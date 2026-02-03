@@ -16,6 +16,21 @@ public class QuestLogPanelUI : MonoBehaviour
         _questEventChanel.OnCompleteQuest += OnCompleteQuest;
     }
 
+
+    private void OnReceivedQuest(string questId)
+    {
+
+        if (!_questItemCollection.TryGetValue(questId, out QuestItemUI questItemUI))
+        {
+            var elementGO = Instantiate(_questItemPrefab, _content);
+            questItemUI = elementGO.GetComponent<QuestItemUI>();
+            questItemUI.Initialize(name: questId, isCompleted: false);
+            _questItemCollection.Add(questId, questItemUI);
+        }
+
+
+
+    }
     private void OnCompleteQuest(string questId)
     {
         if(_questItemCollection.TryGetValue(questId,out QuestItemUI questItemUI))
@@ -23,19 +38,6 @@ public class QuestLogPanelUI : MonoBehaviour
             questItemUI.UpdateStatus(true);
         }
     }
-
-    private void OnReceivedQuest(QuestData data)
-    {
-        var questId = data.Id;
-        if( !_questItemCollection.TryGetValue(questId, out QuestItemUI questItemUI))
-        {
-            var elementGO = Instantiate(_questItemPrefab , _content);
-            questItemUI = elementGO.GetComponent<QuestItemUI>();
-            questItemUI.Initialize(questId, false);
-            _questItemCollection.Add(questId, questItemUI);
-        }
-              
-
-            
-    }
+        
+   
 }
