@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour
     
     public float aimRotateSpeed = 15f;
 
-   
+    public string CollectedItemGuid;
 
     public bool isAiming;
 

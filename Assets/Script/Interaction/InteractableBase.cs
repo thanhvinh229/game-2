@@ -12,7 +12,9 @@ public class InteractableBase : MonoBehaviour, IInteractable
     [SerializeField] private bool _canInteract;
     [SerializeField] private bool _canInspect;
 
-    public InteractionData Data => _data;
+
+
+    public InteractableData Data;
     public bool HoldInteract => _canInteract && _holdInteract;  
     public float HoldDuration => _holdDuration;
     public bool CanInteract => _canInteract;

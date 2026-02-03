@@ -2,14 +2,14 @@ using UnityEngine;
 
 public class InteractionContext : MonoBehaviour
 {
-    public GameObject Interactor;
+    public GameObject Interactor { get; }
 
-    public InteractableBase Interactable;
+    public InteractableBase Interactable { get; }
 
     public InteractionContext(GameObject interactor, InteractableBase interactable)
     {
         Interactor = interactor;
-        interactable = Interactable;
+        Interactable = interactable;
     }
 
 }

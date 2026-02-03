@@ -5,7 +5,7 @@ public class InteractableData : ScriptableObject
 {
     public string Guid;
 
-    private string Name;
+    
 
-    private string Description;
+    public string Description;
 }

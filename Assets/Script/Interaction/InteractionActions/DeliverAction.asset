@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5daa268cb5a371442bed6c6a25137a98, type: 3}
-  m_Name: GrabAction
-  m_EditorClassIdentifier: 
-  ActionPrompt: Grab
-  Slot: 0
+  m_Script: {fileID: 11500000, guid: c7e49ed922a9cf94b97a467c032b0c68, type: 3}
+  m_Name: DeliverAction
+  m_EditorClassIdentifier: Assembly-CSharp::DeliverAction
+  ActionPrompt: 
+  Slot: 1
+  _itemId: Horn
   _questEventChannel: {fileID: 11400000, guid: d439c91f745d2054ba33e880aeab51ff, type: 2}

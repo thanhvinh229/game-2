@@ -1547,6 +1547,7 @@ MonoBehaviour:
   _holdDuration: 3
   _canInteract: 0
   _canInspect: 0
+  Data: {fileID: 11400000, guid: ef37603dcfdf441439232934781d94ad, type: 2}
   Actions:
   - {fileID: 11400000, guid: 88a328624428c07488a972834a7e22f0, type: 2}
   - {fileID: 11400000, guid: 4423e4d62a40cc64fb181cac6cae6139, type: 2}
@@ -4329,8 +4330,10 @@ MonoBehaviour:
   _holdDuration: 3
   _canInteract: 1
   _canInspect: 0
+  Data: {fileID: 0}
   Actions:
   - {fileID: 11400000, guid: f60c23d51bce9354babbe7524fd05cd3, type: 2}
+  - {fileID: 11400000, guid: 6a84375b791e30e4a90314167dc03e9f, type: 2}
 --- !u!136 &2041439875
 CapsuleCollider:
   m_ObjectHideFlags: 0

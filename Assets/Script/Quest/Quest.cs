@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Quest : MonoBehaviour
@@ -9,11 +10,12 @@ public class Quest : MonoBehaviour
 
     public List<Objective> Objectives = new();
 
-    public bool IsComplete;
+    public bool IsComplete => Objectives.All(x=> x.IsComplete);
 
     public Quest(QuestData data)
     {
         Data = data;
+      
     }
 
     internal void Complete()
