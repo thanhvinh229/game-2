@@ -17,7 +17,7 @@ public class QuestLogPanelUI : MonoBehaviour
     }
 
 
-    private void OnReceivedQuest(string questId)
+    public void OnReceivedQuest(string questId)
     {
 
         if (!_questItemCollection.TryGetValue(questId, out QuestItemUI questItemUI))
@@ -31,7 +31,7 @@ public class QuestLogPanelUI : MonoBehaviour
 
 
     }
-    private void OnCompleteQuest(string questId)
+    public void OnCompleteQuest(string questId)
     {
         if(_questItemCollection.TryGetValue(questId,out QuestItemUI questItemUI))
         {

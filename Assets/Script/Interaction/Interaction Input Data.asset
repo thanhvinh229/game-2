@@ -18,7 +18,7 @@ MonoBehaviour:
     m_ExpectedControlType: 
     m_Id: 99c7a199-c714-4370-9d40-fa0b482ef65f
     m_Processors: 
-    m_Interactions: 
+    m_Interactions: Tap,Hold
     m_SingletonActionBindings:
     - m_Name: 
       m_Id: ce51dab2-f61e-4fac-8b58-df114eb498e7
@@ -35,7 +35,7 @@ MonoBehaviour:
     m_ExpectedControlType: 
     m_Id: 80c89941-e6ec-4947-b8bc-e041157a235b
     m_Processors: 
-    m_Interactions: 
+    m_Interactions: Tap,Hold
     m_SingletonActionBindings:
     - m_Name: 
       m_Id: a0759eb5-67d4-4238-9dbb-7cc8f54856f2
@@ -52,7 +52,7 @@ MonoBehaviour:
     m_ExpectedControlType: 
     m_Id: 7d086b1c-3883-444f-8ad2-539c155abbb9
     m_Processors: 
-    m_Interactions: 
+    m_Interactions: Tap,Hold
     m_SingletonActionBindings:
     - m_Name: 
       m_Id: 0b487bb8-5b18-449a-b19b-47f28e94b48c

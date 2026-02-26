@@ -25,11 +25,11 @@ public class QuestManager : MonoBehaviour
     {
         var newQuest = new Quest(questData);
         QuestLog.AddNewQuest(newQuest);
-        StartQuest(newQuest.Data.Id);
+        StartQuest(questData.Id);
         _questEventChannel.OnReceivedQuest?.Invoke(questData.Id);
     }
 
-    public void StartQuest(String questId)
+    public void  StartQuest(String questId)
     {
         var quest = QuestLog.GetQuestById(questId);
         quest?.Start();
