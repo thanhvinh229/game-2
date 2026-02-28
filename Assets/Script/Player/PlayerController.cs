@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour
     [Header("References")]
     
     public Animator animator;
+   
+    
 
 
 
@@ -64,6 +66,7 @@ public class PlayerController : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         animator = GetComponentInChildren<Animator>();
+        
 
         idleState = new PlayerIdleState(this);
         moveState = new PlayerMoveState(this);

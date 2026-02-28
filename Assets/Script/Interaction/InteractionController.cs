@@ -1,5 +1,7 @@
 using System.Linq;
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 public class InteractionController : MonoBehaviour
 {
@@ -68,7 +70,7 @@ public class InteractionController : MonoBehaviour
     private void HandleAction(InteractionActionSlot actionSlot)
     {
         var currentInteractable = _interactionData.Interactable;
-        
+        Debug.Log("Action run");
         if (currentInteractable != null && currentInteractable.CanInteract)
         {
             currentInteractable.Interact(gameObject, actionSlot);

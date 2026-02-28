@@ -35,7 +35,7 @@ public class QuestLogPanelUI : MonoBehaviour
     {
         if(_questItemCollection.TryGetValue(questId,out QuestItemUI questItemUI))
         {
-            questItemUI.UpdateStatus(true);
+            questItemUI.UpdateStatus(isCompleted: true);
         }
     }
         
