@@ -156,6 +156,13 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+
+public void Jump()
+{
+    
+    velocity.y = Mathf.Sqrt(jumpForce * -2f * gravity);
+    animator.SetTrigger("Jump"); 
+}
     
     }
     
