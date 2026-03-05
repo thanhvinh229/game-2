@@ -4922,6 +4922,10 @@ PrefabInstance:
       propertyPath: m_Avatar
       value: 
       objectReference: {fileID: 9000000, guid: 44862258acd4a3b468a889aacdd38ed6, type: 3}
+    - target: {fileID: 6615162498874215851, guid: d36b73fa7973d2d499730fe444c9045b, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 81a4856bbc4981e4b96c15db2980e4c0, type: 2}
     - target: {fileID: 6668989880133503126, guid: d36b73fa7973d2d499730fe444c9045b, type: 3}
       propertyPath: m_Name
       value: skeletonLord
@@ -4933,6 +4937,10 @@ PrefabInstance:
     - target: {fileID: 8060694406715310558, guid: d36b73fa7973d2d499730fe444c9045b, type: 3}
       propertyPath: runSpeed
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8060694406715310558, guid: d36b73fa7973d2d499730fe444c9045b, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8060694406715310558, guid: d36b73fa7973d2d499730fe444c9045b, type: 3}
       propertyPath: moveSpeed

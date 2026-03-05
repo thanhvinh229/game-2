@@ -83,32 +83,29 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        currentState.Update();
+       
+    _moveInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 
-        Vector3 foward = _cameraTransform.forward;
-        Vector3 right = _cameraTransform.right;
+    
+    currentState.Update();
 
-        foward.y = 0;
-        right.y = 0;
+    
+    Vector3 forward = _cameraTransform.forward;
+    Vector3 right = _cameraTransform.right;
+    forward.y = 0;
+    right.y = 0;
 
-        foward.Normalize();
-        right.Normalize();
+    
+    Vector3 moveDirection = (forward * _moveInput.y + right * _moveInput.x).normalized;
 
-        Vector3 moveDirection = foward * _moveInput.y + right * _moveInput.x;
-        controller.Move(moveDirection * moveSpeed * Time.deltaTime);
-
-        if(_shouldFaceMoveDirection && moveDirection.sqrMagnitude > 0.001f)
-        {
-            Quaternion toRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
-            transform.rotation = Quaternion.Slerp(transform.rotation, toRotation, 10f * Time.deltaTime);
-        }
-
-        Vector3 move =new Vector3(_moveInput.x,0,  _moveInput.y);
-        controller.Move(move * moveSpeed * Time.deltaTime);
-
+    
+    
+    if(_shouldFaceMoveDirection && moveDirection.sqrMagnitude > 0.001f)
+    {
+        Quaternion toRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
+        transform.rotation = Quaternion.Slerp(transform.rotation, toRotation, 10f * Time.deltaTime);
+    }
         
-
-
 
     }
 
