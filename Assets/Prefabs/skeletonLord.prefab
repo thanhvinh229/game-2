@@ -2742,9 +2742,11 @@ GameObject:
   - component: {fileID: 6021700354169413265}
   - component: {fileID: 8060694406715310558}
   - component: {fileID: 6589888583034018089}
+  - component: {fileID: 1836614869644042961}
+  - component: {fileID: 4816540650689037418}
   m_Layer: 0
   m_Name: skeletonLord
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2757,7 +2759,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6668989880133503126}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.9999084, z: -0, w: -0.013536571}
+  m_LocalRotation: {x: -0, y: -0.99990845, z: 0, w: -0.013534458}
   m_LocalPosition: {x: 47.60465, y: 3.0031135, z: 63.239815}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2780,7 +2782,7 @@ Animator:
   m_GameObject: {fileID: 6668989880133503126}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 44862258acd4a3b468a889aacdd38ed6, type: 3}
-  m_Controller: {fileID: 9100000, guid: 9252c3b4f6f73ac4bbaa71339a5b7abd, type: 2}
+  m_Controller: {fileID: 9100000, guid: 81a4856bbc4981e4b96c15db2980e4c0, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -2830,12 +2832,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   _cameraTransform: {fileID: 0}
-  _shouldFaceMoveDirection: 0
-  moveSpeed: 9
+  _shouldFaceMoveDirection: 1
+  moveSpeed: 5
   gravity: -20
   jumpForce: 1.5
   walkSpeed: 2.5
-  runSpeed: 5
+  runSpeed: 10
   animator: {fileID: 6615162498874215851}
   controller: {fileID: 0}
   velocity: {x: 0, y: 0, z: 0}
@@ -2846,6 +2848,7 @@ MonoBehaviour:
   _moveY: 0
   rotateSpeed: 10
   aimRotateSpeed: 15
+  CollectedItemGuid: 
   isAiming: 0
 --- !u!114 &6589888583034018089
 MonoBehaviour:
@@ -2869,6 +2872,32 @@ MonoBehaviour:
   _primaryActionUI: {fileID: 0}
   _secondaryActionUI: {fileID: 0}
   _tertiaryActionUI: {fileID: 0}
+--- !u!114 &1836614869644042961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6668989880133503126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9aa6a482807b43418cbee166554910b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
+  health: 100
+--- !u!114 &4816540650689037418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6668989880133503126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c4a0cedc0966ff42b26a6c3fdae9fe8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerKnockBack
+  knockbackTime: 0.25
 --- !u!1 &6836555683676491860
 GameObject:
   m_ObjectHideFlags: 0

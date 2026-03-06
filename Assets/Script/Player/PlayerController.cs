@@ -20,15 +20,19 @@ public class PlayerController : MonoBehaviour
     [Header("References")]
     
     public Animator animator;
-   
-    
-
-
 
     [HideInInspector] public CharacterController controller;
     private Vector2 _moveInput;
     private Vector3 _velocity;
     [HideInInspector] public Vector3 velocity;
+
+
+    
+
+    [Header("Weapon Settings")]
+    public GameObject Sword;  
+    public GameObject SwordOnHand; 
+    public bool IsWeaponOut = false; 
 
     // States
     [HideInInspector] public PlayerIdleState idleState;
@@ -36,6 +40,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public PlayerJumpState jumpState;
     [HideInInspector] public PlayerFallState fallState;
     [HideInInspector] public RunState runState;
+    [HideInInspector] public PlayerAttackState attackState;
 
     public float _horizontalInput;
     public float _verticalInput;
@@ -54,9 +59,6 @@ public class PlayerController : MonoBehaviour
 
     PlayerState currentState;
 
-
-
-
     public float HorizontalInput => _horizontalInput;
     public float VerticalInput => _verticalInput;
     public Vector3 MoveDirection => _moveDirection;
@@ -72,6 +74,7 @@ public class PlayerController : MonoBehaviour
         moveState = new PlayerMoveState(this);
         runState = new RunState(this);
         jumpState = new PlayerJumpState(this);
+        attackState = new PlayerAttackState(this);
     }
 
     void Start()
@@ -81,12 +84,12 @@ public class PlayerController : MonoBehaviour
         ChangeState(idleState);
     }
 
+
     void Update()
     {
        
     _moveInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 
-    
     currentState.Update();
 
     
@@ -105,7 +108,13 @@ public class PlayerController : MonoBehaviour
         Quaternion toRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
         transform.rotation = Quaternion.Slerp(transform.rotation, toRotation, 10f * Time.deltaTime);
     }
-        
+
+   
+     if (Input.GetMouseButtonDown(0) && controller.isGrounded)
+{
+    
+   
+}
 
     }
 
@@ -163,7 +172,11 @@ public void Jump()
     velocity.y = Mathf.Sqrt(jumpForce * -2f * gravity);
     animator.SetTrigger("Jump"); 
 }
-    
-    }
-    
 
+
+
+
+
+
+  
+}
