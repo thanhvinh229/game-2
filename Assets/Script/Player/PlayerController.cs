@@ -2,6 +2,8 @@
 using Unity.Cinemachine;
 using Unity.IO.LowLevel.Unsafe;
 using Unity.Mathematics;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -29,10 +31,11 @@ public class PlayerController : MonoBehaviour
 
     
 
-    [Header("Weapon Settings")]
-    public GameObject Sword;  
-    public GameObject SwordOnHand; 
-    public bool IsWeaponOut = false; 
+    //Equip-Unequip parameters
+    [SerializeField] public GameObject Sword;  
+    [SerializeField] public GameObject SwordOnHand; 
+     public bool isEquipping;
+    public bool isEquipped;
 
     // States
     [HideInInspector] public PlayerIdleState idleState;
@@ -116,7 +119,11 @@ public class PlayerController : MonoBehaviour
    
 }
 
+
+
     }
+
+
 
     public void ChangeState(PlayerState newState)
     {
@@ -173,7 +180,34 @@ public void Jump()
     animator.SetTrigger("Jump"); 
 }
 
+private void Equip()
+    {
+        if (Input.GetKeyDown(KeyCode.R) && animator.GetBool("Grounded"))
+        {
+            isEquipping = true;
+            animator.SetTrigger("Equip");
+        }
+    }
 
+     public void ActiveWeapon()
+    {
+        if (!isEquipped)
+        {
+            Sword.SetActive(true);
+            SwordOnHand.SetActive(false);
+            isEquipped = !isEquipped;
+        }
+        else
+        {
+            Sword.SetActive(false);
+            SwordOnHand.SetActive(true);
+            isEquipped = !isEquipped;
+        }
+    }
+  public void Equipped()
+    {
+        isEquipping = false;
+    }
 
 
 

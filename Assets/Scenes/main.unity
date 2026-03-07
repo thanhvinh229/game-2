@@ -3011,7 +3011,8 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: 0}
   Sword: {fileID: 1231828114}
   SwordOnHand: {fileID: 1955951498}
-  IsWeaponOut: 0
+  isEquipping: 0
+  isEquipped: 0
   _horizontalInput: 0
   _verticalInput: 0
   _moveDirection: {x: 0, y: 0, z: 0}
