@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerIdleState : PlayerMoveState
 {
+    private float dampTime = 0.1f;
     public PlayerIdleState(PlayerController player) : base(player) { }
 
     public override void Enter()
@@ -13,12 +14,22 @@ public class PlayerIdleState : PlayerMoveState
     public override void Update()
     {
         player.ApplyGravity();
+        
 
-        if (player.HasMoveInput())
-            player.ChangeState(player.moveState);
+        if (player.GetMoveInput().magnitude > 0.1f)
+        {
+             player.ChangeState(player.moveState);
+             return;
+        }
+            
 
         if (Input.GetButtonDown("Jump") && player.controller.isGrounded)
             player.ChangeState(player.jumpState);
+
+
+        player.animator.SetFloat("MoveX", 0, dampTime, Time.deltaTime);
+        player.animator.SetFloat("MoveY", 0, dampTime, Time.deltaTime);
+        player.animator.SetFloat("Speed", 0, dampTime, Time.deltaTime);
     }
 
 

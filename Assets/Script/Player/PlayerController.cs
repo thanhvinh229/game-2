@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 _moveInput;
     private Vector3 _velocity;
     [HideInInspector] public Vector3 velocity;
+    [HideInInspector] public GameInput playerInput;
 
 
     
@@ -42,8 +43,9 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public PlayerMoveState moveState;
     [HideInInspector] public PlayerJumpState jumpState;
     [HideInInspector] public PlayerFallState fallState;
-    [HideInInspector] public RunState runState;
+    [HideInInspector] public PlayerRunState runState;
     [HideInInspector] public PlayerAttackState attackState;
+    [HideInInspector] public PlayerCombatState combatState;
 
     public float _horizontalInput;
     public float _verticalInput;
@@ -75,9 +77,10 @@ public class PlayerController : MonoBehaviour
 
         idleState = new PlayerIdleState(this);
         moveState = new PlayerMoveState(this);
-        runState = new RunState(this);
+        runState = new PlayerRunState(this);
         jumpState = new PlayerJumpState(this);
         attackState = new PlayerAttackState(this);
+        combatState = new PlayerCombatState(this);
     }
 
     void Start()
