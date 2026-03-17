@@ -192,19 +192,18 @@ private void Equip()
         }
     }
 
-     public void ActiveWeapon()
+     // Hàm này sẽ được gọi bởi Animation Event
+    public void ToggleWeaponVisibility(int isCombat)
     {
-        if (!isEquipped)
+        if (isCombat == 0) // Đang rút kiếm
         {
-            Sword.SetActive(true);
-            SwordOnHand.SetActive(false);
-            isEquipped = !isEquipped;
-        }
-        else
-        {
-            Sword.SetActive(false);
             SwordOnHand.SetActive(true);
-            isEquipped = !isEquipped;
+            Sword.SetActive(false);
+        }
+        else // Đang cất kiếm
+        {
+            SwordOnHand.SetActive(false);
+            Sword.SetActive(true);
         }
     }
   public void Equipped()

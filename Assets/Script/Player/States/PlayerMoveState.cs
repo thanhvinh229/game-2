@@ -1,9 +1,9 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 public class PlayerMoveState : PlayerState
 {
     private float dampTime = 0.1f;
-
+   
     public PlayerMoveState(PlayerController player) : base(player) { }
 
     public override void Update()
@@ -21,6 +21,7 @@ public class PlayerMoveState : PlayerState
         if (Input.GetButtonDown("Jump") && player.controller.isGrounded)
         {
             player.ChangeState(player.jumpState);
+            return;
         }
 
         
@@ -29,11 +30,12 @@ public class PlayerMoveState : PlayerState
             player.ChangeState(player.runState);
             return; 
         }
-        if (Input.GetKey(KeyCode.R))
+        if (Input.GetMouseButtonDown(0))
         {
-            player.ChangeState(player.attackState);
+            player.ChangeState(player.combatState);
             player.animator.SetTrigger("drawWeapon");
             return;
+            
         
         }
         
@@ -45,14 +47,9 @@ public class PlayerMoveState : PlayerState
         player.controller.Move(movement * Time.deltaTime);
 
        UpdateAnimator(move, 0.5f);
-
-        
-        
-
-
-        
     } 
 
+    
     void UpdateAnimator(Vector3 move ,float speedMultiplier)
     {
       
