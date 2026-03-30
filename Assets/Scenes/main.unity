@@ -7846,19 +7846,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerKnockBack
   knockbackTime: 0.25
---- !u!114 &1399739125
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1399739123}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9aa6a482807b43418cbee166554910b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
-  health: 100
 --- !u!114 &1399739126
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14447,9 +14434,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0e0dedeceac90ca4ca6bf2bb15f4d45e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1399739126}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0e0dedeceac90ca4ca6bf2bb15f4d45e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1399739125}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 0e0dedeceac90ca4ca6bf2bb15f4d45e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1399739124}

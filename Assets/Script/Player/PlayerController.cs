@@ -1,4 +1,4 @@
-﻿using NUnit.Framework.Interfaces;
+using NUnit.Framework.Interfaces;
 using Unity.Cinemachine;
 using Unity.IO.LowLevel.Unsafe;
 using Unity.Mathematics;
@@ -89,8 +89,7 @@ public class PlayerController : MonoBehaviour
 
         ChangeState(idleState);
     }
-
-
+     
     void Update()
     {
        
@@ -109,7 +108,7 @@ public class PlayerController : MonoBehaviour
 
     
     
-    if(_shouldFaceMoveDirection && moveDirection.sqrMagnitude > 0.001f)
+    if(_shouldFaceMoveDirection && moveDirection.sqrMagnitude > 0.001f && !IsAttacking())
     {
         Quaternion toRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
         transform.rotation = Quaternion.Slerp(transform.rotation, toRotation, 10f * Time.deltaTime);
@@ -212,7 +211,19 @@ private void Equip()
     }
 
 
+public void SetCombatLayerWeight(float weight)
+{
+    // Giả sử Combat Layer là Layer thứ 1 (Base Layer là 0)
+    animator.SetLayerWeight(1, weight);
+}
 
+public bool IsAttacking()
+    {
+    
+    return animator.GetCurrentAnimatorStateInfo(1).IsTag("Attack");
+    }
 
   
 }
+
+

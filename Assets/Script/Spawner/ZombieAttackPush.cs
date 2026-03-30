@@ -16,8 +16,8 @@ public class ZombieAttackPush : MonoBehaviour
         lastAttackTime = Time.time;
 
         // DAMAGE
-        PlayerHealth hp = other.GetComponent<PlayerHealth>();
-        hp?.TakeDamage(damage);
+        PlayerStats hp = other.GetComponent<PlayerStats>();
+        // hp?.TakeDamage(damage);
 
         // KNOCKBACK
         PlayerKnockBack knockback = other.GetComponent<PlayerKnockBack>();
