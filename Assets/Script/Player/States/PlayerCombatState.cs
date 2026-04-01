@@ -11,178 +11,230 @@ public class PlayerCombatState : PlayerMoveState
     private bool isFacingCamera = false;
  
     // --- Combo System ---
-    private int comboStep = 0;                    // Đòn hiện tại (0 = chưa đánh)
-    private const int MAX_COMBO = 3;              // Tổng số đòn trong chuỗi
-    private const float COMBO_RESET_TIME = 1.2f;  // Thời gian chờ tối đa giữa 2 đòn
-    private const float COMBO_COOLDOWN = 1.0f;    // Cooldown sau khi đánh xong chuỗi
-    private float comboTimer = 0f;                // Đếm ngược reset combo
-    private bool comboCoolingDown = false;        // Đang trong cooldown sau chuỗi
+    private int comboStep = 0;
+    private const int MAX_COMBO = 3;
+    private const float COMBO_RESET_TIME = 0.5f;
+    private const float COMBO_COOLDOWN = 1.0f;
+    private float comboTimer = 0f;
+    private bool comboCoolingDown = false;
+
+    [Header("Settings")]
+    public float autoSheatheTime = 10f; // 10 giây tự động cất kiếm
+    
+    private Animator animator;
+    private float lastCombatActionTime;
+    private bool isInCombat;
+
+ 
+    // --- Input Buffer ---
+    // Lưu input khi Animator chưa sẵn sàng, thay vì bỏ mất
+    private bool attackBuffered = false;
+    private const float BUFFER_WINDOW = 0.25f;
+    private float bufferTimer = 0f;
+ 
     public PlayerCombatState(PlayerController player) : base(player) { }
  
- 
- public override void Enter()
-{
-    
-    player.animator.ResetTrigger("attack1");
-    player.animator.ResetTrigger("attack2");
-    player.animator.ResetTrigger("attack3");
 
-    comboStep = 0;
-    
-    
-    player.animator.SetLayerWeight(1, 1f);
-}
+    void Start()
+    {
+        animator = player.GetComponent<Animator>();
+    }
     public override void Update()
-{
-    Vector3 move = player.GetMoveInput();
-    bool isMoving = move.magnitude > 0.1f;
-    bool isAttacking = Input.GetMouseButtonDown(0);
-    bool isJumping = Input.GetButtonDown("Jump");
- 
-    
-    if (Input.GetKeyDown(KeyCode.R))
     {
-        player.animator.SetTrigger("sheathWeapon"); // Bạn cần có trigger này trong Animator
-        player.ChangeState(player.moveState);
-        return;
-    }
+        Vector3 move = player.GetMoveInput();
+        bool isMoving = move.magnitude > 0.1f;
+        bool isAttacking = Input.GetMouseButtonDown(0);
+        bool isJumping = Input.GetButtonDown("Jump");
  
-    
-    if (isAttacking)
-    {
-        HandleComboAttack();
-    }
-    UpdateComboTimer();
-    //  Jump
-    if (isJumping && player.controller.isGrounded)
-    {
-        player.ChangeState(player.jumpState);
-        return;
-    }
- 
-    //  Action -> idlestate
-    if (isMoving || isAttacking || isJumping)
+        // Sheath weapon thủ công
+        if (Input.GetKeyDown(KeyCode.R))
         {
+            player.animator.SetTrigger("sheathWeapon");
+            player.ChangeState(player.moveState);
+            return;
+        }
+ 
+        // Jump
+        if (isJumping && player.controller.isGrounded)
+        {
+            player.ChangeState(player.jumpState);
+            return;
+        }
+ 
+        // Nhận input vào buffer
+        if (isAttacking)
+        {
+            attackBuffered = true;
+            bufferTimer = BUFFER_WINDOW;
+        }
+ 
+        // Cập nhật combo timer trước
+        UpdateComboTimer();
+ 
+        // Thử xử lý buffer
+        TryConsumeBuffer();
+ 
+        // Idle timeout
+        if (isMoving || isAttacking || isJumping)
             idleTimer = 0f;
-        }
         else
-        {
-            
             idleTimer += Time.deltaTime;
-        }
  
-       
         if (idleTimer >= TIMEOUT_DURATION)
         {
-            player.animator.SetTrigger("sheathWeapon"); 
+            player.animator.SetTrigger("sheathWeapon");
             player.ChangeState(player.idleState);
             return;
         }
-     
-    HandleRotation(move, isAttacking);
-       
- 
-            
- 
-    
-    player.ApplyGravity();
-    Vector3 movement = move * player.walkSpeed;
-    movement.y = player.velocity.y; 
-    
-    player.controller.Move(movement * Time.deltaTime);
- 
-   
-    UpdateCombatAnimator(move,0.5f);
-}
- 
- void HandleComboAttack()
-{
-    // Đang cooldown sau chuỗi combo -> bỏ qua input
-    if (comboCoolingDown) return;
- 
-    comboStep++;
-    comboTimer = COMBO_RESET_TIME; // Reset thời gian chờ đòn tiếp
- 
-    // Kích hoạt animation theo đòn hiện tại
-    player.animator.SetTrigger("attack" + comboStep);
- 
-    // Nếu đã đánh đủ MAX_COMBO đòn -> vào cooldown và reset
-    if (comboStep >= MAX_COMBO)
-    {
-        comboCoolingDown = true;
-        comboTimer = COMBO_COOLDOWN;
-        comboStep = 0;
-    }
-}
- 
- void UpdateComboTimer()
-{
-    if (comboTimer > 0f)
-    {
-        comboTimer -= Time.deltaTime;
- 
-        if (comboTimer <= 0f)
+        // Nếu đang ở trạng thái chiến đấu, kiểm tra thời gian để tự động thoát
+        if (isInCombat)
         {
-            // Hết thời gian chờ: reset combo hoặc kết thúc cooldown
-            comboTimer = 0f;
-            comboCoolingDown = false;
+            if (Time.time - lastCombatActionTime > autoSheatheTime)
+            {
+                ExitCombatState();
+            }
+        }
+ 
+        HandleRotation(move, isAttacking);
+        player.ApplyGravity();
+ 
+        Vector3 movement = move * player.walkSpeed;
+        movement.y = player.velocity.y;
+        player.controller.Move(movement * Time.deltaTime);
+ 
+        UpdateCombatAnimator(move, 0.5f);
+    }
+ 
+    void TryConsumeBuffer()
+    {
+        // Không có input đang chờ
+        if (!attackBuffered) return;
+ 
+        // Đếm ngược buffer — nếu hết hạn thì bỏ input
+        bufferTimer -= Time.deltaTime;
+        if (bufferTimer <= 0f)
+        {
+            attackBuffered = false;
+            return;
+        }
+ 
+        // Đang cooldown sau chuỗi -> chưa nhận được
+        if (comboCoolingDown) return;
+ 
+        // Animator đang transition -> chưa nhận được, giữ buffer chờ tiếp
+        if (player.animator.IsInTransition(1)) return;
+ 
+        // Kiểm tra animation hiện tại đã qua cửa sổ combo chưa
+        // (>= 30% để nhận sớm, tránh nhận quá sớm gây giật animation)
+        AnimatorStateInfo stateInfo = player.animator.GetCurrentAnimatorStateInfo(1);
+        bool isInAttackAnim = stateInfo.IsTag("Attack");
+        if (isInAttackAnim && stateInfo.normalizedTime < 0.3f) return;
+ 
+        // Sẵn sàng — consume buffer và thực hiện đòn
+        attackBuffered = false;
+        bufferTimer = 0f;
+        HandleComboAttack();
+    }
+ 
+    void HandleComboAttack()
+    {
+        if (comboCoolingDown) return;
+ 
+        comboStep++;
+        comboTimer = COMBO_RESET_TIME;
+ 
+        ResetAllAttackTriggers();
+        player.animator.SetTrigger("attack" + comboStep);
+ 
+        if (comboStep >= MAX_COMBO)
+        {
+            comboCoolingDown = true;
+            comboTimer = COMBO_COOLDOWN;
             comboStep = 0;
         }
     }
-}
  
- void HandleRotation(Vector3 move, bool isAttacking)
-{
-    // Khi tấn công: quay mặt theo hướng camera đang nhìn
-    if (isAttacking)
+    void UpdateComboTimer()
     {
-        isFacingCamera = true;
+        if (comboTimer <= 0f) return;
+ 
+        comboTimer -= Time.deltaTime;
+        if (comboTimer <= 0f)
+        {
+            comboTimer = 0f;
+            comboCoolingDown = false;
+            comboStep = 0;
+            ResetAllAttackTriggers();
+        }
     }
  
-    if (isFacingCamera)
+    void ResetAllAttackTriggers()
     {
-        // Lấy hướng forward của camera, bỏ trục Y để tránh nhân vật nghiêng
-        Vector3 cameraForward = Camera.main.transform.forward;
-        cameraForward.y = 0f;
+        for (int i = 1; i <= MAX_COMBO; i++)
+            player.animator.ResetTrigger("attack" + i);
+    }
  
-        if (cameraForward.sqrMagnitude > 0.001f)
+    void HandleRotation(Vector3 move, bool isAttacking)
+    {
+        if (isAttacking) isFacingCamera = true;
+ 
+        if (isFacingCamera)
         {
-            Quaternion targetRotation = Quaternion.LookRotation(cameraForward);
+            Vector3 cameraForward = Camera.main.transform.forward;
+            cameraForward.y = 0f;
+ 
+            if (cameraForward.sqrMagnitude > 0.001f)
+            {
+                Quaternion targetRotation = Quaternion.LookRotation(cameraForward);
+                player.transform.rotation = Quaternion.Slerp(
+                    player.transform.rotation,
+                    targetRotation,
+                    Time.deltaTime * ROTATION_SPEED
+                );
+ 
+                if (Quaternion.Angle(player.transform.rotation, targetRotation) < 2f)
+                    isFacingCamera = false;
+            }
+        }
+        else if (move.magnitude > 0.1f)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(move);
             player.transform.rotation = Quaternion.Slerp(
                 player.transform.rotation,
                 targetRotation,
                 Time.deltaTime * ROTATION_SPEED
             );
- 
-            // Khi đã gần thẳng hướng camera thì dừng lock
-            if (Quaternion.Angle(player.transform.rotation, targetRotation) < 2f)
-                isFacingCamera = false;
         }
     }
-    else if (move.magnitude > 0.1f)
+
+
+    // Hàm này sẽ được gọi bởi PlayerSkills khi dùng chiêu
+    public void EnterCombatState()
     {
-        // Không attack: quay theo hướng di chuyển như bình thường
-        Quaternion targetRotation = Quaternion.LookRotation(move);
-        player.transform.rotation = Quaternion.Slerp(
-            player.transform.rotation,
-            targetRotation,
-            Time.deltaTime * ROTATION_SPEED
-        );
+        isInCombat = true;
+        lastCombatActionTime = Time.time; // Reset bộ đếm thời gian
+        
+        // Cập nhật tham số trong Animator (đảm bảo bạn đã có Parameter "IsCombat" kiểu Bool)
+        animator.SetBool("IsCombat", true);
+        
+        Debug.Log("Đã vào trạng thái chiến đấu!");
+    }
+
+    public void ExitCombatState()
+    {
+        isInCombat = false;
+        animator.SetBool("IsCombat", false);
+        Debug.Log("Đã tự động cất kiếm - Về Idle.");
+    }
+ 
+    void UpdateCombatAnimator(Vector3 move, float speedMultiplier)
+    {
+        Vector3 local = player.transform.InverseTransformDirection(move);
+        player.animator.SetFloat("MoveX", local.x * speedMultiplier, dampTime, Time.deltaTime);
+        player.animator.SetFloat("MoveY", local.z * speedMultiplier, dampTime, Time.deltaTime);
+        player.animator.SetFloat("Speed", move.magnitude * speedMultiplier, dampTime, Time.deltaTime);
     }
 }
- 
- void UpdateCombatAnimator(Vector3 move, float speedMultiplier)
-{
-    Vector3 local = player.transform.InverseTransformDirection(move);
- 
- 
-    player.animator.SetFloat("MoveX", local.x * speedMultiplier,dampTime,  Time.deltaTime);
-    player.animator.SetFloat("MoveY", local.z * speedMultiplier,dampTime, Time.deltaTime);
-    player.animator.SetFloat("Speed", move.magnitude * speedMultiplier, dampTime, Time.deltaTime);
- 
-}
-}
-
     
  
    
