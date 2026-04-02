@@ -4,8 +4,6 @@ using UnityEngine;
 public class PlayerCombatState : PlayerMoveState
 {
     private float dampTime = 0.1f;
-    private float idleTimer = 0f;
-    private const float TIMEOUT_DURATION = 5f;
     private const float ROTATION_SPEED = 10f;
     private bool sheathWeapon;
     private bool isFacingCamera = false;
@@ -17,14 +15,12 @@ public class PlayerCombatState : PlayerMoveState
     private const float COMBO_COOLDOWN = 1.0f;
     private float comboTimer = 0f;
     private bool comboCoolingDown = false;
-
-    [Header("Settings")]
-    public float autoSheatheTime = 10f; // 10 giây tự động cất kiếm
+ 
+    public float autoSheatheTime = 5f;  // 5 giây không hành động thì về idle
     
-    private Animator animator;
     private float lastCombatActionTime;
     private bool isInCombat;
-
+ 
  
     // --- Input Buffer ---
     // Lưu input khi Animator chưa sẵn sàng, thay vì bỏ mất
@@ -34,11 +30,12 @@ public class PlayerCombatState : PlayerMoveState
  
     public PlayerCombatState(PlayerController player) : base(player) { }
  
-
-    void Start()
+    public override void Enter()
     {
-        animator = player.GetComponent<Animator>();
+        isInCombat = true;
+        lastCombatActionTime = Time.time;
     }
+ 
     public override void Update()
     {
         Vector3 move = player.GetMoveInput();
@@ -46,11 +43,10 @@ public class PlayerCombatState : PlayerMoveState
         bool isAttacking = Input.GetMouseButtonDown(0);
         bool isJumping = Input.GetButtonDown("Jump");
  
-        // Sheath weapon thủ công
-        if (Input.GetKeyDown(KeyCode.R))
+        // 1. Nếu đang di chuyển và nhấn Shift -> Chuyển sang trạng thái Chạy
+        if (Input.GetKey(KeyCode.LeftShift) && player.HasMoveInput())
         {
-            player.animator.SetTrigger("sheathWeapon");
-            player.ChangeState(player.moveState);
+            player.ChangeState(player.runState);
             return;
         }
  
@@ -66,6 +62,10 @@ public class PlayerCombatState : PlayerMoveState
         {
             attackBuffered = true;
             bufferTimer = BUFFER_WINDOW;
+ 
+            // Đánh dấu đang trong combat và reset bộ đếm tự thoát
+            isInCombat = true;
+            lastCombatActionTime = Time.time;
         }
  
         // Cập nhật combo timer trước
@@ -74,25 +74,16 @@ public class PlayerCombatState : PlayerMoveState
         // Thử xử lý buffer
         TryConsumeBuffer();
  
-        // Idle timeout
+        // Reset bộ đếm khi có hành động
         if (isMoving || isAttacking || isJumping)
-            idleTimer = 0f;
-        else
-            idleTimer += Time.deltaTime;
+            lastCombatActionTime = Time.time;
  
-        if (idleTimer >= TIMEOUT_DURATION)
+        // Tự động về idle sau autoSheatheTime giây không hành động
+        float timeSinceLastAction = Time.time - lastCombatActionTime;
+        if (timeSinceLastAction > autoSheatheTime)
         {
-            player.animator.SetTrigger("sheathWeapon");
-            player.ChangeState(player.idleState);
+            ExitCombatState();
             return;
-        }
-        // Nếu đang ở trạng thái chiến đấu, kiểm tra thời gian để tự động thoát
-        if (isInCombat)
-        {
-            if (Time.time - lastCombatActionTime > autoSheatheTime)
-            {
-                ExitCombatState();
-            }
         }
  
         HandleRotation(move, isAttacking);
@@ -139,6 +130,9 @@ public class PlayerCombatState : PlayerMoveState
     void HandleComboAttack()
     {
         if (comboCoolingDown) return;
+ 
+        // Reset bộ đếm mỗi lần thực sự thực hiện đòn
+        lastCombatActionTime = Time.time;
  
         comboStep++;
         comboTimer = COMBO_RESET_TIME;
@@ -206,25 +200,37 @@ public class PlayerCombatState : PlayerMoveState
             );
         }
     }
-
-
-    // Hàm này sẽ được gọi bởi PlayerSkills khi dùng chiêu
+ 
+ 
+    // Hàm này được gọi bởi PlayerSkills khi dùng chiêu
     public void EnterCombatState()
     {
         isInCombat = true;
-        lastCombatActionTime = Time.time; // Reset bộ đếm thời gian
-        
-        // Cập nhật tham số trong Animator (đảm bảo bạn đã có Parameter "IsCombat" kiểu Bool)
-        animator.SetBool("IsCombat", true);
-        
-        Debug.Log("Đã vào trạng thái chiến đấu!");
+        lastCombatActionTime = Time.time;
+        player.animator.SetBool("IsCombat", true);
+        player.isEquipped = true;
+ 
+        // ChangeState sẽ gọi Enter() → set lại lastCombatActionTime
+        player.ChangeState(player.combatState);
     }
-
+ 
     public void ExitCombatState()
     {
         isInCombat = false;
-        animator.SetBool("IsCombat", false);
-        Debug.Log("Đã tự động cất kiếm - Về Idle.");
+        comboCoolingDown = false;
+        comboStep = 0;
+        attackBuffered = false;
+ 
+        player.isEquipped = false;
+        player.animator.SetBool("IsCombat", false);
+        player.animator.SetTrigger("sheathWeapon");
+        ResetAllAttackTriggers();
+ 
+        // Ẩn vũ khí
+        player.ToggleWeaponVisibility(1);
+ 
+        // Về idle — isEquipped = false nên IdleState sẽ không trigger combat lại
+        player.ChangeState(player.idleState);
     }
  
     void UpdateCombatAnimator(Vector3 move, float speedMultiplier)
@@ -235,6 +241,7 @@ public class PlayerCombatState : PlayerMoveState
         player.animator.SetFloat("Speed", move.magnitude * speedMultiplier, dampTime, Time.deltaTime);
     }
 }
+    
     
  
    

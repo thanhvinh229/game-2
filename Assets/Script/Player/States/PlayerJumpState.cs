@@ -31,10 +31,30 @@ public class PlayerJumpState : PlayerState
         if (player.controller.isGrounded && player.velocity.y < 0)
         {
             if (player.HasMoveInput())
+            {
                 player.ChangeState(player.moveState);
+            }
             else
+            { 
                 player.ChangeState(player.idleState);
+            }
         }
-    }
+
+        if (player.controller.isGrounded && player.velocity.y < 0)
+        {
+            if (player.HasMoveInput())
+            {
+            // Nếu đang cầm kiếm thì về CombatState, nếu không thì về MoveState
+            if (player.isEquipped) 
+                player.ChangeState(player.combatState);
+            else
+                player.ChangeState(player.moveState);
+            }
+            else
+            {
+                player.ChangeState(player.idleState);
+            }
+        }
+   }
 }
 

@@ -14,30 +14,30 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed = 5f;
     public float gravity = -20f;
     public float jumpForce = 1.5f;
-
-
+ 
+ 
     public float walkSpeed = 2.5f;
     public float runSpeed = 5f;
-
+ 
     [Header("References")]
     
     public Animator animator;
-
+ 
     [HideInInspector] public CharacterController controller;
     private Vector2 _moveInput;
     private Vector3 _velocity;
     [HideInInspector] public Vector3 velocity;
     [HideInInspector] public GameInput playerInput;
-
-
+ 
+ 
     
-
+ 
     //Equip-Unequip parameters
     [SerializeField] public GameObject Sword;  
     [SerializeField] public GameObject SwordOnHand; 
      public bool isEquipping;
     public bool isEquipped;
-
+ 
     // States
     [HideInInspector] public PlayerIdleState idleState;
     [HideInInspector] public PlayerMoveState moveState;
@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public PlayerRunState runState;
     [HideInInspector] public PlayerAttackState attackState;
     [HideInInspector] public PlayerCombatState combatState;
-
+ 
     public float _horizontalInput;
     public float _verticalInput;
     public Vector3 _moveDirection;
@@ -54,27 +54,27 @@ public class PlayerController : MonoBehaviour
     public float _moveY;
     
     public float rotateSpeed = 10f;
-
+ 
     
     public float aimRotateSpeed = 15f;
-
+ 
     public string CollectedItemGuid;
-
+ 
     public bool isAiming;
-
+ 
     PlayerState currentState;
-
+ 
     public float HorizontalInput => _horizontalInput;
     public float VerticalInput => _verticalInput;
     public Vector3 MoveDirection => _moveDirection;
-
-
+ 
+ 
     void Awake()
     {
         controller = GetComponent<CharacterController>();
         animator = GetComponentInChildren<Animator>();
         
-
+ 
         idleState = new PlayerIdleState(this);
         moveState = new PlayerMoveState(this);
         runState = new PlayerRunState(this);
@@ -82,11 +82,11 @@ public class PlayerController : MonoBehaviour
         attackState = new PlayerAttackState(this);
         combatState = new PlayerCombatState(this);
     }
-
+ 
     void Start()
     {
         controller.Move(Vector3.up * 0.1f);
-
+ 
         ChangeState(idleState);
     }
      
@@ -94,18 +94,18 @@ public class PlayerController : MonoBehaviour
     {
        
     _moveInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-
+ 
     currentState.Update();
-
+ 
     
     Vector3 forward = _cameraTransform.forward;
     Vector3 right = _cameraTransform.right;
     forward.y = 0;
     right.y = 0;
-
+ 
     
     Vector3 moveDirection = (forward * _moveInput.y + right * _moveInput.x).normalized;
-
+ 
     
     
     if(_shouldFaceMoveDirection && moveDirection.sqrMagnitude > 0.001f && !IsAttacking())
@@ -113,20 +113,20 @@ public class PlayerController : MonoBehaviour
         Quaternion toRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
         transform.rotation = Quaternion.Slerp(transform.rotation, toRotation, 10f * Time.deltaTime);
     }
-
+ 
    
      if (Input.GetMouseButtonDown(0) && controller.isGrounded)
 {
     
    
 }
-
-
-
+ 
+ 
+ 
     }
-
-
-
+ 
+ 
+ 
     public void ChangeState(PlayerState newState)
     {
         if (newState == null)
@@ -134,32 +134,32 @@ public class PlayerController : MonoBehaviour
             Debug.LogError("State is NULL");
             return;
         }
-
+ 
         currentState?.Exit();
         currentState = newState;
         currentState.Enter();
     }
-
+ 
     // ===== HÀM DÙNG CHUNG =====
     public Vector3 GetMoveInput()
     {
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
-
+ 
         Vector3 camForward = Camera.main.transform.forward;
         Vector3 camRight = Camera.main.transform.right;
-
+ 
         camForward.y = 0;
         camRight.y = 0;
-
+ 
         return (camForward.normalized * v + camRight.normalized * h).normalized;
     }
-
+ 
     public bool HasMoveInput()
     {
         return GetMoveInput().magnitude > 0.1f;
     }
-
+ 
     public void ApplyGravity()
     {
         if (controller.isGrounded)
@@ -173,15 +173,15 @@ public class PlayerController : MonoBehaviour
             velocity.y += gravity * Time.deltaTime;
         }
     }
-
-
+ 
+ 
 public void Jump()
 {
     
     velocity.y = Mathf.Sqrt(jumpForce * -2f * gravity);
     animator.SetTrigger("Jump"); 
 }
-
+ 
 private void Equip()
     {
         if (Input.GetKeyDown(KeyCode.R) && animator.GetBool("Grounded"))
@@ -190,7 +190,7 @@ private void Equip()
             animator.SetTrigger("Equip");
         }
     }
-
+ 
      // Hàm này sẽ được gọi bởi Animation Event
     public void ToggleWeaponVisibility(int isCombat)
     {
@@ -209,21 +209,22 @@ private void Equip()
     {
         isEquipping = false;
     }
-
-
+ 
+ 
 public void SetCombatLayerWeight(float weight)
 {
     // Giả sử Combat Layer là Layer thứ 1 (Base Layer là 0)
     animator.SetLayerWeight(1, weight);
 }
-
+ 
 public bool IsAttacking()
     {
     
     return animator.GetCurrentAnimatorStateInfo(1).IsTag("Attack");
     }
-
+ 
   
 }
+ 
 
 

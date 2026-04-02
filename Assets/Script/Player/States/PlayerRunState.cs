@@ -51,5 +51,7 @@ public class PlayerRunState : PlayerMoveState
         player.animator.SetFloat("MoveX", local.x * 1.0f, dampTime, Time.deltaTime);
         player.animator.SetFloat("MoveY", local.z * 1.0f, dampTime, Time.deltaTime);
         player.animator.SetFloat("Speed", move.magnitude * 1.0f, dampTime, Time.deltaTime);
+
+        player.animator.SetBool("IsCombat", player.isEquipped);
     }
 }

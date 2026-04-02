@@ -5,25 +5,25 @@ public class PlayerMoveState : PlayerState
     private float dampTime = 0.1f;
    
     public PlayerMoveState(PlayerController player) : base(player) { }
-
+ 
     public override void Update()
     {
        
         Vector3 move = player.GetMoveInput();
-
+ 
         
         if (move.magnitude < 0.1f)
         {
             player.ChangeState(player.idleState);
             return; 
         }
-
+ 
         if (Input.GetButtonDown("Jump") && player.controller.isGrounded)
         {
             player.ChangeState(player.jumpState);
             return;
         }
-
+ 
         
          if(Input.GetKey(KeyCode.LeftShift))
         {
@@ -32,6 +32,7 @@ public class PlayerMoveState : PlayerState
         }
         if (Input.GetMouseButtonDown(0))
         {
+            player.isEquipped = true;
             player.ChangeState(player.combatState);
             player.animator.SetTrigger("drawWeapon");
             return;
@@ -45,21 +46,21 @@ public class PlayerMoveState : PlayerState
         Vector3 movement = move * player.walkSpeed;
         movement.y = player.velocity.y; 
         player.controller.Move(movement * Time.deltaTime);
-
+ 
        UpdateAnimator(move, 0.5f);
     } 
-
+ 
     
     void UpdateAnimator(Vector3 move ,float speedMultiplier)
     {
       
     Vector3 local = player.transform.InverseTransformDirection(move);
-
-
+ 
+ 
     player.animator.SetFloat("MoveX", local.x * speedMultiplier,dampTime,  Time.deltaTime);
     player.animator.SetFloat("MoveY", local.z * speedMultiplier,dampTime, Time.deltaTime);
     player.animator.SetFloat("Speed", move.magnitude * speedMultiplier, dampTime, Time.deltaTime);
-
+ 
 }
 }
 
