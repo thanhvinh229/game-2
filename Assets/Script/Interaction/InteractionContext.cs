@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class InteractionContext : MonoBehaviour
+public class InteractionContext 
 {
     public GameObject Interactor { get; }
 

@@ -10,6 +10,7 @@ public class CameraLook : MonoBehaviour
     public float maxPitch = 70f;
 
     float xRotation;
+    [HideInInspector] public bool canRotateCharacter = true;
 
     void Update()
     {

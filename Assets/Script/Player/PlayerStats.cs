@@ -1,60 +1,86 @@
 using UnityEngine;
 using UnityEngine.UI;   
+using TMPro;
 
 
 public class PlayerStats : MonoBehaviour , IDamageable
 {
     [Header("Health Settings")]
-    public float maxHealth = 100f;
+    public float maxHealth = 200f;
     public float currentHealth;
     public Slider healthSlider;
+    public TextMeshProUGUI healthText;
 
     [Header("Mana Settings")]
     public float maxMana = 100f;
     public float currentMana;
-    public float manaRegenRate = 5f; // Tốc độ hồi mana mỗi giây
+    public float manaRegenRate = 5f; 
     public Slider manaSlider;
-
+    public TextMeshProUGUI manaText;
 
     [Header("Smooth UI Settings")]
     public float smoothSpeed = 5f;
-    private float targetHealth;
-    private float targetMana;
-
 
     private float lastDamageTime;
-    public float healthRegenDelay = 5f; // 5 giây sau khi bị đánh mới bắt đầu hồi
+    public float healthRegenDelay = 5f; 
     public float healthRegenRate = 2f;
+
     void Start()
     {
         // Khởi tạo giá trị ban đầu
         currentHealth = maxHealth;
         currentMana = maxMana;
-         
-        // Đặt mục tiêu ban đầu
-        targetHealth = currentHealth;
-        targetMana = currentMana;
 
         // Cập nhật giá trị Max cho Slider UI
         if (healthSlider != null) healthSlider.maxValue = maxHealth;
         if (manaSlider != null) manaSlider.maxValue = maxMana;
         
-        UpdateUI();
+        // Đặt giá trị thanh trượt bằng với máu/mana hiện tại (không bị trượt từ 0 lên)
+        if (healthSlider != null) healthSlider.value = currentHealth;
+        if (manaSlider != null) manaSlider.value = currentMana;
     }
 
     void Update()
     {
-        // Tự động hồi Mana theo thời gian
+        // 1. Tự động hồi Mana theo thời gian
         if (currentMana < maxMana)
         {
             RegenerateMana(manaRegenRate * Time.deltaTime);
         }
         
-        // Tự động Heal nếu đã đủ thời gian sau khi bị đánh
+        // 2. Tự động Heal nếu đã đủ thời gian sau khi bị đánh
         if (Time.time - lastDamageTime > healthRegenDelay && currentHealth < maxHealth)
         {
-          currentHealth += healthRegenRate * Time.deltaTime;
-          targetHealth = currentHealth;
+            Heal(healthRegenRate * Time.deltaTime);
+        }
+
+        // 3. Gọi hàm xử lý UI mượt mà liên tục mỗi khung hình
+        HandleSmoothUI();
+    }
+
+    // --- Xử lý UI đồng bộ ---
+    void HandleSmoothUI()
+    {
+        // Xử lý Slider trượt mượt mà (Lerp)
+        if (healthSlider != null)
+        {
+            healthSlider.value = Mathf.Lerp(healthSlider.value, currentHealth, Time.deltaTime * smoothSpeed);
+        }
+
+        if (manaSlider != null)
+        {
+            manaSlider.value = Mathf.Lerp(manaSlider.value, currentMana, Time.deltaTime * smoothSpeed);
+        }
+
+        // Cập nhật Text hiển thị số ngay lập tức
+        if (healthText != null)
+        {
+            healthText.text = Mathf.RoundToInt(currentHealth).ToString() + " / " + Mathf.RoundToInt(maxHealth).ToString();
+        }
+
+        if (manaText != null)
+        {
+            manaText.text = Mathf.RoundToInt(currentMana).ToString() + " / " + Mathf.RoundToInt(maxMana).ToString();
         }
     }
 
@@ -63,8 +89,7 @@ public class PlayerStats : MonoBehaviour , IDamageable
     {
         currentHealth -= amount;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
-        targetHealth = currentHealth;
-        UpdateUI();
+        lastDamageTime = Time.time; // Ghi nhận thời gian bị đánh để tính delay hồi máu
 
         if (currentHealth <= 0) Die();
     }
@@ -73,7 +98,6 @@ public class PlayerStats : MonoBehaviour , IDamageable
     {
         currentHealth += amount;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
-        UpdateUI();
     }
 
     // --- Các hàm xử lý Mana ---
@@ -82,7 +106,6 @@ public class PlayerStats : MonoBehaviour , IDamageable
         if (currentMana >= amount)
         {
             currentMana -= amount;
-            UpdateUI();
             return true; // Đủ mana để dùng chiêu
         }
         return false; // Không đủ mana
@@ -92,33 +115,11 @@ public class PlayerStats : MonoBehaviour , IDamageable
     {
         currentMana += amount;
         currentMana = Mathf.Clamp(currentMana, 0, maxMana);
-        UpdateUI();
     }
-
-    // Cập nhật giao diện
-    void UpdateUI()
-    {
-        if (healthSlider != null) healthSlider.value = currentHealth;
-        if (manaSlider != null) manaSlider.value = currentMana;
-    }
-
-    void HandleSmoothUI()
-{
-    if (healthSlider != null)
-    {
-        // Lerp giúp thanh chạy nhanh lúc đầu và chậm lại khi gần đến đích
-        healthSlider.value = Mathf.Lerp(healthSlider.value, targetHealth, Time.deltaTime * smoothSpeed);
-    }
-
-    if (manaSlider != null)
-    {
-        manaSlider.value = Mathf.Lerp(manaSlider.value, targetMana, Time.deltaTime * smoothSpeed);
-    }
-}
 
     void Die()
     {
         Debug.Log("Player has died!");
-        // Thêm logic xử lý khi chết (VD: load lại cảnh, chạy hoạt ảnh)
+        // Thêm logic xử lý khi chết
     }
 }

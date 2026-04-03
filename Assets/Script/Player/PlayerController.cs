@@ -30,7 +30,11 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public GameInput playerInput;
  
  
-    
+    [Header("Melee Combat")]
+    public Transform attackPoint;    // Điểm chính giữa vùng chém
+    public float attackRange = 1.2f; // Độ rộng của cú chém
+    public LayerMask enemyLayer;     // Chỉ chọn Layer "Enemy" để đánh
+    public float meleeDamage = 15f;  // Sát thương mỗi đòn
  
     //Equip-Unequip parameters
     [SerializeField] public GameObject Sword;  
@@ -224,6 +228,31 @@ public bool IsAttacking()
     }
  
   
+  public void DealMeleeDamage()
+{
+    if (attackPoint == null) return;
+
+    // Quét tất cả các Collider trong vùng hình cầu
+    Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayer);
+
+    foreach (Collider enemy in hitEnemies)
+    {
+        // Lấy thành phần nhận sát thương trên quái
+        IDamageable damageable = enemy.GetComponent<IDamageable>();
+        if (damageable != null)
+        {
+            damageable.TakeDamage(meleeDamage);
+        }
+    }
+}
+
+// Vẽ vùng chém trong cửa sổ Scene để dễ căn chỉnh
+private void OnDrawGizmosSelected()
+{
+    if (attackPoint == null) return;
+    Gizmos.color = Color.red;
+    Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+}
 }
  
 

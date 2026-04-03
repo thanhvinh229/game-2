@@ -4,11 +4,11 @@ using UnityEngine;
 public class QuestManager : MonoBehaviour
 {
     private static QuestManager _instance;
-
     public static QuestManager Instance => _instance;
+ 
     public QuestLog QuestLog = new();
     [SerializeField] private QuestEventChannel _questEventChannel;
-
+ 
     void Awake()
     {
         if (_instance != null && _instance != this)
@@ -17,24 +17,33 @@ public class QuestManager : MonoBehaviour
             return;
         }
         _instance = this;
-        DontDestroyOnLoad(_instance.gameObject);
+        DontDestroyOnLoad(gameObject);
     }
-
-   
+ 
     public void ReceivedQuest(QuestData questData)
     {
+        // Không nhận quest đã active hoặc đã hoàn thành
+        if (QuestLog.IsQuestActive(questData.Id) || QuestLog.IsQuestCompleted(questData.Id))
+        {
+            Debug.Log($"Quest {questData.Id} already received.");
+            return;
+        }
+ 
         var newQuest = new Quest(questData);
+        newQuest.OnQuestCompleted += HandleQuestCompleted;
+ 
         QuestLog.AddNewQuest(newQuest);
-        StartQuest(questData.Id);
         _questEventChannel.OnReceivedQuest?.Invoke(questData.Id);
+ 
+        newQuest.Start();
+        _questEventChannel.OnStartQuest?.Invoke(questData.Id);
     }
-
-    public void  StartQuest(String questId)
+ 
+    private void HandleQuestCompleted(Quest quest)
     {
-        var quest = QuestLog.GetQuestById(questId);
-        quest?.Start();
-        _questEventChannel.OnStartQuest?.Invoke(questId);
+        QuestLog.CompleteQuest(quest.Data.Id);
+        _questEventChannel.OnCompleteQuest?.Invoke(quest.Data.Id);
+        Debug.Log($"Quest {quest.Data.Id} completed!");
     }
-
 }
 

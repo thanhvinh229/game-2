@@ -21,5 +21,10 @@ public class SkillData : ScriptableObject
 
     [Header("Animation")]
     public string animationTriggerName;
+
+
+    public bool isProjectile;
+    public float projectileSpeed = 10f;
+    public float projectileDuration = 4f;
 }
 
