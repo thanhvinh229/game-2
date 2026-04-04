@@ -13,7 +13,14 @@ MonoBehaviour:
   m_Name: NewQuestData
   m_EditorClassIdentifier: Assembly-CSharp::QuestData
   Id: need a drink
-  Description: need a drink
+  Description: Give skeleton a drink
   Status: 0
+  Reward:
+    Gold: 0
+    Exp: 0
+    Items:
+    - Icon: {fileID: 0}
+      ItemName: 
+      Quantity: 0
   ObjectiveData:
   - {fileID: 11400000, guid: c2dcb2a202e133b41bf9030911b4b652, type: 2}
