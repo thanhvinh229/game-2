@@ -8,6 +8,7 @@ public class QuestData : ScriptableObject
     public string Id;
     public string Description;
     public QuestStatus Status;
+    public QuestReward Reward;
     public List<ObjectiveData> ObjectiveData = new();
 }
 
