@@ -41,6 +41,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] public GameObject SwordOnHand; 
      public bool isEquipping;
     public bool isEquipped;
+
+    [Header("Audio Settings")]
+    [SerializeField] private AudioSource audioSource;
+    public AudioClip[] attackSounds; 
+    public AudioClip footstepSound; 
+    public AudioClip jumpSound;     
  
     // States
     [HideInInspector] public PlayerIdleState idleState;
@@ -92,6 +98,9 @@ public class PlayerController : MonoBehaviour
         controller.Move(Vector3.up * 0.1f);
  
         ChangeState(idleState);
+
+        audioSource.playOnAwake = false;
+        audioSource.spatialBlend = 0f;
     }
      
     void Update()
@@ -120,10 +129,18 @@ public class PlayerController : MonoBehaviour
  
    
      if (Input.GetMouseButtonDown(0) && controller.isGrounded)
-{
+    {
     
-   
-}
+    
+    }
+    if (GameStateManager.IsUIOpen)
+    {
+        // Dừng animation di chuyển
+        animator.SetFloat("MoveX", 0f);
+        animator.SetFloat("MoveY", 0f);
+        animator.SetBool("IsRunning", false);
+        return; 
+    }
  
  
  
@@ -253,7 +270,38 @@ private void OnDrawGizmosSelected()
     Gizmos.color = Color.red;
     Gizmos.DrawWireSphere(attackPoint.position, attackRange);
 }
+
+
+public void PlayAttackSound(int index)
+    {
+        if (attackSounds.Length > index && attackSounds[index] != null)
+        {
+            // Dùng PlayOneShot để âm thanh không bị ngắt nếu có tiếng khác đè lên
+            audioSource.PlayOneShot(attackSounds[index]);
+        }
+    }
+
+    public void PlayFootstep(float volume)
+    {
+        if (footstepSound != null)
+        {
+            // Thay đổi pitch nhẹ để tiếng bước chân nghe tự nhiên hơn
+            audioSource.pitch = UnityEngine.Random.Range(0.9f, 1.1f);
+            audioSource.PlayOneShot(footstepSound, volume);
+        }
+    }
+
+    public void PlayJumpSound()
+    {
+        if (jumpSound != null)
+        {
+            audioSource.pitch = 1f;
+            audioSource.PlayOneShot(jumpSound);
+        }
+    }
 }
+
+
  
 
 

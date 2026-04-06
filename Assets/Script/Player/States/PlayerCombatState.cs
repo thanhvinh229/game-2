@@ -42,6 +42,16 @@ public class PlayerCombatState : PlayerMoveState
         bool isMoving = move.magnitude > 0.1f;
         bool isAttacking = Input.GetMouseButtonDown(0);
         bool isJumping = Input.GetButtonDown("Jump");
+
+        if (GameStateManager.IsUIOpen)
+        { 
+        
+        player.animator.SetFloat("MoveX", 0f, 0.1f, Time.deltaTime);
+        player.animator.SetFloat("MoveY", 0f, 0.1f, Time.deltaTime);
+        player.animator.SetFloat("Speed", 0f, 0.1f, Time.deltaTime);
+        player.ApplyGravity(); 
+        return;
+        }
  
         // 1. Nếu đang di chuyển và nhấn Shift -> Chuyển sang trạng thái Chạy
         if (Input.GetKey(KeyCode.LeftShift) && player.HasMoveInput())
