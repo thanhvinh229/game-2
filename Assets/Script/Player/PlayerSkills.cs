@@ -9,6 +9,8 @@ public class SkillSlot
     
     [HideInInspector] 
     public float nextAvailableTime = 0f; // Thời gian runtime, nằm ngoài Scriptable Object
+
+    public LayerMask Enemy;
 }
 
 public class PlayerSkills : MonoBehaviour
@@ -113,23 +115,25 @@ public class PlayerSkills : MonoBehaviour
         if (currentActiveSkill.vfxPrefab != null && hitPoint != null)
         {
             Instantiate(currentActiveSkill.vfxPrefab, hitPoint.position, hitPoint.rotation);
-        }
+        } 
+        // KIỂM TRA: Nếu là chiêu Buff thì KHÔNG  gây sát thương 
+        if (currentActiveSkill.isBuffSkill) return;
  
         // 5. Kiểm tra va chạm gây sát thương
-        Collider[] hitEnemies = Physics.OverlapSphere(hitPoint.position, 2f);
-        foreach (Collider enemy in hitEnemies)
+          int enemyLayer = LayerMask.GetMask("Enemy");
+          Collider[] hitEnemies = Physics.OverlapSphere(hitPoint.position, 2f,enemyLayer);
+    
+        foreach (Collider Enemy in hitEnemies)
         {
-            IDamageable damageable = enemy.GetComponent<IDamageable>();
-            if (damageable != null)
-            {
-                damageable.TakeDamage(10f * currentActiveSkill.damageMultiplier);
-                
-                // Phát âm thanh khi trúng mục tiêu
-                if (audioSource != null && currentActiveSkill.hitSound != null)
-                {
-                    audioSource.PlayOneShot(currentActiveSkill.hitSound);
-                }
-            }
+            if (Enemy.CompareTag("Player")) continue;
+
+            IDamageable damageable = Enemy.GetComponent<IDamageable>();
+             if (damageable != null)
+        {
+            damageable.TakeDamage(10f * currentActiveSkill.damageMultiplier);
+            if (audioSource != null && currentActiveSkill.hitSound != null)
+                audioSource.PlayOneShot(currentActiveSkill.hitSound);
+        }
         }
     }  
  
@@ -175,7 +179,10 @@ public class PlayerSkills : MonoBehaviour
     // Gọi cho Skill 2
     public void ActivateBuff()
     {
+        if (currentActiveSkill == null) return;
+
         // Thêm hiệu ứng hào quang
+        OnBuff();
         Instantiate(currentActiveSkill.vfxPrefab, transform.position, Quaternion.identity, transform);
         Debug.Log("Buff sát thương đã kích hoạt!");
     }
@@ -183,15 +190,25 @@ public class PlayerSkills : MonoBehaviour
     // Gọi cho Skill 3 (AOE)
     public void OnAOEHit()
     {
-        RequestFreezeFrame(0.15f); // Khựng hình mạnh hơn cho chiêu cuối
-                if (currentActiveSkill.vfxPrefab != null)
-            Instantiate(currentActiveSkill.vfxPrefab, transform.position, Quaternion.identity);
- 
-        Collider[] enemies = Physics.OverlapSphere(transform.position, 6f);
-        foreach (Collider e in enemies)
-        {
-            IDamageable d = e.GetComponent<IDamageable>();
-            if (d != null) d.TakeDamage(20f * currentActiveSkill.damageMultiplier);
-        }
+    if (currentActiveSkill == null) return;
+
+    if (currentActiveSkill.vfxPrefab != null)
+        Instantiate(currentActiveSkill.vfxPrefab, transform.position, Quaternion.identity);
+
+    // KIỂM TRA: Nếu là chiêu Buff thì KHÔNG  gây sát thương 
+    if (currentActiveSkill.isBuffSkill) return;
+
+    // Chỉ quái vật mới nhận sát thương
+    int enemyLayer = LayerMask.GetMask("Enemy");
+    Collider[] enemies = Physics.OverlapSphere(transform.position, 6f, enemyLayer);
+    foreach (Collider e in enemies)
+    {
+         if (e.CompareTag("Player") || e.gameObject == this.gameObject) continue;
+
+        IDamageable d = e.GetComponent<IDamageable>();
+        if (d != null) d.TakeDamage(20f * currentActiveSkill.damageMultiplier);
     }
+}
+
+    
 }

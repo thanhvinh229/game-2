@@ -7,139 +7,61 @@ using UnityEngine.UI;
 public class QuestEntryUI : MonoBehaviour
 {
     [SerializeField] private TMP_Text _nameText;
-    [SerializeField] private Image _dotImage;           // dot chấm tròn nhỏ bên trái
- 
+    [SerializeField] private Image _dotImage;
+
     [Header("Colors")]
-    [SerializeField] private Color _activeColor = new Color(0.2f, 0.6f, 1f);        // xanh dương
-    [SerializeField] private Color _completedColor = new Color(0.2f, 0.8f, 0.3f);   // xanh lá
-    [SerializeField] private Color _selectedBgColor = new Color(1f, 1f, 1f, 0.1f);  // highlight khi chọn
- 
+    [SerializeField] private Color _activeColor;
+    [SerializeField] private Color _completedColor;
+    [SerializeField] private Color _selectedBgColor;
+
+    [Header("Audio")]
+    [SerializeField] private AudioClip _clickSound;
+    private AudioSource _audioSource;
+
     private Image _bgImage;
-    private Button _button;
     private QuestData _data;
     private System.Action<QuestData> _onSelected;
- 
+
     void Awake()
     {
-        // Get components
         _bgImage = GetComponent<Image>();
-        _button = GetComponent<Button>();
-        
-        // Validation
-        if (_button == null)
-        {
-            Debug.LogError($"QuestEntryUI: Missing Button component on {gameObject.name}!");
-            return;
-        }
- 
-        if (_nameText == null)
-        {
-            Debug.LogWarning($"QuestEntryUI: _nameText not assigned on {gameObject.name}");
-        }
- 
-        // Setup click listener
-        _button.onClick.AddListener(OnClick);
-        
-        Debug.Log($"QuestEntryUI: Initialized on {gameObject.name}, Button interactable: {_button.interactable}");
+
+        // Tự tạo AudioSource riêng, không cần kéo từ ngoài vào
+        _audioSource = gameObject.AddComponent<AudioSource>();
+        _audioSource.playOnAwake = false;
+        _audioSource.ignoreListenerPause = true; // hoạt động khi timeScale = 0
+
+        GetComponent<Button>().onClick.AddListener(OnClick);
     }
- 
-    /// <summary>
-    /// Khởi tạo quest entry với data và callback
-    /// </summary>
+
     public void Initialize(QuestData data, System.Action<QuestData> onSelected)
     {
-        if (data == null)
-        {
-            Debug.LogError("QuestEntryUI: Cannot initialize with null QuestData!");
-            return;
-        }
- 
         _data = data;
         _onSelected = onSelected;
-        
-        if (_nameText != null)
-        {
-            _nameText.text = data.Description;
-        }
-        
+        _nameText.text = data.Id; // ← fix tên quest
         UpdateDotColor();
-        
-        Debug.Log($"QuestEntryUI: Initialized quest '{data.Description}' (ID: {data.Id})");
     }
- 
-    /// <summary>
-    /// Highlight/unhighlight quest entry khi được chọn
-    /// </summary>
+
     public void SetSelected(bool selected)
     {
         if (_bgImage != null)
-        {
             _bgImage.color = selected ? _selectedBgColor : Color.clear;
-        }
-        
-        Debug.Log($"QuestEntryUI: Quest '{_data?.Description}' selected = {selected}");
     }
- 
-    /// <summary>
-    /// Refresh trạng thái quest (Active/Completed)
-    /// </summary>
-    public void RefreshStatus()
-    {
-        UpdateDotColor();
-    }
- 
-    /// <summary>
-    /// Update màu dot dựa trên trạng thái quest
-    /// </summary>
+
+    public void RefreshStatus() => UpdateDotColor();
+
     private void UpdateDotColor()
     {
-        if (_dotImage == null || _data == null) return;
-        
+        if (_dotImage == null) return;
         _dotImage.color = _data.Status == QuestStatus.Completed
-            ? _completedColor
-            : _activeColor;
+            ? _completedColor : _activeColor;
     }
- 
-    /// <summary>
-    /// Handler khi quest entry được click
-    /// </summary>
+
     private void OnClick()
     {
-        if (_data == null)
-        {
-            Debug.LogError("QuestEntryUI: Cannot click - _data is null!");
-            return;
-        }
- 
-        Debug.Log($"🔵 QuestEntryUI: CLICKED quest '{_data.Description}' (ID: {_data.Id})");
-        
+        if (_clickSound != null)
+            _audioSource.PlayOneShot(_clickSound);
+
         _onSelected?.Invoke(_data);
     }
- 
-    #if UNITY_EDITOR
-    /// <summary>
-    /// Validation trong Editor
-    /// </summary>
-    void OnValidate()
-    {
-        // Auto-find components nếu chưa gán
-        if (_nameText == null)
-        {
-            _nameText = GetComponentInChildren<TMP_Text>();
-        }
- 
-        if (_dotImage == null)
-        {
-            var images = GetComponentsInChildren<Image>();
-            foreach (var img in images)
-            {
-                if (img.gameObject != gameObject && img.name.ToLower().Contains("dot"))
-                {
-                    _dotImage = img;
-                    break;
-                }
-            }
-        }
-    }
-    #endif
 }

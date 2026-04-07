@@ -10,6 +10,7 @@ public class PlayerStats : MonoBehaviour , IDamageable
     public float currentHealth;
     public Slider healthSlider;
     public TextMeshProUGUI healthText;
+    public bool IsDead { get; private set; }
 
     [Header("Mana Settings")]
     public float maxMana = 100f;
@@ -87,11 +88,16 @@ public class PlayerStats : MonoBehaviour , IDamageable
     // --- Các hàm xử lý Máu ---
     public void TakeDamage(float amount)
     {
-        currentHealth -= amount;
-        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
-        lastDamageTime = Time.time; // Ghi nhận thời gian bị đánh để tính delay hồi máu
+       if (IsDead) return; // Nếu đã chết rồi thì không nhận thêm sát thương nữa
 
-        if (currentHealth <= 0) Die();
+          currentHealth -= amount;
+          currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+          lastDamageTime = Time.time; 
+
+        if (currentHealth <= 0)
+        {
+          Die();
+        }
     }
 
     public void Heal(float amount)
@@ -119,7 +125,29 @@ public class PlayerStats : MonoBehaviour , IDamageable
 
     void Die()
     {
-        Debug.Log("Player has died!");
-        // Thêm logic xử lý khi chết
+       IsDead = true;
+       Debug.Log("Player has died!");
+
+    // 1. Gọi đến DeathManager để xử lý hiện UI và dịch chuyển
+    // Tìm đối tượng DeathManager trong Scene và kích hoạt cái chết
+        DeathManager deathManager = FindFirstObjectByType<DeathManager>();  
+       if (deathManager != null)
+       {
+        deathManager.TriggerDeath();
+       }
+       else
+       {
+        Debug.LogError("Không tìm thấy DeathManager trong Scene!");
+       }
+    }
+       
+    public void ResetStats()
+    {
+       IsDead = false;
+       currentHealth = maxHealth;
+       currentMana = maxMana;
+       
+       // Cập nhật lại UI ngay lập tức
+        HandleSmoothUI();
     }
 }

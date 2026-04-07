@@ -7,6 +7,7 @@ public class EnemyAI : MonoBehaviour
     private Animator anim;
     private Transform player;
     private AudioSource audioSource;
+    private PlayerStats playerStats;
 
     [Header("Combat Settings")]
     public float attackRange = 2f;      
@@ -30,17 +31,22 @@ public class EnemyAI : MonoBehaviour
 
     void Start()
     {
-        agent = GetComponent<NavMeshAgent>();
-        anim = GetComponent<Animator>();
-        audioSource = GetComponent<AudioSource>();
+      agent = GetComponent<NavMeshAgent>();
+      anim = GetComponent<Animator>();
+     audioSource = GetComponent<AudioSource>();
         
         GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
         if (playerObj != null) player = playerObj.transform;
+        if (playerObj != null) 
+        {
+          player = playerObj.transform;
+          playerStats = playerObj.GetComponent<PlayerStats>(); 
+        }
     }
 
     void Update()
     {
-        if (player == null) return;
+        if (player == null || playerStats == null) return;
 
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
@@ -65,6 +71,12 @@ public class EnemyAI : MonoBehaviour
             agent.isStopped = false;
             agent.SetDestination(player.position);
         }
+        if (playerStats.currentHealth <= 0) 
+        {
+           StopAllActions();
+            return; 
+        }
+          
 
         // Cập nhật Animation di chuyển
         anim.SetFloat("Speed", agent.velocity.magnitude);
@@ -148,4 +160,14 @@ public class EnemyAI : MonoBehaviour
             audioSource.PlayOneShot(footstepSound, 0.5f);
         }
     }
+
+
+   void StopAllActions()
+   {
+      agent.isStopped = true;
+      anim.SetFloat("Speed", 0); // Về Idle
+      // Bạn có thể thêm lệnh để tắt các trigger tấn công đang dở dang
+      anim.ResetTrigger("Attack1");
+      anim.ResetTrigger("Attack2");
+   }
 }

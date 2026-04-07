@@ -40,13 +40,20 @@ public class QuestLogToggle : MonoBehaviour
     }
 
     private void ToggleQuestLog()
-    {
-        bool isOpen = !_questLogPanel.activeSelf;
-        _questLogPanel.SetActive(isOpen);
+{
+    bool isOpen = !_questLogPanel.activeSelf;
 
-        if (isOpen) OnQuestLogOpened();
-        else OnQuestLogClosed();
+    if (isOpen)
+    {
+        _questLogPanel.SetActive(true);
+        OnQuestLogOpened();
     }
+    else
+    {
+        OnQuestLogClosed();          
+        _questLogPanel.SetActive(false); 
+    }
+}
 
     private void OnQuestLogOpened()
     {
@@ -109,6 +116,6 @@ public class QuestLogToggle : MonoBehaviour
         {
             _questLogPanel.SetActive(false);
             OnQuestLogClosed();
-        }
+        }   
     }
 }

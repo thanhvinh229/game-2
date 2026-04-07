@@ -8,6 +8,7 @@ public class SkillData : ScriptableObject
     public string skillName;
     public string description;
     public Sprite skillIcon; // Sau này dùng làm UI
+    public bool isBuffSkill;
 
     [Header("Combat Stats")]
     public float manaCost;

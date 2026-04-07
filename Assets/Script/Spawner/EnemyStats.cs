@@ -7,7 +7,7 @@ public class EnemyStats : MonoBehaviour, IDamageable
 {
     public float maxHealth = 50f;
     private float currentHealth;
-    private bool isDead = false;
+    private bool IsDead = false;
 
     [Header("UI & Animation")]
     public Slider healthSlider;
@@ -31,7 +31,7 @@ public class EnemyStats : MonoBehaviour, IDamageable
 
     public void TakeDamage(float amount)
     {
-     if (isDead) return;
+     if (IsDead) return;
 
      currentHealth -= amount;
 
@@ -68,8 +68,8 @@ public class EnemyStats : MonoBehaviour, IDamageable
 
     void Die()
     {
-        if (isDead) return;
-        isDead = true;
+        if (IsDead) return;
+        IsDead = true;
         if (animator != null) animator.SetTrigger("Die");
         if (healthBarUI != null) healthBarUI.SetActive(false);
         

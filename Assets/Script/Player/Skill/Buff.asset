@@ -15,6 +15,7 @@ MonoBehaviour:
   skillName: Buuuff
   description: "C\u01B0\u1EDDng h\xF3a b\u1EA3n th\xE2n"
   skillIcon: {fileID: 21300000, guid: 3317e2a1c825f7a43a6cddd0c6db125f, type: 3}
+  isBuffSkill: 1
   manaCost: 20
   cooldown: 10
   damageMultiplier: 1
@@ -22,3 +23,6 @@ MonoBehaviour:
   attackSound: {fileID: 8300000, guid: fa6e64cfea35d9b46af0d9c76288dc08, type: 3}
   hitSound: {fileID: 8300000, guid: fa6e64cfea35d9b46af0d9c76288dc08, type: 3}
   animationTriggerName: Skill2
+  isProjectile: 0
+  projectileSpeed: 10
+  projectileDuration: 4

@@ -46,7 +46,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private AudioSource audioSource;
     public AudioClip[] attackSounds; 
     public AudioClip footstepSound; 
-    public AudioClip jumpSound;     
+    public AudioClip jumpSound;  
+    public AudioClip drawSwordSound;   
+    public AudioClip sheathSwordSound;   
  
     // States
     [HideInInspector] public PlayerIdleState idleState;
@@ -137,7 +139,7 @@ public class PlayerController : MonoBehaviour
     {
         // Dừng animation di chuyển
         animator.SetFloat("MoveX", 0f);
-        animator.SetFloat("MoveY", 0f);
+        animator.SetFloat("MoveY", 0f); 
         animator.SetBool("IsRunning", false);
         return; 
     }
@@ -195,15 +197,14 @@ public class PlayerController : MonoBehaviour
         }
     }
  
+
+    public void Jump()  
+    {
+      velocity.y = Mathf.Sqrt(jumpForce * -2f * gravity);
+       animator.SetTrigger("Jump"); 
+    }
  
-public void Jump()
-{
-    
-    velocity.y = Mathf.Sqrt(jumpForce * -2f * gravity);
-    animator.SetTrigger("Jump"); 
-}
- 
-private void Equip()
+    private void Equip()
     {
         if (Input.GetKeyDown(KeyCode.R) && animator.GetBool("Grounded"))
         {
@@ -226,19 +227,19 @@ private void Equip()
             Sword.SetActive(true);
         }
     }
-  public void Equipped()
+    public void Equipped()
     {
         isEquipping = false;
     }
  
  
-public void SetCombatLayerWeight(float weight)
-{
+    public void SetCombatLayerWeight(float weight)
+    {
     // Giả sử Combat Layer là Layer thứ 1 (Base Layer là 0)
     animator.SetLayerWeight(1, weight);
-}
+    }
  
-public bool IsAttacking()
+    public bool IsAttacking()
     {
     
     return animator.GetCurrentAnimatorStateInfo(1).IsTag("Attack");
@@ -298,6 +299,24 @@ public void PlayAttackSound(int index)
             audioSource.pitch = 1f;
             audioSource.PlayOneShot(jumpSound);
         }
+    }
+    public void PlayDrawSound()
+    {
+    if (audioSource != null && drawSwordSound != null)
+    {
+        audioSource.pitch = UnityEngine.Random.Range(0.9f, 1.1f); // Tránh bị lặp âm đơn điệu
+        audioSource.PlayOneShot(drawSwordSound);
+    }
+    }
+
+// Hàm này để gọi khi cất kiếm
+    public void PlaySheathSound()
+    {
+    if (audioSource != null && sheathSwordSound != null)
+    {
+        audioSource.pitch = UnityEngine.Random.Range(0.9f, 1.1f);
+        audioSource.PlayOneShot(sheathSwordSound);
+    }
     }
 }
 
