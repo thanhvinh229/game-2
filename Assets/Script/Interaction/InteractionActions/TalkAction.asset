@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TalkAction
   ActionPrompt: Talk
   Slot: 0
+  _npcName: NPC
+  _dialogueText: "T\xF4i c\xF3 v\xE0i vi\u1EC7c c\u1EA7n b\u1EA1n gi\xFAp...  "

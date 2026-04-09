@@ -26,4 +26,29 @@ public class QuestHolder : MonoBehaviour
  
         Debug.Log($"{gameObject.name} has no more quests to give.");
     }
+
+    public List<QuestData> GetAvailableQuests()
+    {
+        List<QuestData> availableQuests = new List<QuestData>();
+        
+        foreach (var questData in _quests)
+        {
+            bool alreadyActive = QuestManager.Instance.QuestLog.IsQuestActive(questData.Id);
+            bool alreadyDone = QuestManager.Instance.QuestLog.IsQuestCompleted(questData.Id);
+
+            if (!alreadyActive && !alreadyDone)
+            {
+                availableQuests.Add(questData);
+            }
+        }
+        
+        return availableQuests;
+    }
+
+    // Hàm này sẽ được gọi bởi Nút bấm (Button) trên UI Dialogue
+    public void GiveSpecificQuest(QuestData quest)
+    {
+        QuestManager.Instance.ReceivedQuest(quest);
+        Debug.Log($"Đã nhận nhiệm vụ: {quest.Id}");
+    }
 }

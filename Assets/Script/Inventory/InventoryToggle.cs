@@ -3,7 +3,7 @@ using UnityEngine;
 public class InventoryToggle : MonoBehaviour
 {
     [Header("Panels")]
-    [SerializeField] private GameObject inventoryPanel;   // Panel trái (túi đồ)
+    [SerializeField] private GameObject inventoryPanel;  // Panel trái (túi đồ)
     [SerializeField] private GameObject equipmentPanel;  // Panel phải (trang bị)
 
     [Header("Phím bấm")]
