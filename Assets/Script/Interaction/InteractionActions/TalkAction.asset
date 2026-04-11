@@ -16,3 +16,4 @@ MonoBehaviour:
   Slot: 0
   _npcName: NPC
   _dialogueText: "T\xF4i c\xF3 v\xE0i vi\u1EC7c c\u1EA7n b\u1EA1n gi\xFAp...  "
+  _npcGreetingVoice: {fileID: 8300000, guid: c17bea76823532a4e8b1a4c5dff05a62, type: 3}

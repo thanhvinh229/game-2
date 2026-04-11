@@ -9,8 +9,8 @@ public class QuestDetailUI : MonoBehaviour
     [SerializeField] private TMP_Text _titleText;
     [SerializeField] private TMP_Text _statusText;
     [SerializeField] private Image _statusBadge;
-    [SerializeField] private Color _activeStatusColor = Color.green;
-    [SerializeField] private Color _completedStatusColor = Color.blue;
+    [SerializeField] private Color _activeStatusColor;
+    [SerializeField] private Color _completedStatusColor;
  
     [Header("Description")]
     [SerializeField] private TMP_Text _descriptionText;
@@ -29,13 +29,7 @@ public class QuestDetailUI : MonoBehaviour
  
     public void Show(QuestData questData)
     {
-        if (questData == null)
-        {
-            Debug.LogError("QuestData is null!");
-            return;
-        }
- 
-        _titleText.text = questData.Id;
+        _titleText.text = questData.Description;
  
         bool isCompleted = questData.Status == QuestStatus.Completed;
         _statusText.text = isCompleted ? "Hoàn thành" : "Đang hoạt động";
@@ -44,115 +38,93 @@ public class QuestDetailUI : MonoBehaviour
         _descriptionText.text = questData.Description;
  
         BuildObjectives(questData);
-        
-        // Gọi BuildRewards nếu Reward tồn tại
-        if (questData.Reward != null)
-        {
-            BuildRewards(questData.Reward);
-        }
+        BuildRewards(questData.Reward);
     }
  
     public void UpdateObjectiveProgress(string objectiveId, int current, int required)
     {
         if (_objectiveItems.TryGetValue(objectiveId, out var ui))
-        {
             ui.UpdateProgress(current, required);
-        }
     }
  
     private void BuildObjectives(QuestData questData)
     {
-        // Clear old objectives
         foreach (Transform child in _objectiveContent)
-        {
             Destroy(child.gameObject);
-        }
         _objectiveItems.Clear();
- 
-        if (questData.ObjectiveData == null || questData.ObjectiveData.Count == 0)
-        {
-            Debug.LogWarning("No objectives found!");
-            return;
-        }
  
         foreach (var objData in questData.ObjectiveData)
         {
             var go = Instantiate(_objectiveItemPrefab, _objectiveContent);
             var ui = go.GetComponent<ObjectiveItemUI>();
-            
-            if (ui == null)
-            {
-                Debug.LogError("ObjectiveItemUI component not found!");
-                continue;
-            }
  
-            int required = (objData is CollectObjectiveData collectData) ? collectData.RequiredAmount : 1;
-            int current = (objData.Status == QuestStatus.Completed) ? required : 0;
+            // Get required amount based on objective type
+            int required = GetRequiredAmount(objData);
+            int current = objData.Status == QuestStatus.Completed ? required : 0;
             
-            ui.Initialize(objData.Description, current, required);
+            ui.Initialize(objData.Id, current, required);
             _objectiveItems.Add(objData.Id, ui);
+        }
+    }
+ 
+    /// <summary>
+    /// Get required amount cho mỗi loại objective
+    /// </summary>
+    private int GetRequiredAmount(ObjectiveData objData)
+    {
+        if (objData is CollectObjectiveData collectData)
+        {
+            return collectData.RequiredAmount;
+        }
+        else if (objData is KillObjectiveData killData)
+        {
+            return killData.requiredKills;
+        }
+        else
+        {
+            return 1; // Default cho các objective types khác
         }
     }
  
     private void BuildRewards(QuestReward reward)
     {
-        if (reward == null)
-        {
-            Debug.LogWarning("Reward is null!");
-            return;
-        }
- 
         // Clear old rewards
         foreach (Transform child in _itemRewardContent)
-        {
             Destroy(child.gameObject);
+ 
+        if (reward == null)
+        {
+            Debug.LogWarning("QuestDetailUI: No reward data!");
+            return;
         }
  
         // Spawn Gold reward
         if (reward.Gold > 0)
         {
-            if (_goldIcon == null)
-            {
-                Debug.LogError("Gold Icon not assigned in Inspector!");
-            }
-            else
-            {
-                SpawnRewardItem(_goldIcon, $"{reward.Gold}", "Gold");
-            }
+            var go = Instantiate(_rewardItemPrefab, _itemRewardContent);
+            var ui = go.GetComponent<RewardItemUI>();
+            ui.InitializeStat(_goldIcon, reward.Gold.ToString(), "Gold");
         }
  
         // Spawn EXP reward
         if (reward.Exp > 0)
         {
-            if (_expIcon == null)
-            {
-                Debug.LogError("Exp Icon not assigned in Inspector!");
-            }
-            else
-            {
-                SpawnRewardItem(_expIcon, $"{reward.Exp}", "EXP");
-            }
+            var go = Instantiate(_rewardItemPrefab, _itemRewardContent);
+            var ui = go.GetComponent<RewardItemUI>();
+            ui.InitializeStat(_expIcon, reward.Exp.ToString(), "EXP");
         }
-    }
  
-    private void SpawnRewardItem(Sprite icon, string amount, string label)
-    {
-        if (_rewardItemPrefab == null)
+        // Spawn item rewards
+        if (reward.Items != null && reward.Items.Length > 0)
         {
-            Debug.LogError("RewardItemPrefab not assigned!");
-            return;
+            foreach (var item in reward.Items)
+            {
+                var go = Instantiate(_rewardItemPrefab, _itemRewardContent);
+                var ui = go.GetComponent<RewardItemUI>();
+                ui.Initialize(item);
+            }
         }
- 
-        var go = Instantiate(_rewardItemPrefab, _itemRewardContent);
-        var rewardUI = go.GetComponent<RewardItemUI>();
- 
-        if (rewardUI == null)
-        {
-            Debug.LogError("RewardItemUI component not found on prefab!");
-            return;
-        }
- 
-        rewardUI.InitializeStat(icon, amount, label);
     }
 }
+ 
  
