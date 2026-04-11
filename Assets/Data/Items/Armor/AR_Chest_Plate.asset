@@ -16,7 +16,7 @@ MonoBehaviour:
   itemName: "Gi\xE1p Th\xE9p T\u1EA5m"
   description: "B\u1ED9 gi\xE1p c\u1EE7a chi\u1EBFn binh h\u1EA1ng n\u1EB7ng. Ph\xF2ng
     th\u1EE7 v\u01B0\u1EE3t tr\u1ED9i."
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 56f95168f48a56c499e94d62aa35124c, type: 3}
   type: 1
   equipSlot: 2
   isStackable: 0

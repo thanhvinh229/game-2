@@ -16,7 +16,7 @@ MonoBehaviour:
   itemName: "Ki\u1EBFm Th\xE9p"
   description: "\u0110\u01B0\u1EE3c r\xE8n t\u1EEB th\xE9p t\u1ED1t, l\u01B0\u1EE1i
     ki\u1EBFm b\xE9n v\xE0 ch\u1EAFc ch\u1EAFn."
-  icon: {fileID: 0}
+  icon: {fileID: 1301320578, guid: 74f11f6a4abaed043b6915385908c219, type: 3}
   type: 0
   equipSlot: 4
   isStackable: 0

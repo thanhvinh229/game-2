@@ -16,7 +16,7 @@ MonoBehaviour:
   itemName: "G\u1EADy Pha L\xEA"
   description: "\u0110\u1EA7u g\u1EADy g\u1EAFn tinh th\u1EC3 ma thu\u1EADt, khu\u1EBFch
     \u0111\u1EA1i s\u1EE9c m\u1EA1nh ph\xE9p thu\u1EADt."
-  icon: {fileID: 0}
+  icon: {fileID: -1104766865, guid: 74f11f6a4abaed043b6915385908c219, type: 3}
   type: 0
   equipSlot: 4
   isStackable: 0

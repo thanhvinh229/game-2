@@ -16,7 +16,7 @@ MonoBehaviour:
   itemName: "Th\u1EA7n D\u01B0\u1EE3c"
   description: "H\u1ED3i ph\u1EE5c to\xE0n b\u1ED9 HP v\xE0 Mana. B\xED ph\u01B0\u01A1ng
     c\u1EE7a \u0111\u1EA1i ph\xE1p s\u01B0."
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 4e9677621fcb7df4c8fbcac3242e4c2d, type: 3}
   type: 2
   equipSlot: 0
   isStackable: 1

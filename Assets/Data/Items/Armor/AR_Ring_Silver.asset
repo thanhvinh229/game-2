@@ -16,7 +16,7 @@ MonoBehaviour:
   itemName: "Nh\u1EABn B\u1EA1c"
   description: "Nh\u1EABn b\u1EA1c \u0111\u01B0\u1EE3c ph\xF9 ph\xE9p, t\u0103ng
     s\u1EE9c s\u1ED1ng v\xE0 ph\xF2ng th\u1EE7."
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: b079611e934636242b1e6a5e08e72771, type: 3}
   type: 1
   equipSlot: 6
   isStackable: 0

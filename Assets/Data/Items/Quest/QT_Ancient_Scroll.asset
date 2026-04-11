@@ -16,7 +16,7 @@ MonoBehaviour:
   itemName: "Cu\u1ED9n Gi\u1EA5y C\u1ED5"
   description: "M\u1ED9t cu\u1ED9n gi\u1EA5y ch\u1EE9a b\xED m\u1EADt v\u1EC1 kho
     b\xE1u b\u1ECB l\xE3ng qu\xEAn. Kh\xF4ng th\u1EC3 b\xE1n."
-  icon: {fileID: 0}
+  icon: {fileID: 1394420645, guid: a982c9c547c14204c87dd2388e49e70e, type: 3}
   type: 3
   equipSlot: 0
   isStackable: 0

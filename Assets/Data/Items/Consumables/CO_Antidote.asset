@@ -15,7 +15,7 @@ MonoBehaviour:
   itemId: CO_Antidote
   itemName: "Thu\u1ED1c Gi\u1EA3i \u0110\u1ED9c"
   description: "Lo\u1EA1i b\u1ECF m\u1ECDi tr\u1EA1ng th\xE1i tr\xFAng \u0111\u1ED9c."
-  icon: {fileID: 0}
+  icon: {fileID: 1386005931, guid: 74f11f6a4abaed043b6915385908c219, type: 3}
   type: 2
   equipSlot: 0
   isStackable: 1

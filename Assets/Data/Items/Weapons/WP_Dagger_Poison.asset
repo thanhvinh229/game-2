@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 688853c544000bf4496684ccac8fb62b, type: 3}
   m_Name: WP_Dagger_Poison
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  itemId: WP_Dagger_Poison
-  itemName: "Dao G\u0103m \u0110\u1ED9c"
-  description: "L\u01B0\u1EE1i dao \u0111\u01B0\u1EE3c t\u1EA9m \u0111\u1ED9c d\u01B0\u1EE3c.
-    K\u1EBB th\xF9 s\u1EBD d\u1EA7n suy y\u1EBFu."
-  icon: {fileID: 0}
+  itemId: WP_Assasin_Dagger
+  itemName: "Dao G\u0103m S\xE1t Th\u1EE7"
+  description: "Ph\xF9 h\u1EE3p \u0111\u1EC3 x\u1EED l\xED m\u1EE5c ti\xEAu trong
+    t\xEDc t\u1EAFc\n"
+  icon: {fileID: 21300000, guid: 7889127a7bdf7984f89d9e85cb7d35e6, type: 3}
   type: 0
   equipSlot: 4
   isStackable: 0

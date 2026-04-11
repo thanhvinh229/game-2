@@ -16,7 +16,7 @@ MonoBehaviour:
   itemName: "Thu\u1ED1c H\u1ED3i M\xE1u"
   description: "H\u1ED3i ph\u1EE5c 80 HP. \u0110\u01B0\u1EE3c b\xE1n ph\u1ED5 bi\u1EBFn
     \u1EDF c\xE1c th\u1ECB tr\u1EA5n."
-  icon: {fileID: 0}
+  icon: {fileID: 1970626481, guid: d8e545335f737f544b03763c9ecaf80d, type: 3}
   type: 2
   equipSlot: 0
   isStackable: 1

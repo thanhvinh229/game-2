@@ -52,7 +52,7 @@ IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler,
 
     public void OnEndDrag(PointerEventData e) {
         Destroy(dragGhost);
-        dragSource = null;
+        StartCoroutine(ResetDragSource());
     }
 
     public void OnDrop(PointerEventData e) {
@@ -62,14 +62,15 @@ IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler,
 
     // --- Hover tooltip ---
     public void OnPointerEnter(PointerEventData e) {
-        if (!data.IsEmpty)
-            ItemTooltip.Instance.Show(data.item, transform.position);
-        highlight.enabled = true;
+        if (highlight != null) highlight.enabled = true;
+        if (!data.IsEmpty && ItemTooltip.Instance != null)  
+        ItemTooltip.Instance.Show(data.item, transform.position);
     }
 
     public void OnPointerExit(PointerEventData e) {
+        if (highlight != null) highlight.enabled = false;
+        if (ItemTooltip.Instance != null)
         ItemTooltip.Instance.Hide();
-        highlight.enabled = false;
     }
 
     // --- Right click context menu ---
@@ -77,4 +78,9 @@ IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler,
         if (e.button == PointerEventData.InputButton.Right && !data.IsEmpty)
             ItemContextMenu.Instance.Show(slotIndex, data, transform.position);
     }
-}
+
+    private System.Collections.IEnumerator ResetDragSource() {
+    yield return null; // chờ 1 frame để OnDrop chạy xong
+    dragSource = null;
+    }
+ }

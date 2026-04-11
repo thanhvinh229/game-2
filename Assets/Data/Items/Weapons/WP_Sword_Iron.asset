@@ -15,7 +15,7 @@ MonoBehaviour:
   itemId: WP_Sword_Iron
   itemName: "Ki\u1EBFm S\u1EAFt"
   description: "Ki\u1EBFm s\u1EAFt ti\xEAu chu\u1EA9n c\u1EE7a l\xEDnh canh."
-  icon: {fileID: 0}
+  icon: {fileID: -2040586529, guid: 74f11f6a4abaed043b6915385908c219, type: 3}
   type: 0
   equipSlot: 4
   isStackable: 0

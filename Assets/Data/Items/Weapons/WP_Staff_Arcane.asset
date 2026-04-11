@@ -16,7 +16,7 @@ MonoBehaviour:
   itemName: "G\u1EADy Huy\u1EC1n B\xED"
   description: "C\u1ED5 v\u1EADt c\u1EE7a \u0111\u1EA1i ph\xE1p s\u01B0. Mana h\u1ED3i
     ph\u1EE5c nhanh h\u01A1n khi c\u1EA7m."
-  icon: {fileID: 0}
+  icon: {fileID: 557107510, guid: 28d7745480866e24293d1baaaebb3838, type: 3}
   type: 0
   equipSlot: 4
   isStackable: 0

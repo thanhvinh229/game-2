@@ -16,7 +16,7 @@ MonoBehaviour:
   itemName: "R\xECu S\u1EAFt"
   description: "V\u0169 kh\xED c\u1EE7a chi\u1EBFn binh. N\u1EB7ng nh\u01B0ng s\u1EE9c
     c\xF4ng ph\xE1 kinh kh\u1EE7ng."
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 3971c5b0624abbd469aa40f9d8818232, type: 3}
   type: 0
   equipSlot: 4
   isStackable: 0

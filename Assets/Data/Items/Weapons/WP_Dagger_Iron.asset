@@ -16,7 +16,7 @@ MonoBehaviour:
   itemName: "Dao G\u0103m S\u1EAFt"
   description: "Nh\u1ECF g\u1ECDn, nhanh nh\u1EB9n. Th\xEDch h\u1EE3p cho k\u1EBB
     \u1EA9n th\xE2n."
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 7fd65bec72697b74daf109f5f66373fe, type: 3}
   type: 0
   equipSlot: 4
   isStackable: 0

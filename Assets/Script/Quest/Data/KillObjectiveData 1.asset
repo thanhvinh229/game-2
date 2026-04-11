@@ -17,6 +17,6 @@ MonoBehaviour:
   Status: 0
   EventChannel: {fileID: 11400000, guid: d439c91f745d2054ba33e880aeab51ff, type: 2}
   QuestId: 
-  targetEnemyType: Skeleton
+  targetEnemyType: mummy
   requiredKills: 5
   deathEventChannel: {fileID: 11400000, guid: 446c2ae1406ef6d47b8bd4be590c4c71, type: 2}

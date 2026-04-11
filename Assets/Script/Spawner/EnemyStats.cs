@@ -18,6 +18,10 @@ public class EnemyStats : MonoBehaviour, IDamageable
     public float knockbackForce = 12f;
     public float knockbackDuration = 0.12f;
 
+    [Header("Enemy Type & Events")]
+    public string enemyType = "Enemy";
+    public EnemyDeathEventChannel deathEventChannel;
+
     void Start()
     {
         currentHealth = maxHealth;
@@ -72,6 +76,11 @@ public class EnemyStats : MonoBehaviour, IDamageable
         IsDead = true;
         if (animator != null) animator.SetTrigger("Die");
         if (healthBarUI != null) healthBarUI.SetActive(false);
+
+        if (deathEventChannel != null)
+        {
+          deathEventChannel.RaiseEnemyDeath(enemyType, gameObject);
+        }
         
         Collider col = GetComponent<Collider>();
         if (col != null) col.enabled = false;

@@ -16,7 +16,7 @@ MonoBehaviour:
   itemName: "Qu\u1EA7n Da"
   description: "B\u1EA3o v\u1EC7 \u0111\xF4i ch\xE2n, \u0111\u1EE7 linh ho\u1EA1t
     \u0111\u1EC3 di chuy\u1EC3n nhanh."
-  icon: {fileID: 0}
+  icon: {fileID: 624461365, guid: 2bda89ec6ef501541a6ea829c2764f7d, type: 3}
   type: 1
   equipSlot: 3
   isStackable: 0

@@ -130,8 +130,9 @@ GameObject:
   - component: {fileID: 24215010}
   - component: {fileID: 24215012}
   - component: {fileID: 24215011}
+  - component: {fileID: 24215013}
   m_Layer: 5
-  m_Name: Image (7)
+  m_Name: SlotWeapon 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -194,6 +195,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 24215009}
   m_CullTransparentMesh: 1
+--- !u!114 &24215013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 24215009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddfc1a618312a874e9df024c403c3e6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EquipDropZone
+  slot: 4
+  itemIcon: {fileID: 0}
 --- !u!1 &31410052
 GameObject:
   m_ObjectHideFlags: 0
@@ -715,8 +730,9 @@ GameObject:
   - component: {fileID: 117404903}
   - component: {fileID: 117404905}
   - component: {fileID: 117404904}
+  - component: {fileID: 117404906}
   m_Layer: 5
-  m_Name: Image (6)
+  m_Name: SlotRing 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -779,6 +795,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 117404902}
   m_CullTransparentMesh: 1
+--- !u!114 &117404906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 117404902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddfc1a618312a874e9df024c403c3e6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EquipDropZone
+  slot: 6
+  itemIcon: {fileID: 0}
 --- !u!1 &181289388 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9222855336596659715, guid: a231c98924f44b04097831ce1884129c, type: 3}
@@ -5827,6 +5857,7 @@ Transform:
   - {fileID: 1259891164}
   - {fileID: 2118553509}
   - {fileID: 1094635008}
+  - {fileID: 874263547}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &201425155 stripped
@@ -6383,9 +6414,11 @@ MonoBehaviour:
   maxHealth: 50
   healthSlider: {fileID: 668011408}
   healthBarUI: {fileID: 244670107}
-  animator: {fileID: 0}
+  animator: {fileID: 231193375}
   knockbackForce: 12
   knockbackDuration: 0.12
+  enemyType: saydhi
+  deathEventChannel: {fileID: 11400000, guid: 446c2ae1406ef6d47b8bd4be590c4c71, type: 2}
 --- !u!114 &231193371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6451,6 +6484,11 @@ CapsuleCollider:
 --- !u!4 &231193374 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6717ba69240df454597bc394dff04a24, type: 3}
+  m_PrefabInstance: {fileID: 1504070254}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &231193375 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 6717ba69240df454597bc394dff04a24, type: 3}
   m_PrefabInstance: {fileID: 1504070254}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &234473708
@@ -7270,6 +7308,7 @@ GameObject:
   - component: {fileID: 326200797}
   - component: {fileID: 326200796}
   - component: {fileID: 326200798}
+  - component: {fileID: 326200799}
   m_Layer: 5
   m_Name: equipmentPanel
   m_TagString: Untagged
@@ -7373,9 +7412,35 @@ MonoBehaviour:
     icon: {fileID: 335598636}
     emptyIcon: {fileID: 0}
     root: {fileID: 335598634}
+  - slot: 6
+    icon: {fileID: 335598636}
+    emptyIcon: {fileID: 0}
+    root: {fileID: 335598634}
+  - slot: 4
+    icon: {fileID: 335598636}
+    emptyIcon: {fileID: 0}
+    root: {fileID: 24215009}
+  - slot: 4
+    icon: {fileID: 335598636}
+    emptyIcon: {fileID: 0}
+    root: {fileID: 24215009}
   attackText: {fileID: 0}
   defenseText: {fileID: 0}
   hpText: {fileID: 0}
+--- !u!114 &326200799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 326200794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3312d7739989d2b4e91e6319e9a96d76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.RectMask2D
+  m_Padding: {x: 0, y: 0, z: 0, w: 0}
+  m_Softness: {x: 0, y: 0}
 --- !u!4 &329813274 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5499925382633085424, guid: 0e0dedeceac90ca4ca6bf2bb15f4d45e, type: 3}
@@ -7465,6 +7530,7 @@ GameObject:
   - component: {fileID: 335598635}
   - component: {fileID: 335598637}
   - component: {fileID: 335598636}
+  - component: {fileID: 335598638}
   m_Layer: 5
   m_Name: SlotRing
   m_TagString: Untagged
@@ -7529,6 +7595,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 335598634}
   m_CullTransparentMesh: 1
+--- !u!114 &335598638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 335598634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddfc1a618312a874e9df024c403c3e6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EquipDropZone
+  slot: 6
+  itemIcon: {fileID: 0}
 --- !u!1 &336059656
 GameObject:
   m_ObjectHideFlags: 0
@@ -9429,6 +9509,7 @@ GameObject:
   - component: {fileID: 549771860}
   - component: {fileID: 549771859}
   - component: {fileID: 549771858}
+  - component: {fileID: 549771861}
   m_Layer: 5
   m_Name: inventoryPanel
   m_TagString: Untagged
@@ -9509,6 +9590,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 549771856}
   m_CullTransparentMesh: 1
+--- !u!114 &549771861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 549771856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3312d7739989d2b4e91e6319e9a96d76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.RectMask2D
+  m_Padding: {x: 0, y: 0, z: 0, w: 0}
+  m_Softness: {x: 0, y: 0}
 --- !u!1 &567800481
 GameObject:
   m_ObjectHideFlags: 0
@@ -9653,6 +9748,7 @@ GameObject:
   - component: {fileID: 570019368}
   - component: {fileID: 570019370}
   - component: {fileID: 570019369}
+  - component: {fileID: 570019371}
   m_Layer: 5
   m_Name: 'SlotShield '
   m_TagString: Untagged
@@ -9717,6 +9813,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 570019367}
   m_CullTransparentMesh: 1
+--- !u!114 &570019371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 570019367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddfc1a618312a874e9df024c403c3e6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EquipDropZone
+  slot: 5
+  itemIcon: {fileID: 0}
 --- !u!1 &571151194
 GameObject:
   m_ObjectHideFlags: 0
@@ -10693,6 +10803,8 @@ MonoBehaviour:
   animator: {fileID: 718584068}
   knockbackForce: 12
   knockbackDuration: 0.12
+  enemyType: Enemy
+  deathEventChannel: {fileID: 0}
 --- !u!136 &718584072
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -10879,6 +10991,7 @@ GameObject:
   - component: {fileID: 731668843}
   - component: {fileID: 731668845}
   - component: {fileID: 731668844}
+  - component: {fileID: 731668846}
   m_Layer: 5
   m_Name: 'SlotHead '
   m_TagString: Untagged
@@ -10943,6 +11056,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 731668842}
   m_CullTransparentMesh: 1
+--- !u!114 &731668846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 731668842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddfc1a618312a874e9df024c403c3e6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EquipDropZone
+  slot: 1
+  itemIcon: {fileID: 0}
 --- !u!1 &736960908
 GameObject:
   m_ObjectHideFlags: 0
@@ -10954,6 +11081,7 @@ GameObject:
   - component: {fileID: 736960909}
   - component: {fileID: 736960911}
   - component: {fileID: 736960910}
+  - component: {fileID: 736960912}
   m_Layer: 5
   m_Name: 'SlotLegs '
   m_TagString: Untagged
@@ -11018,6 +11146,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 736960908}
   m_CullTransparentMesh: 1
+--- !u!114 &736960912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 736960908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddfc1a618312a874e9df024c403c3e6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EquipDropZone
+  slot: 3
+  itemIcon: {fileID: 0}
 --- !u!1 &753785974
 GameObject:
   m_ObjectHideFlags: 0
@@ -11751,6 +11893,37 @@ MonoBehaviour:
   Actions:
   - {fileID: 11400000, guid: 88a328624428c07488a972834a7e22f0, type: 2}
   - {fileID: 11400000, guid: 4423e4d62a40cc64fb181cac6cae6139, type: 2}
+--- !u!1 &874263546
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 874263547}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &874263547
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 874263546}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 200407830}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &878833910
 GameObject:
   m_ObjectHideFlags: 0
@@ -14146,6 +14319,7 @@ GameObject:
   - component: {fileID: 1157306149}
   - component: {fileID: 1157306151}
   - component: {fileID: 1157306150}
+  - component: {fileID: 1157306152}
   m_Layer: 5
   m_Name: SlotChest
   m_TagString: Untagged
@@ -14210,6 +14384,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1157306148}
   m_CullTransparentMesh: 1
+--- !u!114 &1157306152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1157306148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddfc1a618312a874e9df024c403c3e6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EquipDropZone
+  slot: 2
+  itemIcon: {fileID: 0}
 --- !u!1 &1164235034
 GameObject:
   m_ObjectHideFlags: 0
@@ -14227,7 +14415,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1164235035
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16419,6 +16607,7 @@ GameObject:
   - component: {fileID: 1455958100}
   - component: {fileID: 1455958102}
   - component: {fileID: 1455958101}
+  - component: {fileID: 1455958103}
   m_Layer: 5
   m_Name: SlotWeapon
   m_TagString: Untagged
@@ -16483,6 +16672,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1455958099}
   m_CullTransparentMesh: 1
+--- !u!114 &1455958103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1455958099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddfc1a618312a874e9df024c403c3e6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EquipDropZone
+  slot: 4
+  itemIcon: {fileID: 0}
 --- !u!1 &1456100630
 GameObject:
   m_ObjectHideFlags: 0
@@ -23137,8 +23340,9 @@ GameObject:
   - component: {fileID: 1697254602}
   - component: {fileID: 1697254604}
   - component: {fileID: 1697254603}
+  - component: {fileID: 1697254605}
   m_Layer: 5
-  m_Name: Image (8)
+  m_Name: SlotLegs 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23201,6 +23405,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1697254601}
   m_CullTransparentMesh: 1
+--- !u!114 &1697254605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1697254601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddfc1a618312a874e9df024c403c3e6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EquipDropZone
+  slot: 3
+  itemIcon: {fileID: 0}
 --- !u!1 &1697539109
 GameObject:
   m_ObjectHideFlags: 0
@@ -23857,6 +24075,8 @@ MonoBehaviour:
   animator: {fileID: 1789197328}
   knockbackForce: 12
   knockbackDuration: 0.12
+  enemyType: Enemy
+  deathEventChannel: {fileID: 11400000, guid: 446c2ae1406ef6d47b8bd4be590c4c71, type: 2}
 --- !u!114 &1789197322
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26742,6 +26962,8 @@ MonoBehaviour:
   animator: {fileID: 2036890031}
   knockbackForce: 12
   knockbackDuration: 0.12
+  enemyType: mummy
+  deathEventChannel: {fileID: 11400000, guid: 446c2ae1406ef6d47b8bd4be590c4c71, type: 2}
 --- !u!114 &2036890028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27375,6 +27597,8 @@ MonoBehaviour:
   animator: {fileID: 2098987676}
   knockbackForce: 12
   knockbackDuration: 0.12
+  enemyType: Wendigo
+  deathEventChannel: {fileID: 11400000, guid: 446c2ae1406ef6d47b8bd4be590c4c71, type: 2}
 --- !u!114 &2098987673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27646,6 +27870,7 @@ GameObject:
   - component: {fileID: 2118553510}
   - component: {fileID: 2118553511}
   - component: {fileID: 2118553512}
+  - component: {fileID: 2118553513}
   m_Layer: 0
   m_Name: InventoryManager
   m_TagString: Untagged
@@ -27711,6 +27936,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::InventoryToggle
   inventoryRoot: {fileID: 439784894}
   toggleKey: 98
+--- !u!114 &2118553513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2118553508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfe2b136390c7a24f9805d09f588fa81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EquipmentManager
 --- !u!1 &2124604160
 GameObject:
   m_ObjectHideFlags: 0
