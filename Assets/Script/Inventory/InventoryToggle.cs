@@ -2,46 +2,52 @@ using UnityEngine;
 
 public class InventoryToggle : MonoBehaviour
 {
-    [Header("Panels")]
-    [SerializeField] private GameObject inventoryPanel;  // Panel trái (túi đồ)
-    [SerializeField] private GameObject equipmentPanel;  // Panel phải (trang bị)
-
-    [Header("Phím bấm")]
+    [Header("Kéo InventoryRoot vào đây (cha của cả 2 panel)")]
+    [SerializeField] private GameObject inventoryRoot;
     [SerializeField] private KeyCode toggleKey = KeyCode.B;
 
-    // Dùng để pause game / khóa movement khi mở inventory
-    private bool isOpen = false;
-
-    void Update()
+    void Awake()
     {
-        if (Input.GetKeyDown(toggleKey))
-            Toggle();
-    }
-
-    public void Toggle()
-    {
-        isOpen = !isOpen;
-        inventoryPanel.SetActive(isOpen);
-        equipmentPanel.SetActive(isOpen);
-
-        // Tuỳ chọn: dừng thời gian khi mở inventory
-        // Time.timeScale = isOpen ? 0f : 1f;
-
-        // Tuỳ chọn: ẩn / hiện con trỏ
-        Cursor.visible   = isOpen;
-        Cursor.lockState = isOpen
-            ? CursorLockMode.None
-            : CursorLockMode.Locked;
-    }
-
-    public void ForceClose()
-    {
-        isOpen = false;
-        inventoryPanel.SetActive(false);
-        equipmentPanel.SetActive(false);
+        // Dùng Awake để ẩn trước khi bất kỳ Start() nào chạy
+        if (inventoryRoot == null)
+        {
+            Debug.LogError("[InventoryToggle] Chưa kéo InventoryRoot vào Inspector!");
+            return;
+        }
+        inventoryRoot.SetActive(false);
+        Time.timeScale   = 1f;
         Cursor.visible   = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    public bool IsOpen => isOpen;
+    void Update()
+    {
+        if (inventoryRoot == null) return;
+        if (Input.GetKeyDown(toggleKey))
+            Toggle();
+    }
+
+    void Toggle()
+    {
+        // Đọc trạng thái THẬT từ GameObject, không dùng bool
+        bool willOpen = !inventoryRoot.activeSelf;
+        inventoryRoot.SetActive(willOpen);
+
+        Time.timeScale   = willOpen ? 0f : 1f;
+        Cursor.visible   = willOpen;
+        Cursor.lockState = willOpen
+            ? CursorLockMode.None
+            : CursorLockMode.Locked;
+
+        Debug.Log($"Inventory: {(willOpen ? "MỞ" : "ĐÓNG")} | TimeScale: {Time.timeScale}");
+    }
+
+    public void ForceClose()
+    {
+        if (inventoryRoot != null) inventoryRoot.SetActive(false);
+        Time.timeScale   = 1f;
+        Cursor.visible   = false;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
 }
+

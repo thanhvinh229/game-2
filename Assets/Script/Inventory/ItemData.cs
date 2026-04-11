@@ -1,36 +1,56 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public enum ItemType { Weapon, Armor, Consumable, Quest, Material }
-public enum EquipSlot { None, Head, Chest, Legs, Weapon, Shield, Ring }
-
-
-[CreateAssetMenu(fileName = "ItemData", menuName = "Scriptable Objects/ItemData")]
+public enum ItemType
+{
+    Weapon,
+    Armor,
+    Consumable,
+    Quest,
+    Material      // <-- THÊM MỚI
+}
+ 
+public enum EquipSlot
+{
+    None,
+    Head,
+    Chest,
+    Legs,
+    Weapon,
+    Shield,
+    Ring
+}
+ 
+[CreateAssetMenu(fileName = "New Item", menuName = "Inventory/Item")]
 public class ItemData : ScriptableObject
 {
-    [Header("Info")]
+    [Header("Thông tin cơ bản")]
     public string itemId;
     public string itemName;
-    [TextArea] public string description;
+    [TextArea(2, 4)]
+    public string description;
     public Sprite icon;
-
-    [Header("Type")]
-    public ItemType type;
-    public EquipSlot equipSlot;  // None nếu không equip được
-
-    [Header("Stack")]
-    public bool isStackable = false;
-    public int maxStackSize = 1;
-
-    [Header("Stats")]
-    public float weight = 0.5f;
-    public int value = 10;           // giá bán
+ 
+    [Header("Phân loại")]
+    public ItemType  type;
+    public EquipSlot equipSlot;
+ 
+    [Header("Stack & Trọng lượng")]
+    public bool  isStackable  = false;
+    public int   maxStackSize = 1;
+    public float weight       = 1f;
+ 
+    [Header("Giá trị")]
+    public int value = 10;
+ 
+    [Header("Chỉ số (Stats)")]
     public List<StatModifier> stats = new();
 }
-
+ 
 [System.Serializable]
-public class StatModifier {
-    public string statName;   // "Attack", "Defense", "HP"...
-    public float value;
+public class StatModifier
+{
+    public string statName;  // "Attack" | "Defense" | "HP" | "Mana"
+    public float  value;
 }
 

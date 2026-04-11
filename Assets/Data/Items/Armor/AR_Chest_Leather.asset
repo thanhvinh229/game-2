@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 688853c544000bf4496684ccac8fb62b, type: 3}
+  m_Name: AR_Chest_Leather
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemId: AR_Chest_Leather
+  itemName: "\xC1o Gi\xE1p Da"
+  description: "Gi\xE1p da linh ho\u1EA1t, ph\xF9 h\u1EE3p cho cung th\u1EE7 v\xE0
+    th\xEDch kh\xE1ch."
+  icon: {fileID: 0}
+  type: 1
+  equipSlot: 2
+  isStackable: 0
+  maxStackSize: 1
+  weight: 2
+  value: 120
+  stats:
+  - statName: Defense
+    value: 10

@@ -12,7 +12,7 @@ public class InventoryUI : MonoBehaviour
     void Start() {
         InventoryManager.Instance.OnInventoryChanged += Refresh;
         GenerateSlots();
-        inventoryPanel.SetActive(false);
+        
     }
 
     void Update() {
