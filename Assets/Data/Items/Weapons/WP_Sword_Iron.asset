@@ -17,7 +17,7 @@ MonoBehaviour:
   description: "Ki\u1EBFm s\u1EAFt ti\xEAu chu\u1EA9n c\u1EE7a l\xEDnh canh."
   icon: {fileID: -2040586529, guid: 74f11f6a4abaed043b6915385908c219, type: 3}
   type: 0
-  equipSlot: 4
+  equipSlot: 5
   isStackable: 0
   maxStackSize: 1
   weight: 3

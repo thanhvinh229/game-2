@@ -18,8 +18,8 @@ MonoBehaviour:
     ch\u1EE9a \u0111\u1EF1ng n\u0103ng l\u01B0\u1EE3ng huy\u1EC1n b\xED."
   icon: {fileID: 21300000, guid: a6175c8622f966946a8573f1550f8f38, type: 3}
   type: 1
-  equipSlot: 6
-  isStackable: 0
+  equipSlot: 9
+  isStackable: 1
   maxStackSize: 1
   weight: 0.1
   value: 1500

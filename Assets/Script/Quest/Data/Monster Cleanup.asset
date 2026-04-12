@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ce02d00c1220f874bb7811d8a659bdee, type: 3}
-  m_Name: KillObjectiveData
+  m_Name: Monster Cleanup
   m_EditorClassIdentifier: Assembly-CSharp::KillObjectiveData
-  Id: obj_kill_skeletons
-  Description: Kill 5 Skeleton
+  Id: 'Monster Cleanup '
+  Description: Kill 5 mummy
   Status: 0
   EventChannel: {fileID: 11400000, guid: d439c91f745d2054ba33e880aeab51ff, type: 2}
   QuestId: 
-  targetEnemyType: 'Skeleton '
+  targetEnemyType: mummy
   requiredKills: 5
   deathEventChannel: {fileID: 11400000, guid: 446c2ae1406ef6d47b8bd4be590c4c71, type: 2}

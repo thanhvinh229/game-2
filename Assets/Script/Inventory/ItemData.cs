@@ -4,6 +4,7 @@ using System.Collections.Generic;
 public enum ItemType
 {
     Weapon,
+    
     Armor,
     Consumable,
     Quest,
@@ -16,9 +17,12 @@ public enum EquipSlot
     Head,
     Chest,
     Legs,
+    Legs2,
     Weapon,
+     Weapon2,
     Shield,
-    Ring
+    Ring,
+    Ring2 
 }
  
 [CreateAssetMenu(fileName = "New Item", menuName = "Inventory/Item")]
