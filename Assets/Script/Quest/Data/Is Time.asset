@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Is Time
   m_EditorClassIdentifier: Assembly-CSharp::QuestData
   Id: Is Time
-  Description: 
+  Description: "gi\u1EBFt nhi\u1EC1u qu\xE1i v\u1EADt"
   Status: 0
   Reward:
     Gold: 100

@@ -16,7 +16,7 @@ MonoBehaviour:
   itemName: "M\u0169 Da"
   description: "M\u0169 da th\xF4 s\u01A1, b\u1EA3o v\u1EC7 \u0111\u1EA7u kh\u1ECFi
     nh\u1EEFng \u0111\xF2n nh\u1EB9."
-  icon: {fileID: -2054767316, guid: 74f11f6a4abaed043b6915385908c219, type: 3}
+  icon: {fileID: 316844705, guid: 8633561e8dc86c74b840559f600f4547, type: 3}
   type: 1
   equipSlot: 1
   isStackable: 0

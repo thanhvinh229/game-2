@@ -21,12 +21,34 @@ public class QuestLogPanelUI : MonoBehaviour
         _questEventChannel.OnCompleteQuest += OnCompleteQuest;
         _questEventChannel.OnObjectiveProgress += OnObjectiveProgress;
     }
+    void Start()
+    {
+        // Khi UI lần đầu tiên được tạo/bật lên, hãy đồng bộ những quest ĐÃ NHẬN 
+        // từ trước khi Awake() kịp lắng nghe event.
+        SyncExistingQuests();
+    }
  
     void OnDestroy()
     {
         _questEventChannel.OnReceivedQuest -= OnReceivedQuest;
         _questEventChannel.OnCompleteQuest -= OnCompleteQuest;
         _questEventChannel.OnObjectiveProgress -= OnObjectiveProgress;
+    }
+    private void SyncExistingQuests()
+    {
+        // Gọi trực tiếp đến property ActiveQuests từ QuestLog của bạn
+        var activeQuests = QuestManager.Instance.QuestLog.ActiveQuests; 
+        
+        if (activeQuests == null || activeQuests.Count == 0) return;
+
+        foreach (var quest in activeQuests)
+        {
+            // quest.Data.Id dựa theo cấu trúc class Quest của bạn
+            if (!_entries.ContainsKey(quest.Data.Id)) 
+            {
+                CreateQuestEntryUI(quest);
+            }
+        }
     }
  
     private void OnReceivedQuest(string questId)
@@ -44,6 +66,18 @@ public class QuestLogPanelUI : MonoBehaviour
         // Auto-select quest đầu tiên
         if (_selectedEntry == null)
             OnQuestSelected(quest.Data);
+    }
+    private void CreateQuestEntryUI(Quest logicQuest)
+    {
+        var go = Instantiate(_questEntryPrefab, _questListContent);
+        var entry = go.GetComponent<QuestEntryUI>();
+        
+        entry.Initialize(logicQuest.Data, OnQuestSelected);
+        _entries.Add(logicQuest.Data.Id, entry);
+ 
+        // Auto-select quest đầu tiên
+        if (_selectedEntry == null)
+            OnQuestSelected(logicQuest.Data);
     }
  
     private void OnCompleteQuest(string questId)

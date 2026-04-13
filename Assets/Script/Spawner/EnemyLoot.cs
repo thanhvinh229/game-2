@@ -31,11 +31,15 @@ public class EnemyLoot : MonoBehaviour
             if (Random.value > entry.dropChance) continue;
  
             int qty = Random.Range(entry.minQuantity, entry.maxQuantity + 1);
-            bool ok = InventoryManager.Instance.AddItem(entry.item, qty);
- 
-            Debug.Log(ok
-                ? $"[Loot] {entry.item.itemName} x{qty}"
-                : $"[Loot] Inventory đầy, mất: {entry.item.itemName}");
+            if (ItemDropManager.Instance != null)
+            {
+                ItemDropManager.Instance.DropItem(entry.item, qty, transform.position);
+                Debug.Log($"[Loot] {entry.item.itemName} x{qty}");
+            }
+            else
+            {
+                Debug.Log($"[Loot] Inventory đầy, mất: {entry.item.itemName}");
+            }
  
             dropCount++;
         }
