@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 688853c544000bf4496684ccac8fb62b, type: 3}
+  m_Name: C_AR_Ring_Copper
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemId: AR_Ring_Copper
+  itemName: "[C] Nh\u1EABn \u0110\u1ED3ng"
+  description: "Nh\u1EABn \u0111\u1ED3ng b\xECnh th\u01B0\u1EDDng, c\xF3 kh\u1EAFc
+    b\xF9a b\u1EA3o v\u1EC7 nh\u1ECF."
+  icon: {fileID: 21300000, guid: 92f0c3f5b8e446b4bbc638026df6970f, type: 3}
+  type: 2
+  equipSlot: 6
+  rarity: 0
+  isStackable: 0
+  maxStackSize: 1
+  weight: 0.1
+  value: 80
+  stats:
+  - statName: Defense
+    value: 3
+  - statName: HP
+    value: 10

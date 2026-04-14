@@ -882,11 +882,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 122911630}
   m_CullTransparentMesh: 1
---- !u!1 &181289388 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9222855336596659715, guid: a231c98924f44b04097831ce1884129c, type: 3}
-  m_PrefabInstance: {fileID: 1652865606608073321}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &181289389 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5731764721714951367, guid: a231c98924f44b04097831ce1884129c, type: 3}
@@ -897,109 +892,12 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7384853272944485824, guid: a231c98924f44b04097831ce1884129c, type: 3}
   m_PrefabInstance: {fileID: 1652865606608073321}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 181289388}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7e22645855f085c48a49bc91d73463b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::QuestNotificationUI
---- !u!82 &181289394
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 181289388}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!1 &192630775
 GameObject:
   m_ObjectHideFlags: 0
@@ -6216,7 +6114,7 @@ MonoBehaviour:
     RotationDamping: {x: 1, y: 1, z: 1}
     QuaternionDamping: 1
   OrbitStyle: 0
-  Radius: 5
+  Radius: 3
   Orbits:
     Top:
       Radius: 2
@@ -6310,8 +6208,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 222439259}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.12264947, y: -0.004244221, z: 0.00052451633, w: 0.9924409}
-  m_LocalPosition: {x: 47.866714, y: 5.3425293, z: 59.6159}
+  m_LocalRotation: {x: 0.16286945, y: -0.0042194063, z: 0.0006965191, w: 0.98663837}
+  m_LocalPosition: {x: 47.866714, y: 4.7411175, z: 61.52333}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6576,12 +6474,128 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e084be463180ba3458b06806fefa6da3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyLoot
-  lootTable:
-  - item: {fileID: 11400000, guid: 70df0ca7c63515c448942f43d7a5e5d0, type: 2}
-    dropChance: 0.515
-    minQuantity: 1
-    maxQuantity: 1
-  maxDrops: 3
+  maxDrops: 2
+  rarityPools:
+  - rarity: 0
+    poolChance: 0.695
+    entries:
+    - item: {fileID: 11400000, guid: 28dbf38e06fe9ec4e85667d8d6412c12, type: 2}
+      dropChance: 0.732
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 6c35839ab1f879e47b753cca566d458c, type: 2}
+      dropChance: 0.732
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 70df0ca7c63515c448942f43d7a5e5d0, type: 2}
+      dropChance: 0.732
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 54ec6762852e5d242831ba3eb3e96f3e, type: 2}
+      dropChance: 0.732
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 00fc9ae3389c1c14583d6ce5c5ff4a11, type: 2}
+      dropChance: 0.732
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: b0f6fc8eecff3bc48b9a4a99c765cc55, type: 2}
+      dropChance: 0.732
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 1be3f4420173de64da3b9a3232d244b8, type: 2}
+      dropChance: 0.732
+      minQuantity: 1
+      maxQuantity: 1
+  - rarity: 1
+    poolChance: 0.757
+    entries:
+    - item: {fileID: 11400000, guid: bef80f08e7b66924bb09167f978a817a, type: 2}
+      dropChance: 0
+      minQuantity: 1
+      maxQuantity: 0
+    - item: {fileID: 11400000, guid: 77b4281ad78d45d48b755df8e239900c, type: 2}
+      dropChance: 0
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: b363e4aecd2228d44a23ad73d3b5606b, type: 2}
+      dropChance: 0
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 049e97c16c7d215469910ff25df659e4, type: 2}
+      dropChance: 0
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: f304577680386a044a85d7c2c0396ff8, type: 2}
+      dropChance: 0
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 416613b65925b4340a86bd246d82fadc, type: 2}
+      dropChance: 0
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 416613b65925b4340a86bd246d82fadc, type: 2}
+      dropChance: 0
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 8a5d2e849ef685046a61ff7f38a79977, type: 2}
+      dropChance: 0
+      minQuantity: 1
+      maxQuantity: 1
+  - rarity: 2
+    poolChance: 0.506
+    entries:
+    - item: {fileID: 11400000, guid: 33a2af0af95fce049b5d33403e5a3f88, type: 2}
+      dropChance: 0.502
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 494df6fbae81d4c488f948bbfa251806, type: 2}
+      dropChance: 0.502
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 0a15f1521c3a9cf4bae6527bdd7b798c, type: 2}
+      dropChance: 0.502
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 2dd32808470ab324b8a20683435699c0, type: 2}
+      dropChance: 0.502
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 805d510556c41c049844ec364b6619f1, type: 2}
+      dropChance: 0.502
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 547a766318b7f2646838b4bb1538a380, type: 2}
+      dropChance: 0.502
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 9bf7faaaf7b1a3a42a515b9c067bf732, type: 2}
+      dropChance: 0.502
+      minQuantity: 1
+      maxQuantity: 1
+  - rarity: 3
+    poolChance: 0.301
+    entries:
+    - item: {fileID: 11400000, guid: 7c12d17960f37b64d833a98c8db73c8c, type: 2}
+      dropChance: 0.253
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: ceadf5c8566765f4391af8873a809dc7, type: 2}
+      dropChance: 0.253
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 33bfb7f225dc4334090f4195e77c0231, type: 2}
+      dropChance: 0.253
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 2bbdcc2713736f640b425f79099d69ea, type: 2}
+      dropChance: 0.253
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 36e9f37dbf437014f8b6927828b8d018, type: 2}
+      dropChance: 0.253
+      minQuantity: 1
+      maxQuantity: 1
 --- !u!1 &234473708
 GameObject:
   m_ObjectHideFlags: 0
@@ -7421,7 +7435,6 @@ RectTransform:
   m_Children:
   - {fileID: 2124604161}
   - {fileID: 1868642157}
-  - {fileID: 1828830615}
   - {fileID: 1774179541}
   m_Father: {fileID: 439784895}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8359,7 +8372,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &439784895
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8892,6 +8905,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 494425118}
+  - component: {fileID: 494425119}
   m_Layer: 5
   m_Name: PickupPanel
   m_TagString: Untagged
@@ -8919,6 +8933,14 @@ RectTransform:
   m_AnchoredPosition: {x: -3, y: -29.5}
   m_SizeDelta: {x: 294, y: 441}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &494425119
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 494425117}
+  m_CullTransparentMesh: 1
 --- !u!1 &496346995
 GameObject:
   m_ObjectHideFlags: 0
@@ -25494,11 +25516,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!198 &1335610283 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 1171149984109501170, guid: 710404aa7aa893647a9e2fa3669b5cde, type: 3}
-  m_PrefabInstance: {fileID: 8422098382452734261}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1346983508
 GameObject:
   m_ObjectHideFlags: 0
@@ -25558,8 +25575,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1352683380}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.12264947, y: -0.0042442204, z: 0.00052451633, w: 0.9924409}
-  m_LocalPosition: {x: 47.866714, y: 5.3425293, z: 59.6159}
+  m_LocalRotation: {x: 0.16286948, y: -0.0042194077, z: 0.0006965193, w: 0.98663837}
+  m_LocalPosition: {x: 47.866714, y: 4.7411175, z: 61.52333}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -25869,7 +25886,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GroundItemPickupUI
   panel: {fileID: 1372484240}
   itemListContainer: {fileID: 1426551771}
-  rowPrefab: {fileID: 8259901258737724780, guid: a55e92b537141b740bb78d0d5db08751, type: 3}
+  rowPrefab: {fileID: 0}
   pickupKey: 102
 --- !u!1 &1373391613
 GameObject:
@@ -34081,6 +34098,7 @@ RectTransform:
   - {fileID: 24215010}
   - {fileID: 1697254602}
   - {fileID: 730279247}
+  - {fileID: 1828830615}
   m_Father: {fileID: 326200795}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -34511,12 +34529,128 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e084be463180ba3458b06806fefa6da3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyLoot
-  lootTable:
-  - item: {fileID: 11400000, guid: b363e4aecd2228d44a23ad73d3b5606b, type: 2}
-    dropChance: 0.561
-    minQuantity: 1
-    maxQuantity: 1
-  maxDrops: 3
+  maxDrops: 2
+  rarityPools:
+  - rarity: 0
+    poolChance: 0.695
+    entries:
+    - item: {fileID: 11400000, guid: 28dbf38e06fe9ec4e85667d8d6412c12, type: 2}
+      dropChance: 0.732
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 6c35839ab1f879e47b753cca566d458c, type: 2}
+      dropChance: 0.732
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 70df0ca7c63515c448942f43d7a5e5d0, type: 2}
+      dropChance: 0.732
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 54ec6762852e5d242831ba3eb3e96f3e, type: 2}
+      dropChance: 0.732
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 00fc9ae3389c1c14583d6ce5c5ff4a11, type: 2}
+      dropChance: 0.732
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: b0f6fc8eecff3bc48b9a4a99c765cc55, type: 2}
+      dropChance: 0.732
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 1be3f4420173de64da3b9a3232d244b8, type: 2}
+      dropChance: 0.732
+      minQuantity: 1
+      maxQuantity: 1
+  - rarity: 1
+    poolChance: 0.757
+    entries:
+    - item: {fileID: 11400000, guid: bef80f08e7b66924bb09167f978a817a, type: 2}
+      dropChance: 0
+      minQuantity: 1
+      maxQuantity: 0
+    - item: {fileID: 11400000, guid: 77b4281ad78d45d48b755df8e239900c, type: 2}
+      dropChance: 0
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: b363e4aecd2228d44a23ad73d3b5606b, type: 2}
+      dropChance: 0
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 049e97c16c7d215469910ff25df659e4, type: 2}
+      dropChance: 0
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: f304577680386a044a85d7c2c0396ff8, type: 2}
+      dropChance: 0
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 416613b65925b4340a86bd246d82fadc, type: 2}
+      dropChance: 0
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 416613b65925b4340a86bd246d82fadc, type: 2}
+      dropChance: 0
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 8a5d2e849ef685046a61ff7f38a79977, type: 2}
+      dropChance: 0
+      minQuantity: 1
+      maxQuantity: 1
+  - rarity: 2
+    poolChance: 0.506
+    entries:
+    - item: {fileID: 11400000, guid: 33a2af0af95fce049b5d33403e5a3f88, type: 2}
+      dropChance: 0.502
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 494df6fbae81d4c488f948bbfa251806, type: 2}
+      dropChance: 0.502
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 0a15f1521c3a9cf4bae6527bdd7b798c, type: 2}
+      dropChance: 0.502
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 2dd32808470ab324b8a20683435699c0, type: 2}
+      dropChance: 0.502
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 805d510556c41c049844ec364b6619f1, type: 2}
+      dropChance: 0.502
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 547a766318b7f2646838b4bb1538a380, type: 2}
+      dropChance: 0.502
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 9bf7faaaf7b1a3a42a515b9c067bf732, type: 2}
+      dropChance: 0.502
+      minQuantity: 1
+      maxQuantity: 1
+  - rarity: 3
+    poolChance: 0.301
+    entries:
+    - item: {fileID: 11400000, guid: 7c12d17960f37b64d833a98c8db73c8c, type: 2}
+      dropChance: 0.253
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: ceadf5c8566765f4391af8873a809dc7, type: 2}
+      dropChance: 0.253
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 33bfb7f225dc4334090f4195e77c0231, type: 2}
+      dropChance: 0.253
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 2bbdcc2713736f640b425f79099d69ea, type: 2}
+      dropChance: 0.253
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 36e9f37dbf437014f8b6927828b8d018, type: 2}
+      dropChance: 0.253
+      minQuantity: 1
+      maxQuantity: 1
 --- !u!1 &1796494798
 GameObject:
   m_ObjectHideFlags: 0
@@ -34573,12 +34707,12 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1828830614}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 326200795}
+  m_Father: {fileID: 1774179541}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -34865,7 +34999,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1832472556}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
   m_Name: 
@@ -37423,6 +37557,83 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8586836407377071640, guid: 0e0dedeceac90ca4ca6bf2bb15f4d45e, type: 3}
   m_PrefabInstance: {fileID: 1929414743}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1960675334
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 2e7e625066891e1478e19fcd71a16acc, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2e7e625066891e1478e19fcd71a16acc, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2e7e625066891e1478e19fcd71a16acc, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2e7e625066891e1478e19fcd71a16acc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 59.110405
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2e7e625066891e1478e19fcd71a16acc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.019
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2e7e625066891e1478e19fcd71a16acc, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 63.398
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2e7e625066891e1478e19fcd71a16acc, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2e7e625066891e1478e19fcd71a16acc, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2e7e625066891e1478e19fcd71a16acc, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2e7e625066891e1478e19fcd71a16acc, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2e7e625066891e1478e19fcd71a16acc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2e7e625066891e1478e19fcd71a16acc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2e7e625066891e1478e19fcd71a16acc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2e7e625066891e1478e19fcd71a16acc, type: 3}
+      propertyPath: m_Name
+      value: tripo_convert_ab0cf423-dd83-4d3f-88b8-cf612e9040f0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2422988136700911538, guid: 2e7e625066891e1478e19fcd71a16acc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 2422988136700911538, guid: 2e7e625066891e1478e19fcd71a16acc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.157
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2e7e625066891e1478e19fcd71a16acc, type: 3}
 --- !u!1 &1973175156
 GameObject:
   m_ObjectHideFlags: 0
@@ -37889,12 +38100,128 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e084be463180ba3458b06806fefa6da3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyLoot
-  lootTable:
-  - item: {fileID: 11400000, guid: 33a2af0af95fce049b5d33403e5a3f88, type: 2}
-    dropChance: 0.506
-    minQuantity: 1
-    maxQuantity: 1
-  maxDrops: 3
+  maxDrops: 2
+  rarityPools:
+  - rarity: 0
+    poolChance: 0.695
+    entries:
+    - item: {fileID: 11400000, guid: 28dbf38e06fe9ec4e85667d8d6412c12, type: 2}
+      dropChance: 0.732
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 6c35839ab1f879e47b753cca566d458c, type: 2}
+      dropChance: 0.732
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 70df0ca7c63515c448942f43d7a5e5d0, type: 2}
+      dropChance: 0.732
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 54ec6762852e5d242831ba3eb3e96f3e, type: 2}
+      dropChance: 0.732
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 00fc9ae3389c1c14583d6ce5c5ff4a11, type: 2}
+      dropChance: 0.732
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: b0f6fc8eecff3bc48b9a4a99c765cc55, type: 2}
+      dropChance: 0.732
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 1be3f4420173de64da3b9a3232d244b8, type: 2}
+      dropChance: 0.732
+      minQuantity: 1
+      maxQuantity: 1
+  - rarity: 1
+    poolChance: 0.757
+    entries:
+    - item: {fileID: 11400000, guid: bef80f08e7b66924bb09167f978a817a, type: 2}
+      dropChance: 0
+      minQuantity: 1
+      maxQuantity: 0
+    - item: {fileID: 11400000, guid: 77b4281ad78d45d48b755df8e239900c, type: 2}
+      dropChance: 0
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: b363e4aecd2228d44a23ad73d3b5606b, type: 2}
+      dropChance: 0
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 049e97c16c7d215469910ff25df659e4, type: 2}
+      dropChance: 0
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: f304577680386a044a85d7c2c0396ff8, type: 2}
+      dropChance: 0
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 416613b65925b4340a86bd246d82fadc, type: 2}
+      dropChance: 0
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 416613b65925b4340a86bd246d82fadc, type: 2}
+      dropChance: 0
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 8a5d2e849ef685046a61ff7f38a79977, type: 2}
+      dropChance: 0
+      minQuantity: 1
+      maxQuantity: 1
+  - rarity: 2
+    poolChance: 0.506
+    entries:
+    - item: {fileID: 11400000, guid: 33a2af0af95fce049b5d33403e5a3f88, type: 2}
+      dropChance: 0.502
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 494df6fbae81d4c488f948bbfa251806, type: 2}
+      dropChance: 0.502
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 0a15f1521c3a9cf4bae6527bdd7b798c, type: 2}
+      dropChance: 0.502
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 2dd32808470ab324b8a20683435699c0, type: 2}
+      dropChance: 0.502
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 805d510556c41c049844ec364b6619f1, type: 2}
+      dropChance: 0.502
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 547a766318b7f2646838b4bb1538a380, type: 2}
+      dropChance: 0.502
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 9bf7faaaf7b1a3a42a515b9c067bf732, type: 2}
+      dropChance: 0.502
+      minQuantity: 1
+      maxQuantity: 1
+  - rarity: 3
+    poolChance: 0.301
+    entries:
+    - item: {fileID: 11400000, guid: 7c12d17960f37b64d833a98c8db73c8c, type: 2}
+      dropChance: 0.253
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: ceadf5c8566765f4391af8873a809dc7, type: 2}
+      dropChance: 0.253
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 33bfb7f225dc4334090f4195e77c0231, type: 2}
+      dropChance: 0.253
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 2bbdcc2713736f640b425f79099d69ea, type: 2}
+      dropChance: 0.253
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 36e9f37dbf437014f8b6927828b8d018, type: 2}
+      dropChance: 0.253
+      minQuantity: 1
+      maxQuantity: 1
 --- !u!1 &2037977204
 GameObject:
   m_ObjectHideFlags: 0
@@ -38685,12 +39012,128 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e084be463180ba3458b06806fefa6da3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyLoot
-  lootTable:
-  - item: {fileID: 11400000, guid: 547a766318b7f2646838b4bb1538a380, type: 2}
-    dropChance: 0.565
-    minQuantity: 1
-    maxQuantity: 1
-  maxDrops: 3
+  maxDrops: 2
+  rarityPools:
+  - rarity: 0
+    poolChance: 0.695
+    entries:
+    - item: {fileID: 11400000, guid: 28dbf38e06fe9ec4e85667d8d6412c12, type: 2}
+      dropChance: 0.732
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 6c35839ab1f879e47b753cca566d458c, type: 2}
+      dropChance: 0.732
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 70df0ca7c63515c448942f43d7a5e5d0, type: 2}
+      dropChance: 0.732
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 54ec6762852e5d242831ba3eb3e96f3e, type: 2}
+      dropChance: 0.732
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 00fc9ae3389c1c14583d6ce5c5ff4a11, type: 2}
+      dropChance: 0.732
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: b0f6fc8eecff3bc48b9a4a99c765cc55, type: 2}
+      dropChance: 0.732
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 1be3f4420173de64da3b9a3232d244b8, type: 2}
+      dropChance: 0.732
+      minQuantity: 1
+      maxQuantity: 1
+  - rarity: 1
+    poolChance: 0.757
+    entries:
+    - item: {fileID: 11400000, guid: bef80f08e7b66924bb09167f978a817a, type: 2}
+      dropChance: 0
+      minQuantity: 1
+      maxQuantity: 0
+    - item: {fileID: 11400000, guid: 77b4281ad78d45d48b755df8e239900c, type: 2}
+      dropChance: 0
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: b363e4aecd2228d44a23ad73d3b5606b, type: 2}
+      dropChance: 0
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 049e97c16c7d215469910ff25df659e4, type: 2}
+      dropChance: 0
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: f304577680386a044a85d7c2c0396ff8, type: 2}
+      dropChance: 0
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 416613b65925b4340a86bd246d82fadc, type: 2}
+      dropChance: 0
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 416613b65925b4340a86bd246d82fadc, type: 2}
+      dropChance: 0
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 8a5d2e849ef685046a61ff7f38a79977, type: 2}
+      dropChance: 0
+      minQuantity: 1
+      maxQuantity: 1
+  - rarity: 2
+    poolChance: 0.506
+    entries:
+    - item: {fileID: 11400000, guid: 33a2af0af95fce049b5d33403e5a3f88, type: 2}
+      dropChance: 0.502
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 494df6fbae81d4c488f948bbfa251806, type: 2}
+      dropChance: 0.502
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 0a15f1521c3a9cf4bae6527bdd7b798c, type: 2}
+      dropChance: 0.502
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 2dd32808470ab324b8a20683435699c0, type: 2}
+      dropChance: 0.502
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 805d510556c41c049844ec364b6619f1, type: 2}
+      dropChance: 0.502
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 547a766318b7f2646838b4bb1538a380, type: 2}
+      dropChance: 0.502
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 9bf7faaaf7b1a3a42a515b9c067bf732, type: 2}
+      dropChance: 0.502
+      minQuantity: 1
+      maxQuantity: 1
+  - rarity: 3
+    poolChance: 0.301
+    entries:
+    - item: {fileID: 11400000, guid: 7c12d17960f37b64d833a98c8db73c8c, type: 2}
+      dropChance: 0.253
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: ceadf5c8566765f4391af8873a809dc7, type: 2}
+      dropChance: 0.253
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 33bfb7f225dc4334090f4195e77c0231, type: 2}
+      dropChance: 0.253
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 2bbdcc2713736f640b425f79099d69ea, type: 2}
+      dropChance: 0.253
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 36e9f37dbf437014f8b6927828b8d018, type: 2}
+      dropChance: 0.253
+      minQuantity: 1
+      maxQuantity: 1
 --- !u!1 &2108516929
 GameObject:
   m_ObjectHideFlags: 0
@@ -39511,23 +39954,7 @@ PrefabInstance:
     - target: {fileID: 523443927166453827, guid: a231c98924f44b04097831ce1884129c, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -216791011, guid: 74f11f6a4abaed043b6915385908c219, type: 3}
-    - target: {fileID: 1670115824167167560, guid: a231c98924f44b04097831ce1884129c, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 71
-      objectReference: {fileID: 0}
-    - target: {fileID: 1670115824167167560, guid: a231c98924f44b04097831ce1884129c, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: 2036378991339521173, guid: a231c98924f44b04097831ce1884129c, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 33
-      objectReference: {fileID: 0}
-    - target: {fileID: 2036378991339521173, guid: a231c98924f44b04097831ce1884129c, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -11
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 61859784, guid: e83fe8ea3fa4b8949a7ed18619e3b887, type: 3}
     - target: {fileID: 5731764721714951367, guid: a231c98924f44b04097831ce1884129c, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -39608,89 +40035,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6604721723339485285, guid: a231c98924f44b04097831ce1884129c, type: 3}
-      propertyPath: m_overflowMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7384853272944485824, guid: a231c98924f44b04097831ce1884129c, type: 3}
-      propertyPath: _audioSource
-      value: 
-      objectReference: {fileID: 181289394}
-    - target: {fileID: 7384853272944485824, guid: a231c98924f44b04097831ce1884129c, type: 3}
-      propertyPath: _notificationSfx
-      value: 
-      objectReference: {fileID: 8300000, guid: 4b2e2cd9bf3337445b67c11faa99b146, type: 3}
-    - target: {fileID: 7521796709161754891, guid: a231c98924f44b04097831ce1884129c, type: 3}
-      propertyPath: m_Interactable
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7521796709161754891, guid: a231c98924f44b04097831ce1884129c, type: 3}
-      propertyPath: m_BlocksRaycasts
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7537511825995564937, guid: a231c98924f44b04097831ce1884129c, type: 3}
-      propertyPath: m_Type
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7537511825995564937, guid: a231c98924f44b04097831ce1884129c, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -994785231, guid: 10749917dba5cda4da3e66d2f1645b52, type: 3}
-    - target: {fileID: 7537511825995564937, guid: a231c98924f44b04097831ce1884129c, type: 3}
-      propertyPath: m_Color.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7537511825995564937, guid: a231c98924f44b04097831ce1884129c, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7537511825995564937, guid: a231c98924f44b04097831ce1884129c, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7537511825995564937, guid: a231c98924f44b04097831ce1884129c, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8047597223044888786, guid: a231c98924f44b04097831ce1884129c, type: 3}
-      propertyPath: m_fontSize
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 8047597223044888786, guid: a231c98924f44b04097831ce1884129c, type: 3}
-      propertyPath: m_fontSizeBase
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 8047597223044888786, guid: a231c98924f44b04097831ce1884129c, type: 3}
-      propertyPath: m_overflowMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8213398350440905925, guid: a231c98924f44b04097831ce1884129c, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8213398350440905925, guid: a231c98924f44b04097831ce1884129c, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8213398350440905925, guid: a231c98924f44b04097831ce1884129c, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 50
-      objectReference: {fileID: 0}
     - target: {fileID: 9222855336596659715, guid: a231c98924f44b04097831ce1884129c, type: 3}
       propertyPath: m_Name
       value: Quest Notification UI
       objectReference: {fileID: 0}
-    - target: {fileID: 9222855336596659715, guid: a231c98924f44b04097831ce1884129c, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 9222855336596659715, guid: a231c98924f44b04097831ce1884129c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 181289394}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a231c98924f44b04097831ce1884129c, type: 3}
 --- !u!1001 &1687247234289230713
 PrefabInstance:
@@ -39932,67 +40284,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1580241229}
   m_SourcePrefab: {fileID: 100100000, guid: b6a69787e588de548896ecb0c7340db7, type: 3}
---- !u!1001 &8422098382452734261
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1379123143991707320, guid: 710404aa7aa893647a9e2fa3669b5cde, type: 3}
-      propertyPath: m_Name
-      value: 'GroundItem '
-      objectReference: {fileID: 0}
-    - target: {fileID: 3842790468098844444, guid: 710404aa7aa893647a9e2fa3669b5cde, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 29.52251
-      objectReference: {fileID: 0}
-    - target: {fileID: 3842790468098844444, guid: 710404aa7aa893647a9e2fa3669b5cde, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 4.40217
-      objectReference: {fileID: 0}
-    - target: {fileID: 3842790468098844444, guid: 710404aa7aa893647a9e2fa3669b5cde, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 113.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 3842790468098844444, guid: 710404aa7aa893647a9e2fa3669b5cde, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3842790468098844444, guid: 710404aa7aa893647a9e2fa3669b5cde, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3842790468098844444, guid: 710404aa7aa893647a9e2fa3669b5cde, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3842790468098844444, guid: 710404aa7aa893647a9e2fa3669b5cde, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3842790468098844444, guid: 710404aa7aa893647a9e2fa3669b5cde, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3842790468098844444, guid: 710404aa7aa893647a9e2fa3669b5cde, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3842790468098844444, guid: 710404aa7aa893647a9e2fa3669b5cde, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5439331951673539077, guid: 710404aa7aa893647a9e2fa3669b5cde, type: 3}
-      propertyPath: glowVFX
-      value: 
-      objectReference: {fileID: 1335610283}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 710404aa7aa893647a9e2fa3669b5cde, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -40036,4 +40327,4 @@ SceneRoots:
   - {fileID: 1106751573}
   - {fileID: 1266232976}
   - {fileID: 1260121022}
-  - {fileID: 8422098382452734261}
+  - {fileID: 1960675334}

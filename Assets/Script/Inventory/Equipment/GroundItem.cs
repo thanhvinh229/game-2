@@ -30,6 +30,11 @@ public class GroundItem : MonoBehaviour
         if (!other.CompareTag("Player")) return;
         _playerNearby = true;
         GroundItemPickupUI.Instance?.ShowNearbyItem(this);
+
+        if (!other.CompareTag("Player")) return;
+    Debug.Log("Đã chạm vào item: " + item.itemName); // Thêm dòng này
+    _playerNearby = true;
+    GroundItemPickupUI.Instance?.ShowNearbyItem(this);
     }
  
     void OnTriggerExit(Collider other)

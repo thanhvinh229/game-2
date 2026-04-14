@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 1379123143991707320}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 29.52251, y: 4.40217, z: 113.7}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -142,15 +142,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2255138991945796436, guid: c8314cd4fe1ed1442a6c922c4ea202a2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1599.9775
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2255138991945796436, guid: c8314cd4fe1ed1442a6c922c4ea202a2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 547.62286
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2255138991945796436, guid: c8314cd4fe1ed1442a6c922c4ea202a2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -113.7
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2255138991945796436, guid: c8314cd4fe1ed1442a6c922c4ea202a2, type: 3}
       propertyPath: m_LocalRotation.w
@@ -183,6 +183,18 @@ PrefabInstance:
     - target: {fileID: 4258708312726045457, guid: c8314cd4fe1ed1442a6c922c4ea202a2, type: 3}
       propertyPath: m_Name
       value: Glow item VFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 8439339101654859439, guid: c8314cd4fe1ed1442a6c922c4ea202a2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8439339101654859439, guid: c8314cd4fe1ed1442a6c922c4ea202a2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8439339101654859439, guid: c8314cd4fe1ed1442a6c922c4ea202a2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

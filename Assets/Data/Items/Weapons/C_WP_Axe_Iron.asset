@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 688853c544000bf4496684ccac8fb62b, type: 3}
+  m_Name: C_WP_Axe_Iron
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemId: WP_Axe_Iron
+  itemName: "[C] R\xECu S\u1EAFt"
+  description: "V\u0169 kh\xED c\u1EE7a chi\u1EBFn binh. N\u1EB7ng nh\u01B0ng s\u1EE9c
+    c\xF4ng ph\xE1 kinh kh\u1EE7ng."
+  icon: {fileID: 21300000, guid: 3971c5b0624abbd469aa40f9d8818232, type: 3}
+  type: 0
+  equipSlot: 5
+  rarity: 0
+  isStackable: 0
+  maxStackSize: 1
+  weight: 5
+  value: 120
+  stats:
+  - statName: Attack
+    value: 24

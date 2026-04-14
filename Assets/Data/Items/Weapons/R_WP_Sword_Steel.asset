@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 688853c544000bf4496684ccac8fb62b, type: 3}
+  m_Name: R_WP_Sword_Steel
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemId: WP_Sword_Steel
+  itemName: "[R] Ki\u1EBFm Th\xE9p"
+  description: "\u0110\u01B0\u1EE3c r\xE8n t\u1EEB th\xE9p t\u1ED1t, l\u01B0\u1EE1i
+    ki\u1EBFm b\xE9n v\xE0 ch\u1EAFc ch\u1EAFn."
+  icon: {fileID: 1301320578, guid: 74f11f6a4abaed043b6915385908c219, type: 3}
+  type: 0
+  equipSlot: 5
+  rarity: 2
+  isStackable: 0
+  maxStackSize: 1
+  weight: 3.2
+  value: 250
+  stats:
+  - statName: Attack
+    value: 30

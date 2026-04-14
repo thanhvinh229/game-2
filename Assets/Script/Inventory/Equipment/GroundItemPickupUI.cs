@@ -9,10 +9,10 @@ public class GroundItemPickupUI : MonoBehaviour
  
     [Header("References")]
     [SerializeField] private GameObject panel;
-    [SerializeField] private Transform  itemListContainer; // ItemListContainer
-    [SerializeField] private GameObject rowPrefab;         // RowPrefab
+    [SerializeField] private Transform  itemListContainer;
+    [SerializeField] private GameObject rowPrefab;
  
-    [Header("Phím nhặt từng cái")]
+    [Header("Settings")]
     [SerializeField] private KeyCode pickupKey = KeyCode.F;
  
     private List<GroundItem> _nearbyItems = new();
@@ -28,105 +28,86 @@ public class GroundItemPickupUI : MonoBehaviour
     void Update()
     {
         if (_nearbyItems.Count == 0) return;
- 
-        // Mỗi lần nhấn F → nhặt item đầu tiên trong danh sách
-        if (Input.GetKeyDown(pickupKey))
-            PickupFirst();
+        if (Input.GetKeyDown(pickupKey)) PickupFirst();
     }
  
-    // Gọi khi player vào gần GroundItem
     public void ShowNearbyItem(GroundItem item)
     {
-        if (!_nearbyItems.Contains(item))
-            _nearbyItems.Add(item);
+        if (!_nearbyItems.Contains(item)) _nearbyItems.Add(item);
+        _nearbyItems.Sort((a, b) => b.item.rarity.CompareTo(a.item.rarity));
         Refresh();
     }
  
-    // Gọi khi player ra xa hoặc item đã được nhặt
     public void HideItem(GroundItem item)
     {
-        _nearbyItems.Remove(item);
+        if (_nearbyItems.Contains(item)) _nearbyItems.Remove(item);
         Refresh();
     }
  
-    // Nhặt item đầu tiên trong danh sách (nhấn F)
-    void PickupFirst()
+    private void PickupFirst()
     {
-        if (_nearbyItems.Count == 0) return;
-        var first = _nearbyItems[0];
-        if (first != null)
-            first.Pickup(); // Pickup() tự gọi HideItem → Refresh
+        if (_nearbyItems.Count > 0) _nearbyItems[0].Pickup();
     }
  
-    void Refresh()
+    private void Refresh()
     {
-        // Xóa rows cũ
-        foreach (var r in _rows) Destroy(r);
+        foreach (var r in _rows) if (r != null) Destroy(r);
         _rows.Clear();
  
-        // Ẩn panel nếu không còn item
-        if (_nearbyItems.Count == 0)
-        {
-            panel.SetActive(false);
-            return;
-        }
- 
+        if (_nearbyItems.Count == 0) { panel.SetActive(false); return; }
         panel.SetActive(true);
  
         for (int i = 0; i < _nearbyItems.Count; i++)
         {
-            var groundItem = _nearbyItems[i];
-            if (groundItem == null) continue;
- 
-            var row = Instantiate(rowPrefab, itemListContainer);
-            SetupRow(row, groundItem, i == 0); // item đầu tiên = sẽ nhặt khi nhấn F
+            var gi   = _nearbyItems[i];
+            var item = gi.item;
+            var row  = Instantiate(rowPrefab, itemListContainer);
             _rows.Add(row);
+ 
+            // 1. Thanh màu (RarityBar)
+            var bar = row.transform.Find("RarityBar")?.GetComponent<Image>();
+            if (bar != null) bar.color = item.RarityColor;
+ 
+            // 2. InfoContainer
+            Transform info = row.transform.Find("InfoContainer");
+            if (info == null) continue;
+ 
+            // ✅ FIX: Kiểm tra icon trước, dùng SetActive thay vì enabled
+            var iconImg = info.Find("ItemIcon")?.GetComponent<Image>();
+            if (iconImg != null)
+            {
+                if (item.icon != null)
+                {
+                    iconImg.sprite = item.icon;
+                    iconImg.color  = Color.white; // đảm bảo alpha = 1, không bị trong suốt
+                    iconImg.gameObject.SetActive(true);
+                }
+                else
+                {
+                    iconImg.gameObject.SetActive(false); // ẩn hẳn, tránh hiện ô trắng
+                    Debug.LogWarning($"[PickupUI] Item '{item.itemName}' không có icon!");
+                }
+            }
+ 
+            // Tên item
+            var nameTxt = info.Find("ItemNameText")?.GetComponent<TextMeshProUGUI>();
+            if (nameTxt != null)
+            {
+                nameTxt.text  = item.itemName;
+                nameTxt.color = item.RarityColor;
+            }
+ 
+            // Text phụ (rarity · type · số lượng)
+            var subTxt = info.Find("ItemSubText")?.GetComponent<TextMeshProUGUI>();
+            if (subTxt != null)
+            {
+                string qty  = gi.quantity > 1 ? $" · x{gi.quantity}" : "";
+                subTxt.text = $"{item.rarity} · {item.type}{qty}";
+            }
+ 
+            // Gợi ý phím F chỉ hiện ở item đầu tiên
+            var fHint = info.Find("FHint");
+            if (fHint != null) fHint.gameObject.SetActive(i == 0);
         }
     }
- 
-    void SetupRow(GameObject row, GroundItem groundItem, bool isNext)
-    {
-        var item = groundItem.item;
-        if (item == null) return;
- 
-        // Icon
-        var icon = row.transform.Find("IconContainer/ItemIcon")
-                               ?.GetComponent<Image>();
-        if (icon != null && item.icon != null)
-            icon.sprite = item.icon;
- 
-        // Tên item
-        var nameText = row.transform.Find("InfoContainer/ItemNameText")
-                                   ?.GetComponent<TextMeshProUGUI>();
-        if (nameText != null) nameText.text = item.itemName;
- 
-        // Sub text: loại + số lượng
-        var subText = row.transform.Find("InfoContainer/ItemSubText")
-                                  ?.GetComponent<TextMeshProUGUI>();
-        if (subText != null)
-            subText.text = groundItem.quantity > 1
-                ? $"{item.type}  ·  x{groundItem.quantity}"
-                : item.type.ToString();
- 
-        // Màu theo độ hiếm
-        Color rarityColor = item.type switch {
-            ItemType.Weapon   => new Color(0.65f, 0.55f, 0.98f), // tím
-            ItemType.Armor    => new Color(0.20f, 0.83f, 0.60f), // xanh lá
-            ItemType.Quest    => new Color(1.00f, 0.80f, 0.20f), // vàng
-            _                 => new Color(0.61f, 0.64f, 0.67f)  // xám
-        };
- 
-        var bar = row.transform.Find("RarityBar")?.GetComponent<Image>();
-        if (bar != null) bar.color = rarityColor;
-        if (nameText != null) nameText.color = rarityColor;
- 
-        // // Hint [F] chỉ hiện ở item đầu tiên
-        // var fHint = row.transform.Find("FHint")?.GetComponent<TextMeshProUGUI>();
-        // if (fHint != null) fHint.gameObject.SetActive(isNext);
- 
-        // Nút Nhặt → nhặt riêng item này
-        var btn = row.GetComponentInChildren<Button>();
-        var captured = groundItem;
-        btn?.onClick.AddListener(() => captured.Pickup());
-    }
-}   
+}
