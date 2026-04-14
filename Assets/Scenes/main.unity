@@ -13511,6 +13511,84 @@ Transform:
   m_Children: []
   m_Father: {fileID: 49350428}
   m_LocalEulerAnglesHint: {x: -5049.004, y: 668.023, z: -11663.308}
+--- !u!1001 &1083427585
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1351863497}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: e880d5049f20d254b93146e71d85725b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.49999988
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e880d5049f20d254b93146e71d85725b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.49999982
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e880d5049f20d254b93146e71d85725b, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.49999988
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e880d5049f20d254b93146e71d85725b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.26276162
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e880d5049f20d254b93146e71d85725b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.13843149
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e880d5049f20d254b93146e71d85725b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.06627674
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e880d5049f20d254b93146e71d85725b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.09073906
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e880d5049f20d254b93146e71d85725b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.69084775
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e880d5049f20d254b93146e71d85725b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.23817612
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e880d5049f20d254b93146e71d85725b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.67658556
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e880d5049f20d254b93146e71d85725b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e880d5049f20d254b93146e71d85725b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -1173.276
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e880d5049f20d254b93146e71d85725b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: e880d5049f20d254b93146e71d85725b, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: ce306bf0d27a39d4db30a79037618ebe, type: 2}
+    - target: {fileID: 919132149155446097, guid: e880d5049f20d254b93146e71d85725b, type: 3}
+      propertyPath: m_Name
+      value: Chevalier Sword
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e880d5049f20d254b93146e71d85725b, type: 3}
+--- !u!4 &1083427586 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e880d5049f20d254b93146e71d85725b, type: 3}
+  m_PrefabInstance: {fileID: 1083427585}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1094635006
 GameObject:
   m_ObjectHideFlags: 0
@@ -25547,6 +25625,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1351863497 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 234480625599603528, guid: 2e7e625066891e1478e19fcd71a16acc, type: 3}
+  m_PrefabInstance: {fileID: 1960675334}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1352683380
 GameObject:
   m_ObjectHideFlags: 0
@@ -37587,7 +37670,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2e7e625066891e1478e19fcd71a16acc, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 63.398
+      value: 62.44
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2e7e625066891e1478e19fcd71a16acc, type: 3}
       propertyPath: m_LocalRotation.w
@@ -37617,9 +37700,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 234480625599603528, guid: 2e7e625066891e1478e19fcd71a16acc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.015
+      objectReference: {fileID: 0}
+    - target: {fileID: 234480625599603528, guid: 2e7e625066891e1478e19fcd71a16acc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.032
+      objectReference: {fileID: 0}
+    - target: {fileID: 234480625599603528, guid: 2e7e625066891e1478e19fcd71a16acc, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.01
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 2e7e625066891e1478e19fcd71a16acc, type: 3}
       propertyPath: m_Name
-      value: tripo_convert_ab0cf423-dd83-4d3f-88b8-cf612e9040f0
+      value: old-rusty-spike-armor
       objectReference: {fileID: 0}
     - target: {fileID: 2422988136700911538, guid: 2e7e625066891e1478e19fcd71a16acc, type: 3}
       propertyPath: m_LocalPosition.x
@@ -37631,7 +37726,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 234480625599603528, guid: 2e7e625066891e1478e19fcd71a16acc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1083427586}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e7e625066891e1478e19fcd71a16acc, type: 3}
 --- !u!1 &1973175156
