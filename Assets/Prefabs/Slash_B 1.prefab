@@ -4933,7 +4933,6 @@ GameObject:
   - component: {fileID: 7611201976539897826}
   - component: {fileID: 7611201976539897827}
   - component: {fileID: 6741552542322537081}
-  - component: {fileID: -6549771861326365502}
   m_Layer: 0
   m_Name: Slash_B 1
   m_TagString: Untagged
@@ -9787,22 +9786,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &-6549771861326365502
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7611201976539897820}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7696d7fb7e325414bbd114c0042827d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Projectile
-  damage: 20
-  speed: 10
-  lifetime: 2
-  hitEffect: {fileID: 2955623459812423943, guid: f5507a8c6a22c404ab324980c4e8a11b, type: 3}
 --- !u!1 &7611201976670226618
 GameObject:
   m_ObjectHideFlags: 0

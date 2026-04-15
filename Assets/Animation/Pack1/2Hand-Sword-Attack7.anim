@@ -95822,7 +95822,7 @@ AnimationClip:
     intParameter: 1
     messageOptions: 0
   - time: 0.53333336
-    functionName: LaunchProjectile
+    functionName: OnSlashArc
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

@@ -9,10 +9,10 @@ public class SkillSlot
     
     [HideInInspector] 
     public float nextAvailableTime = 0f; // Thời gian runtime, nằm ngoài Scriptable Object
-
+ 
     public LayerMask Enemy;
 }
-
+ 
 public class PlayerSkills : MonoBehaviour
 {
     [Header("References")]
@@ -126,7 +126,7 @@ public class PlayerSkills : MonoBehaviour
         foreach (Collider Enemy in hitEnemies)
         {
             if (Enemy.CompareTag("Player")) continue;
-
+ 
             IDamageable damageable = Enemy.GetComponent<IDamageable>();
              if (damageable != null)
         {
@@ -159,28 +159,73 @@ public class PlayerSkills : MonoBehaviour
  
     // --- ANIMATION EVENTS ---
  
-    // Gọi cho Skill 1
-    public void LaunchProjectile()
+    // Gọi cho Skill 1 — Chém vùng rộng hình cung trước mặt
+    [Header("Slash Arc Settings")]
+    [Tooltip("Bán kính chém (m)")]
+    public float slashRadius = 4f;
+    [Tooltip("Góc cung chém (độ), ví dụ 120 = quạt 120° trước mặt")]
+    [Range(10f, 360f)]
+    public float slashAngle = 120f;
+    [Tooltip("Thời gian freeze frame khi chém trúng (giây)")]
+    public float slashFreezeFrameDuration = 0.05f;
+    [Tooltip("Offset xoay VFX (độ). Chỉnh nếu VFX bị ngược hoặc lệch hướng")]
+    public Vector3 vfxRotationOffset = new Vector3(0f, 180f, 0f);
+ 
+    public void OnSlashArc()
     {
-        if (currentActiveSkill != null && currentActiveSkill.vfxPrefab != null && hitPoint != null) 
+        if (currentActiveSkill == null) return;
+ 
+        // 1. Spawn VFX tại hitPoint (hoặc gốc nhân vật nếu không có)
+        Vector3 vfxOrigin = hitPoint != null ? hitPoint.position : transform.position;
+        if (currentActiveSkill.vfxPrefab != null)
         {
-       GameObject projectile = Instantiate(currentActiveSkill.vfxPrefab, hitPoint.position, Quaternion.identity); 
-        
-        Rigidbody rb = projectile.GetComponent<Rigidbody>();
-        if (rb != null) 
-        {
-            // Sử dụng linearVelocity cho Unity 6
-            rb.linearVelocity = transform.rotation * transform.forward * 15f; 
+            // Xoay theo hướng nhân vật + offset để căn chỉnh VFX cho đúng
+            Quaternion vfxRot = transform.rotation * Quaternion.Euler(vfxRotationOffset);
+            Instantiate(currentActiveSkill.vfxPrefab, vfxOrigin, vfxRot);
         }
-        Destroy(projectile, 4f);
-       }
+ 
+        if (currentActiveSkill.isBuffSkill) return;
+ 
+        // 2. Lấy tất cả collider trong bán kính chém
+        int enemyLayer = LayerMask.GetMask("Enemy");
+        Collider[] candidates = Physics.OverlapSphere(vfxOrigin, slashRadius, enemyLayer);
+ 
+        bool hitAny = false;
+        foreach (Collider col in candidates)
+        {
+            if (col.CompareTag("Player")) continue;
+ 
+            // 3. Lọc theo góc cung — chỉ kẻ địch nằm trong vùng quạt trước mặt
+            Vector3 dirToEnemy = (col.transform.position - transform.position).normalized;
+            float dot          = Vector3.Dot(transform.forward, dirToEnemy);
+            float halfAngleCos = Mathf.Cos(slashAngle * 0.5f * Mathf.Deg2Rad);
+ 
+            if (dot < halfAngleCos) continue; // Nằm ngoài cung → bỏ qua
+ 
+            // 4. Gây sát thương (dùng Attack thật của player)
+            IDamageable damageable = col.GetComponent<IDamageable>();
+            if (damageable != null)
+            {
+                float baseDmg = playerStats != null ? playerStats.Attack : 10f;
+                damageable.TakeDamage(baseDmg * currentActiveSkill.damageMultiplier);
+ 
+                if (audioSource != null && currentActiveSkill.hitSound != null)
+                    audioSource.PlayOneShot(currentActiveSkill.hitSound);
+ 
+                hitAny = true;
+            }
+        }
+ 
+        // 5. Freeze frame game feel khi chém trúng ít nhất 1 kẻ
+        if (hitAny)
+            RequestFreezeFrame(slashFreezeFrameDuration);
     }
  
     // Gọi cho Skill 2
     public void ActivateBuff()
     {
         if (currentActiveSkill == null) return;
-
+ 
         // Thêm hiệu ứng hào quang
         OnBuff();
         Instantiate(currentActiveSkill.vfxPrefab, transform.position, Quaternion.identity, transform);
@@ -191,24 +236,24 @@ public class PlayerSkills : MonoBehaviour
     public void OnAOEHit()
     {
     if (currentActiveSkill == null) return;
-
+ 
     if (currentActiveSkill.vfxPrefab != null)
         Instantiate(currentActiveSkill.vfxPrefab, transform.position, Quaternion.identity);
-
+ 
     // KIỂM TRA: Nếu là chiêu Buff thì KHÔNG  gây sát thương 
     if (currentActiveSkill.isBuffSkill) return;
-
+ 
     // Chỉ quái vật mới nhận sát thương
     int enemyLayer = LayerMask.GetMask("Enemy");
     Collider[] enemies = Physics.OverlapSphere(transform.position, 6f, enemyLayer);
     foreach (Collider e in enemies)
     {
          if (e.CompareTag("Player") || e.gameObject == this.gameObject) continue;
-
+ 
         IDamageable d = e.GetComponent<IDamageable>();
         if (d != null) d.TakeDamage(20f * currentActiveSkill.damageMultiplier);
     }
 }
-
+ 
     
 }

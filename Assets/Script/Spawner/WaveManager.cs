@@ -20,10 +20,24 @@ public class WaveManager : MonoBehaviour
     [Header("Spawn Settings")]
     public Transform[] spawnPoints; // Kéo thả các Empty Object nằm ngoài rìa map vào đây
     
-    [Header("Events & UI")]
+    [Header("Events & Status UI")]
     public EnemyDeathEventChannel deathEventChannel; // Kéo SO Event Channel của bạn vào đây
-    public TextMeshProUGUI waveStatusText;
-    public WaveStarter waveStarterObject; // Object tảng đá tương tác
+    public TextMeshProUGUI waveStatusText;           // Text hiển thị góc màn hình (VD: Wave 1: 5/10)
+    public WaveStarter waveStarterObject;            // Object tảng đá tương tác
+
+    [Header("Announcement UI (Chữ lớn giữa màn hình)")]
+    public TextMeshProUGUI waveAnnounceText; 
+    public CanvasGroup announcementCanvasGroup;      // Thêm component Canvas Group vào UI Text để làm mờ
+    public Color normalWaveColor = Color.white;
+    public Color victoryColor = Color.yellow;
+    public Color defeatColor = Color.red;
+
+    [Header("Audio Settings")]
+    public AudioSource audioSource;
+    public AudioClip warHornClip;      // Tiếng tù và khi bắt đầu (WAVE X)
+    public AudioClip waveCompleteClip; // Tiếng khi xong màn 1-9 (Tùy chọn)
+    public AudioClip victoryClip;      // Nhạc chiến thắng màn 10
+    public AudioClip defeatClip;       // Nhạc thất bại
 
     private int _enemiesKilled;
     private int _enemiesToKill;
@@ -50,10 +64,10 @@ public class WaveManager : MonoBehaviour
     {
         if (_waveIsActive || currentWaveIndex >= waves.Length) return;
         
-        StartCoroutine(SpawnWaveRoutine());
+        StartCoroutine(StartWaveRoutine());
     }
 
-    private IEnumerator SpawnWaveRoutine()
+    private IEnumerator StartWaveRoutine()
     {
         _waveIsActive = true;
         Wave currentWave = waves[currentWaveIndex];
@@ -62,6 +76,9 @@ public class WaveManager : MonoBehaviour
         _enemiesKilled = 0;
         
         UpdateUI($"Đang chiến đấu: {currentWave.waveName} ({_enemiesKilled}/{_enemiesToKill})");
+
+        // Gọi UI và âm thanh thông báo bắt đầu màn
+        yield return StartCoroutine(ShowAnnouncement($"WAVE {currentWaveIndex + 1}", normalWaveColor, warHornClip, false));
 
         for (int i = 0; i < currentWave.totalEnemies; i++)
         {
@@ -80,10 +97,7 @@ public class WaveManager : MonoBehaviour
     {
         if (!_waveIsActive) return;
 
-        // Lưu ý: Ở đây ta đếm mọi con quái chết, không phân biệt enemyType. 
-        // Nếu màn chơi yêu cầu giết một loại quái cụ thể, bạn có thể thêm if check ở đây.
         _enemiesKilled++;
-        
         Wave currentWave = waves[currentWaveIndex];
         UpdateUI($"Đang chiến đấu: {currentWave.waveName} ({_enemiesKilled}/{_enemiesToKill})");
 
@@ -96,18 +110,137 @@ public class WaveManager : MonoBehaviour
     private void EndWave()
     {
         _waveIsActive = false;
-        currentWaveIndex++;
-
-        if (currentWaveIndex >= waves.Length)
+        
+        // Kiểm tra xem đây có phải là màn 10 (index 9) không
+        if (currentWaveIndex >= waves.Length - 1)
         {
-            UpdateUI("CHIẾN THẮNG!");
-            // Gọi các logic kết thúc game ở đây
+            StartCoroutine(ShowVictoryEffect());
         }
         else
         {
-            UpdateUI("Vượt ải thành công! Tương tác với Tảng Đá để tiếp tục.");
-            waveStarterObject.EnableInteraction(); // Bật lại tảng đá cho màn sau
+            currentWaveIndex++;
+            StartCoroutine(ShowWaveCompleteEffect());
+            waveStarterObject.EnableInteraction();
         }
+    }
+
+    // Hàm này gọi khi Player hết máu (Defeat)
+    public void TriggerDefeat()
+    {
+        _waveIsActive = false;
+        StopAllCoroutines(); // Ngay lập tức dừng sinh quái
+        StartCoroutine(ShowAnnouncement("DEFEAT", defeatColor, defeatClip, true));
+    }
+
+    // --- CÁC HÀM XỬ LÝ HIỆU ỨNG UI & AUDIO ---
+
+    // 1. Hiệu ứng Fade In/Out dùng cho WAVE X và DEFEAT
+    private IEnumerator ShowAnnouncement(string text, Color textColor, AudioClip clip, bool isDefeat)
+    {
+        if (waveAnnounceText == null || announcementCanvasGroup == null) yield break;
+
+        waveAnnounceText.text = text;
+        waveAnnounceText.color = textColor;
+        
+        if (audioSource != null && clip != null)
+            audioSource.PlayOneShot(clip);
+
+        // Nếu là Thất bại, làm chậm game (Slow Motion)
+        if (isDefeat) Time.timeScale = 0.5f;
+
+        announcementCanvasGroup.alpha = 0;
+        waveAnnounceText.transform.localScale = Vector3.one * 0.8f;
+        waveAnnounceText.gameObject.SetActive(true);
+        
+        float elapsed = 0f;
+        float duration = 0.5f;
+
+        // Hiệu ứng Fade In
+        while (elapsed < duration)
+        {
+            elapsed += Time.unscaledDeltaTime; // Dùng unscaled để Slow Motion không làm lỗi animation UI
+            float percent = elapsed / duration;
+            announcementCanvasGroup.alpha = percent;
+            waveAnnounceText.transform.localScale = Vector3.Lerp(Vector3.one * 0.8f, Vector3.one, percent);
+            yield return null;
+        }
+
+        yield return new WaitForSecondsRealtime(2f);
+
+        // Nếu Game Over, giữ nguyên chữ DEFEAT. Nếu không thì Fade Out.
+        if (!isDefeat)
+        {
+            elapsed = 0f;
+            while (elapsed < duration)
+            {
+                elapsed += Time.deltaTime;
+                announcementCanvasGroup.alpha = 1 - (elapsed / duration);
+                yield return null;
+            }
+            waveAnnounceText.gameObject.SetActive(false);
+        }
+    }
+
+    // 2. Hiệu ứng hoàn thành màn bình thường (1-9)
+    private IEnumerator ShowWaveCompleteEffect()
+    {
+        if (waveAnnounceText == null) yield break;
+
+        if (audioSource != null && waveCompleteClip != null)
+            audioSource.PlayOneShot(waveCompleteClip);
+
+        waveAnnounceText.text = "WAVE COMPLETE";
+        waveAnnounceText.color = normalWaveColor;
+        waveAnnounceText.gameObject.SetActive(true);
+        
+        if(announcementCanvasGroup != null) announcementCanvasGroup.alpha = 1f;
+
+        // Hiệu ứng phóng to nhẹ chữ
+        waveAnnounceText.transform.localScale = Vector3.one * 0.5f;
+        float timer = 0;
+        while (timer < 0.5f)
+        {
+            timer += Time.deltaTime;
+            waveAnnounceText.transform.localScale = Vector3.Lerp(Vector3.one * 0.5f, Vector3.one, timer / 0.5f);
+            yield return null;
+        }
+
+        yield return new WaitForSeconds(1.5f);
+        waveAnnounceText.gameObject.SetActive(false);
+    }
+
+    // 3. Hiệu ứng đặc biệt cho màn 10 (Chiến thắng cuối cùng)
+    private IEnumerator ShowVictoryEffect()
+    {
+        if (waveAnnounceText == null) yield break;
+
+        if (audioSource != null && victoryClip != null)
+            audioSource.PlayOneShot(victoryClip);
+
+        waveAnnounceText.text = "VICTORY";
+        waveAnnounceText.color = victoryColor;
+        waveAnnounceText.gameObject.SetActive(true);
+        
+        if(announcementCanvasGroup != null) announcementCanvasGroup.alpha = 1f;
+
+        // Hiệu ứng chữ nhấp nháy hoặc rung lắc (Shake)
+        Vector3 originalPos = waveAnnounceText.transform.localPosition;
+        float elapsed = 0f;
+        while (elapsed < 3f) // Hiệu ứng kéo dài 3 giây
+        {
+            float x = Random.Range(-5f, 5f);
+            float y = Random.Range(-5f, 5f);
+            waveAnnounceText.transform.localPosition = new Vector3(originalPos.x + x, originalPos.y + y, originalPos.z);
+            
+            // Đổi kích thước liên tục tạo hiệu ứng nhấn mạnh
+            waveAnnounceText.transform.localScale = Vector3.one * (1f + Mathf.Sin(Time.time * 10f) * 0.1f);
+            
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+        
+        waveAnnounceText.transform.localPosition = originalPos;
+        waveAnnounceText.text = "BẠN ĐÃ CHINH PHỤC THỬ THÁCH!";
     }
 
     private void UpdateUI(string message)
