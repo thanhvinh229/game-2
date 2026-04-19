@@ -19,33 +19,54 @@ public class ItemDropManager : MonoBehaviour
     }
  
     public void DropItem(ItemData item, int quantity = 1, Vector3 spawnPos = default)
-{
-    if (item == null || groundItemPrefab == null) return;
-
-    Vector3 dropPos;
-
-    // Nếu spawnPos không được truyền vào (bằng zero), thì mới tìm player
-    if (spawnPos == Vector3.zero)
     {
-        var player = GameObject.FindWithTag("Player");
-        dropPos = player != null 
-            ? player.transform.position + player.transform.forward * dropDistance 
-            : Vector3.zero;
-    }
-    else
-    {
-        // Nếu có vị trí quái chết, cho rơi tại đó
-        dropPos = spawnPos;
-    }
+        if (item == null || groundItemPrefab == null) return;
 
-    dropPos += Vector3.up * dropHeight; // Cộng thêm độ cao để item không lún dưới đất
+        Vector3 baseDropPos;
 
-    var go = Instantiate(groundItemPrefab, dropPos, Quaternion.identity);
-    var gi = go.GetComponent<GroundItem>();
-    if (gi != null)
-    {
-        gi.item = item;
-        gi.quantity = quantity;
+        // 1. Xác định tâm rơi (vị trí quái hoặc trước mặt player)
+        if (spawnPos == Vector3.zero)
+        {
+            var player = GameObject.FindWithTag("Player");
+            baseDropPos = player != null 
+                ? player.transform.position + player.transform.forward * dropDistance 
+                : Vector3.zero;
+        }
+        else
+        {
+            baseDropPos = spawnPos;
+        }
+
+        // --- 2. TẠO VỊ TRÍ RƠI RANDOM XUNG QUANH TÂM ---
+        // Tạo một điểm ngẫu nhiên trong vòng tròn bán kính 1 mét
+        Vector2 randomCircle = Random.insideUnitCircle * 1.0f; 
+        
+        Vector3 finalDropPos = new Vector3(
+            baseDropPos.x + randomCircle.x,
+            baseDropPos.y + dropHeight, // Cộng thêm độ cao để không lún đất
+            baseDropPos.z + randomCircle.y
+        );
+
+        // 3. Tạo item tại vị trí ĐÃ LỆCH
+        var go = Instantiate(groundItemPrefab, finalDropPos, Quaternion.identity);
+        var gi = go.GetComponent<GroundItem>();
+        if (gi != null)
+        {
+            gi.item = item;
+            gi.quantity = quantity;
+        }
+
+        // 4. Vẫn cho nảy nhẹ lên trên một chút cho sinh động
+        Rigidbody rb = go.GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            // Tạo hướng nảy lên trên và hơi văng ra xa tâm một chút
+            Vector3 popDirection = new Vector3(randomCircle.x, 2f, randomCircle.y).normalized;
+            
+            // Tự động tính lực dựa trên Mass (Nếu Mass=50 thì lực sẽ tự nhân lên cho đủ mạnh)
+            float popForce = rb.mass * 4f; 
+            
+            rb.AddForce(popDirection * popForce, ForceMode.Impulse);
+        }
     }
-}
 }

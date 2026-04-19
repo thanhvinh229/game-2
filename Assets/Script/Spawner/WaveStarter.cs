@@ -1,35 +1,60 @@
 using UnityEngine;
+using TMPro;
 
 public class WaveStarter : MonoBehaviour
 {
     public WaveManager waveManager;
-    private bool _canInteract = true;
+    public TextMeshProUGUI interactText; // Kéo thả cái Text "Ấn F để bắt đầu" vào đây
+    private bool _canInteract = false;
+    private bool _isWaveRunning = false;
 
-    // Hàm này được gọi khi người chơi bấm nút tương tác (hoặc OnTriggerEnter)
-    public void Interact()
+    void Start()
     {
-        if (_canInteract)
+        if (interactText != null) interactText.gameObject.SetActive(false);
+    }
+
+    void Update()
+    {
+        // Chỉ cho phép ấn F khi đang đứng gần và Wave chưa chạy
+        if (_canInteract && !_isWaveRunning)
         {
-            _canInteract = false;
-            waveManager.StartWave();
-            Debug.Log("Bắt đầu đợt quái mới!");
-            
-            // Bạn có thể thêm Audio phát âm thanh đá ma thuật ở đây để tăng độ "đã"
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                StartChallenge();
+            }
         }
     }
 
-    // WaveManager sẽ gọi hàm này khi dọn sạch quái
-    public void EnableInteraction()
+    private void StartChallenge()
     {
-        _canInteract = true;
+        _isWaveRunning = true;
+        if (interactText != null) interactText.gameObject.SetActive(false); // Ẩn text ngay khi bắt đầu
+        waveManager.StartWave();
     }
 
-    // Ví dụ đơn giản: Tự động chạy màn khi người chơi chạm vào collider của Tảng đá
+    // Hàm này để WaveManager gọi lại khi xong Wave (để cho phép ấn tiếp Wave sau)
+    public void EnableInteraction()
+    {
+        _isWaveRunning = false;
+        // Nếu người chơi vẫn đang đứng trong vùng va chạm thì hiện lại text
+        if (_canInteract) interactText.gameObject.SetActive(true);
+    }
+
     private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player") && !_isWaveRunning)
+        {
+            _canInteract = true;
+            if (interactText != null) interactText.gameObject.SetActive(true);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            Interact();
+            _canInteract = false;
+            if (interactText != null) interactText.gameObject.SetActive(false);
         }
     }
 }

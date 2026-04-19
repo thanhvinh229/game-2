@@ -139,25 +139,25 @@ public class PlayerCombatState : PlayerMoveState
  
     void HandleComboAttack()
     {
-        if (comboCoolingDown) return;
- 
-        // Reset bộ đếm mỗi lần thực sự thực hiện đòn
-        lastCombatActionTime = Time.time;
- 
-        comboStep++;
-        comboTimer = COMBO_RESET_TIME;
- 
-        ResetAllAttackTriggers();
-        player.animator.SetTrigger("attack" + comboStep);
- 
-        if (comboStep >= MAX_COMBO)
-        {
-            comboCoolingDown = true;
-            comboTimer = COMBO_COOLDOWN;
-            comboStep = 0;
-        }
+    if (comboCoolingDown) return;
+
+    lastCombatActionTime = Time.time;
+    comboStep++;
+    comboTimer = COMBO_RESET_TIME;
+
+    ResetAllAttackTriggers();
+    player.animator.applyRootMotion = true;
+    player.animator.SetTrigger("attack" + comboStep);
+
+    if (comboStep >= MAX_COMBO)
+    {
+        comboCoolingDown = true;
+        comboTimer = COMBO_COOLDOWN;
+        comboStep = 0;
+        // Có thể tắt sau khi đòn 3 hoàn tất hoàn toàn
+        player.StartCoroutine(DisableRootMotionAfterDelay(1.5f)); 
     }
- 
+}
     void UpdateComboTimer()
     {
         if (comboTimer <= 0f) return;
@@ -250,6 +250,12 @@ public class PlayerCombatState : PlayerMoveState
         player.animator.SetFloat("MoveY", local.z * speedMultiplier, dampTime, Time.deltaTime);
         player.animator.SetFloat("Speed", move.magnitude * speedMultiplier, dampTime, Time.deltaTime);
     }
+
+    private System.Collections.IEnumerator DisableRootMotionAfterDelay(float delay)
+{
+    yield return new WaitForSeconds(delay);
+    player.animator.applyRootMotion = false;
+}
 }
     
     

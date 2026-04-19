@@ -106,8 +106,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FloatingItem
   floatSpeed: 2
   floatAmplitude: 0.2
-  rotationSpeed: 90
-  rotationAxis: {x: 0, y: 1, z: 0}
 --- !u!1 &1379123143991707320
 GameObject:
   m_ObjectHideFlags: 0
@@ -232,6 +230,10 @@ PrefabInstance:
     - target: {fileID: 4258708312726045457, guid: c8314cd4fe1ed1442a6c922c4ea202a2, type: 3}
       propertyPath: m_Name
       value: Glow item VFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 4258708312726045457, guid: c8314cd4fe1ed1442a6c922c4ea202a2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8439339101654859439, guid: c8314cd4fe1ed1442a6c922c4ea202a2, type: 3}
       propertyPath: m_LocalPosition.x
