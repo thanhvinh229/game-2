@@ -15,10 +15,14 @@ MonoBehaviour:
   skillName: Cast
   description: "Tri\u1EC7u h\u1ED3i"
   skillIcon: {fileID: 21300000, guid: 9a3705c2beb59584eb8e3c39aca0cbdd, type: 3}
+  isBuffSkill: 0
   manaCost: 40
   cooldown: 20
   damageMultiplier: 1
-  vfxPrefab: {fileID: 1862968562005011624, guid: 6259ec930766e4743be5de88dcd068fa, type: 3}
+  vfxPrefab: {fileID: 5222750351268202474, guid: 471430dca40f907499aac08fe5b5bb09, type: 3}
   attackSound: {fileID: 8300000, guid: d9fc78efdce49e445a7394d77677a70e, type: 3}
   hitSound: {fileID: 8300000, guid: d9fc78efdce49e445a7394d77677a70e, type: 3}
   animationTriggerName: Skill3
+  isProjectile: 0
+  projectileSpeed: 10
+  projectileDuration: 4

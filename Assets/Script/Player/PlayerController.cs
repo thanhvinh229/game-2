@@ -79,6 +79,8 @@ public class PlayerController : MonoBehaviour
     public float HorizontalInput => _horizontalInput;
     public float VerticalInput => _verticalInput;
     public Vector3 MoveDirection => _moveDirection;
+
+    private WeaponHolder weaponHolder;
  
  
     void Awake()
@@ -97,6 +99,7 @@ public class PlayerController : MonoBehaviour
  
     void Start()
     {
+        weaponHolder = GetComponentInChildren<WeaponHolder>();
         controller.Move(Vector3.up * 0.1f);
  
         ChangeState(idleState);

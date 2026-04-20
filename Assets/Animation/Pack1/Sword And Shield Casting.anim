@@ -80830,7 +80830,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: 1
     messageOptions: 0
-  - time: 2.05
+  - time: 2
     functionName: OnAOEHit
     data: 
     objectReferenceParameter: {fileID: 0}

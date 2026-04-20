@@ -19,7 +19,7 @@ MonoBehaviour:
   manaCost: 20
   cooldown: 10
   damageMultiplier: 1
-  vfxPrefab: {fileID: 1862968562005011624, guid: 6259ec930766e4743be5de88dcd068fa, type: 3}
+  vfxPrefab: {fileID: 1361995951083618, guid: acd1463ce2d63c34daa4daaaaab28fe4, type: 3}
   attackSound: {fileID: 8300000, guid: fa6e64cfea35d9b46af0d9c76288dc08, type: 3}
   hitSound: {fileID: 8300000, guid: fa6e64cfea35d9b46af0d9c76288dc08, type: 3}
   animationTriggerName: Skill2

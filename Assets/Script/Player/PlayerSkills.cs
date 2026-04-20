@@ -34,8 +34,8 @@ public class PlayerSkills : MonoBehaviour
     {
         if (playerStats == null) playerStats = GetComponent<PlayerStats>();
         if (animator == null) animator = GetComponent<Animator>();
+ 
     }
-    
  
     void Awake()
     {
@@ -232,28 +232,70 @@ public class PlayerSkills : MonoBehaviour
         Debug.Log("Buff sát thương đã kích hoạt!");
     }
  
-    // Gọi cho Skill 3 (AOE)
+    // ── Skill 3: AOE + Damage Zone ────────────────────────────────
+    [Header("AOE VFX Settings")]
+    [Tooltip("Đẩy VFX lên cao khỏi mặt đất (m). Chỉnh nếu VFX bị lún xuống đất")]
+    public float vfxGroundOffset = 0f;
+ 
+    [Header("AOE Damage Zone (vùng đất nóng sau cú trảm)")]
+    [Tooltip("Bán kính vùng sát thương để lại trên đất")]
+    public float zoneRadius       = 6f;
+    [Tooltip("Tổng thời gian vùng tồn tại (s) — nên khớp với thời gian VFX)")]
+    public float zoneDuration     = 4f;
+    [Tooltip("Mỗi X giây gây sát thương 1 lần")]
+    public float zoneTickInterval = 0.5f;
+    [Tooltip("Sát thương mỗi tick")]
+    public float zoneDamagePerTick = 5f;
+    [Tooltip("(Tùy chọn) Âm thanh mỗi tick khi có kẻ địch trong vùng")]
+    public AudioClip zoneTickSound;
+ 
     public void OnAOEHit()
     {
-    if (currentActiveSkill == null) return;
+        if (currentActiveSkill == null) return;
  
-    if (currentActiveSkill.vfxPrefab != null)
-        Instantiate(currentActiveSkill.vfxPrefab, transform.position, Quaternion.identity);
+        // 1. Tính điểm spawn bám mặt đất thật (Raycast xử lý địa hình gồ ghề)
+        Vector3 spawnPos = transform.position;
+        if (Physics.Raycast(transform.position + Vector3.up * 0.5f, Vector3.down,
+                            out RaycastHit groundHit, 2f))
+            spawnPos = groundHit.point + Vector3.up * vfxGroundOffset;
+        else
+            spawnPos = transform.position + Vector3.up * vfxGroundOffset;
  
-    // KIỂM TRA: Nếu là chiêu Buff thì KHÔNG  gây sát thương 
-    if (currentActiveSkill.isBuffSkill) return;
+        // 2. Spawn VFX vòng tròn
+        if (currentActiveSkill.vfxPrefab != null)
+            Instantiate(currentActiveSkill.vfxPrefab, spawnPos, Quaternion.identity);
  
-    // Chỉ quái vật mới nhận sát thương
-    int enemyLayer = LayerMask.GetMask("Enemy");
-    Collider[] enemies = Physics.OverlapSphere(transform.position, 6f, enemyLayer);
-    foreach (Collider e in enemies)
-    {
-         if (e.CompareTag("Player") || e.gameObject == this.gameObject) continue;
+        if (currentActiveSkill.isBuffSkill) return;
  
-        IDamageable d = e.GetComponent<IDamageable>();
-        if (d != null) d.TakeDamage(20f * currentActiveSkill.damageMultiplier);
+        // 3. Sát thương tức thì lần 1
+        int enemyLayer = LayerMask.GetMask("Enemy");
+        Collider[] enemies = Physics.OverlapSphere(spawnPos, zoneRadius, enemyLayer);
+        foreach (Collider e in enemies)
+        {
+            if (e.CompareTag("Player") || e.gameObject == gameObject) continue;
+            IDamageable d = e.GetComponent<IDamageable>();
+            if (d != null) d.TakeDamage(20f * currentActiveSkill.damageMultiplier);
+        }
+ 
+        // 4. Spawn vùng đất nóng — tiếp tục gây sát thương theo thời gian
+        SpawnDamageZone(spawnPos);
     }
-}
+ 
+    void SpawnDamageZone(Vector3 pos)
+    {
+        // Tạo một GameObject trống làm host cho DamageZone
+        GameObject zoneObj = new GameObject("DamageZone_AOE");
+        zoneObj.transform.position = pos;
+ 
+        DamageZone zone        = zoneObj.AddComponent<DamageZone>();
+        zone.radius            = zoneRadius;
+        zone.duration          = zoneDuration;
+        zone.tickInterval      = zoneTickInterval;
+        zone.damagePerTick     = zoneDamagePerTick *
+                                 (currentActiveSkill != null ? currentActiveSkill.damageMultiplier : 1f);
+        zone.audioSource       = audioSource;
+        zone.tickSound         = zoneTickSound;
+    }
  
     
 }
