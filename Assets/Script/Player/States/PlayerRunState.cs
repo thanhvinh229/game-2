@@ -32,12 +32,12 @@ public class PlayerRunState : PlayerMoveState
         }
 
         // 4. Logic di chuyển với tốc độ Chạy (runSpeed)
-        player.ApplyGravity();
-        
+       
         Vector3 movement = move * player.runSpeed;
-        movement.y = player.velocity.y; 
+        player.velocity.x = movement.x;
+        player.velocity.z = movement.z;
         
-        player.controller.Move(movement * Time.deltaTime);
+       
 
         // 5. Cập nhật Animator với multiplier là 1.0f (Full speed)
         UpdateAnimator(move);

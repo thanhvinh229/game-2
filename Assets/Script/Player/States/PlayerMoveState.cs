@@ -40,12 +40,13 @@ public class PlayerMoveState : PlayerState
         
         }
         
-        player.ApplyGravity();
+        
         
         
         Vector3 movement = move * player.walkSpeed;
-        movement.y = player.velocity.y; 
-        player.controller.Move(movement * Time.deltaTime);
+        player.velocity.x = movement.x;
+        player.velocity.z = movement.z;
+        
  
        UpdateAnimator(move, 0.5f);
     } 

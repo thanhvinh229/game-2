@@ -86,6 +86,18 @@ public class EnemyStats : MonoBehaviour, IDamageable
         
         Collider col = GetComponent<Collider>();
         if (col != null) col.enabled = false;
+         
+        //  EXP
+        if (PlayerLevel.Instance != null)
+       {
+        PlayerLevel.Instance.AddExp(20f); // Thay 20 bằng lượng Exp bạn muốn
+       }
+
+       //  Gold
+      if (WalletManager.Instance != null)
+      {
+        WalletManager.Instance.Earn(10); // Thay 10 bằng lượng Vàng bạn muốn
+      }
 
         Destroy(gameObject, 2f);
     }

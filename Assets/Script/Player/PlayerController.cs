@@ -99,8 +99,14 @@ public class PlayerController : MonoBehaviour
  
     void Update()
     {
+        
+        
         _moveInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         currentState.Update();
+        ApplyGravity();
+        
+        controller.Move(velocity * Time.deltaTime);
+        
  
         Vector3 forward = _cameraTransform.forward;
         Vector3 right   = _cameraTransform.right;

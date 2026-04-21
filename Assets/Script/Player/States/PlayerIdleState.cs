@@ -13,7 +13,8 @@ public class PlayerIdleState : PlayerMoveState
  
     public override void Update()
     {
-        player.ApplyGravity();
+         player.velocity.x = 0;
+         player.velocity.z = 0;
         
  
         if (player.GetMoveInput().magnitude > 0.1f)

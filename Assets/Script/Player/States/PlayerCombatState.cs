@@ -49,7 +49,7 @@ public class PlayerCombatState : PlayerMoveState
         player.animator.SetFloat("MoveX", 0f, 0.1f, Time.deltaTime);
         player.animator.SetFloat("MoveY", 0f, 0.1f, Time.deltaTime);
         player.animator.SetFloat("Speed", 0f, 0.1f, Time.deltaTime);
-        player.ApplyGravity(); 
+        
         return;
         }
  
@@ -100,8 +100,9 @@ public class PlayerCombatState : PlayerMoveState
         player.ApplyGravity();
  
         Vector3 movement = move * player.walkSpeed;
-        movement.y = player.velocity.y;
-        player.controller.Move(movement * Time.deltaTime);
+        player.velocity.x = movement.x;
+        player.velocity.z = movement.z;
+        
  
         UpdateCombatAnimator(move, 0.5f);
     }

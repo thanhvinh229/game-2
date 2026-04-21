@@ -18,14 +18,14 @@ public class PlayerJumpState : PlayerState
         Vector3 move = player.GetMoveInput();
         
         
-        player.ApplyGravity();
+       
 
         
         Vector3 airMovement = move * player.walkSpeed; 
         airMovement.y = player.velocity.y;
 
         
-        player.controller.Move(airMovement * Time.deltaTime);
+        
 
         
         if (player.controller.isGrounded && player.velocity.y < 0)
