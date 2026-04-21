@@ -6,8 +6,8 @@ public class QuestLogPanelUI : MonoBehaviour
 {
     [Header("Left panel")]
     [SerializeField] private QuestEventChannel _questEventChannel;
-    [SerializeField] private Transform _questListContent;
-    [SerializeField] private GameObject _questEntryPrefab;  // prefab có QuestEntryUI script
+    [SerializeField] private Transform         _questListContent;
+    [SerializeField] private GameObject        _questEntryPrefab;
  
     [Header("Right panel")]
     [SerializeField] private QuestDetailUI _questDetail;
@@ -17,38 +17,31 @@ public class QuestLogPanelUI : MonoBehaviour
  
     void Awake()
     {
-        _questEventChannel.OnReceivedQuest += OnReceivedQuest;
-        _questEventChannel.OnCompleteQuest += OnCompleteQuest;
+        _questEventChannel.OnReceivedQuest     += OnReceivedQuest;
+        _questEventChannel.OnCompleteQuest     += OnCompleteQuest;
         _questEventChannel.OnObjectiveProgress += OnObjectiveProgress;
     }
+ 
     void Start()
     {
-        // Khi UI lần đầu tiên được tạo/bật lên, hãy đồng bộ những quest ĐÃ NHẬN 
-        // từ trước khi Awake() kịp lắng nghe event.
         SyncExistingQuests();
     }
  
     void OnDestroy()
     {
-        _questEventChannel.OnReceivedQuest -= OnReceivedQuest;
-        _questEventChannel.OnCompleteQuest -= OnCompleteQuest;
+        _questEventChannel.OnReceivedQuest     -= OnReceivedQuest;
+        _questEventChannel.OnCompleteQuest     -= OnCompleteQuest;
         _questEventChannel.OnObjectiveProgress -= OnObjectiveProgress;
     }
+ 
     private void SyncExistingQuests()
     {
-        // Gọi trực tiếp đến property ActiveQuests từ QuestLog của bạn
-        var activeQuests = QuestManager.Instance.QuestLog.ActiveQuests; 
-        
+        var activeQuests = QuestManager.Instance.QuestLog.ActiveQuests;
         if (activeQuests == null || activeQuests.Count == 0) return;
-
+ 
         foreach (var quest in activeQuests)
-        {
-            // quest.Data.Id dựa theo cấu trúc class Quest của bạn
-            if (!_entries.ContainsKey(quest.Data.Id)) 
-            {
+            if (!_entries.ContainsKey(quest.Data.Id))
                 CreateQuestEntryUI(quest);
-            }
-        }
     }
  
     private void OnReceivedQuest(string questId)
@@ -58,24 +51,19 @@ public class QuestLogPanelUI : MonoBehaviour
         var quest = QuestManager.Instance.QuestLog.GetQuestById(questId);
         if (quest == null) return;
  
-        var go = Instantiate(_questEntryPrefab, _questListContent);
-        var entry = go.GetComponent<QuestEntryUI>();
-        entry.Initialize(quest.Data, OnQuestSelected);
-        _entries.Add(questId, entry);
+        CreateQuestEntryUI(quest);
  
-        // Auto-select quest đầu tiên
         if (_selectedEntry == null)
             OnQuestSelected(quest.Data);
     }
+ 
     private void CreateQuestEntryUI(Quest logicQuest)
     {
-        var go = Instantiate(_questEntryPrefab, _questListContent);
+        var go    = Instantiate(_questEntryPrefab, _questListContent);
         var entry = go.GetComponent<QuestEntryUI>();
-        
         entry.Initialize(logicQuest.Data, OnQuestSelected);
         _entries.Add(logicQuest.Data.Id, entry);
  
-        // Auto-select quest đầu tiên
         if (_selectedEntry == null)
             OnQuestSelected(logicQuest.Data);
     }
@@ -84,10 +72,20 @@ public class QuestLogPanelUI : MonoBehaviour
     {
         if (_entries.TryGetValue(questId, out var entry))
             entry.RefreshStatus();
+ 
+        // Nếu quest vừa hoàn thành đang được select → refresh detail
+        if (_selectedEntry != null &&
+            _entries.TryGetValue(questId, out var sel) &&
+            sel == _selectedEntry)
+        {
+            var quest = QuestManager.Instance.QuestLog.GetQuestById(questId);
+            _questDetail.Show(quest?.Data, quest);
+        }
     }
  
     private void OnObjectiveProgress(string questId, string objectiveId, int current, int required)
     {
+        // Cập nhật real-time khi đang xem đúng quest đó
         if (_selectedEntry != null &&
             _entries.TryGetValue(questId, out var entry) &&
             entry == _selectedEntry)
@@ -107,6 +105,8 @@ public class QuestLogPanelUI : MonoBehaviour
             _selectedEntry = newEntry;
         }
  
-        _questDetail.Show(data);
+        // Truyền Quest runtime để đọc CurrentKills thật
+        var questRuntime = QuestManager.Instance.QuestLog.GetQuestById(data.Id);
+        _questDetail.Show(data, questRuntime);
     }
 }

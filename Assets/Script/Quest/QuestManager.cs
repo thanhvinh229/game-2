@@ -17,7 +17,7 @@ public class QuestManager : MonoBehaviour
             return;
         }
         _instance = this;
-        DontDestroyOnLoad(gameObject);
+                DontDestroyOnLoad(gameObject);
     }
  
     public void ReceivedQuest(QuestData questData)
@@ -44,6 +44,12 @@ public class QuestManager : MonoBehaviour
         QuestLog.CompleteQuest(quest.Data.Id);
         _questEventChannel.OnCompleteQuest?.Invoke(quest.Data.Id);
         Debug.Log($"Quest {quest.Data.Id} completed!");
+
+        if (quest.Data.Reward != null)
+        {
+        WalletManager.Instance?.Earn(quest.Data.Reward.Gold);
+        PlayerLevel.Instance?.AddExp(quest.Data.Reward.Exp);
+        }
     }
 }
 

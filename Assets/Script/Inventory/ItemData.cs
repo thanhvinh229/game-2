@@ -17,6 +17,7 @@ public enum EquipSlot
     Head,
     Chest,
     Legs,
+    Hand,
     Legs2,
     Weapon,
      Weapon2,

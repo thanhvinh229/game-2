@@ -73,6 +73,7 @@ public class EnemyStats : MonoBehaviour, IDamageable
     void Die()
     {
         GetComponent<EnemyLoot>()?.Drop();
+        GetComponent<EnemyReward>()?.GiveReward();
         if (IsDead) return;
         IsDead = true;
         if (animator != null) animator.SetTrigger("Die");

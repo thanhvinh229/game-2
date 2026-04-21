@@ -18,7 +18,7 @@ MonoBehaviour:
     h\u01A1n kh\xF4ng c\xF3 g\xEC."
   icon: {fileID: 21300000, guid: 27eac9ad52b36634c8418a358363f500, type: 3}
   type: 1
-  equipSlot: 5
+  equipSlot: 8
   rarity: 0
   isStackable: 0
   maxStackSize: 1

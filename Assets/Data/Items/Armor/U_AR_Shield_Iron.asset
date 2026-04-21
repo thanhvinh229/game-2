@@ -18,7 +18,7 @@ MonoBehaviour:
     binh."
   icon: {fileID: 21300000, guid: 09a70ec42d2d7054a90198db604ab23b, type: 3}
   type: 1
-  equipSlot: 5
+  equipSlot: 8
   rarity: 1
   isStackable: 0
   maxStackSize: 1
