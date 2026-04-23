@@ -143,6 +143,12 @@ public class PlayerStats : MonoBehaviour , IDamageable
             deathManager.TriggerDeath();
         else
             Debug.LogError("Không tìm thấy DeathManager trong Scene!");
+
+            WaveManager waveManager = FindFirstObjectByType<WaveManager>();
+        if (waveManager != null)
+        {
+            waveManager.TriggerDefeat();
+        }
     }
  
     public void ResetStats()
@@ -151,6 +157,12 @@ public class PlayerStats : MonoBehaviour , IDamageable
         currentHealth = maxHealth;
         currentMana   = maxMana;
         HandleSmoothUI();
+
+        WaveManager waveManager = FindFirstObjectByType<WaveManager>();
+       if (waveManager != null)
+      {
+        waveManager.ResetWaveUI(); 
+      }
     }
  
     // -------------------------------------------------------
@@ -213,4 +225,6 @@ public class PlayerStats : MonoBehaviour , IDamageable
         Defense = Mathf.Max(0, Defense);
         MaxHP   = Mathf.Max(1, MaxHP);
     }
+
+     
 }

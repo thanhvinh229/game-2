@@ -9580,11 +9580,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   _cameraTransform: {fileID: 222439264}
   _shouldFaceMoveDirection: 1
-  moveSpeed: 5
-  gravity: -20
-  jumpForce: 1.5
   walkSpeed: 2.5
   runSpeed: 5
+  gravity: -20
+  jumpForce: 1.5
   animator: {fileID: 592832702}
   controller: {fileID: 0}
   velocity: {x: 0, y: 0, z: 0}
@@ -9607,15 +9606,10 @@ MonoBehaviour:
   jumpSound: {fileID: 8300000, guid: b25e4db74ca0d404eafcfbc9058549f4, type: 3}
   drawSwordSound: {fileID: 8300000, guid: 2557004d9a4112c4fbf0557f004603e0, type: 3}
   sheathSwordSound: {fileID: 8300000, guid: 9163a32e3d4679c4f8c912f2ddec6fa9, type: 3}
-  _horizontalInput: 0
-  _verticalInput: 0
-  _moveDirection: {x: 0, y: 0, z: 0}
-  _moveX: 0
-  _moveY: 0
   rotateSpeed: 10
   aimRotateSpeed: 15
-  CollectedItemGuid: 
   isAiming: 0
+  CollectedItemGuid: 
 --- !u!143 &592832700
 CharacterController:
   m_ObjectHideFlags: 0
@@ -13965,6 +13959,51 @@ Transform:
   m_Children: []
   m_Father: {fileID: 201706615}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!1 &1201358263
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1201358265}
+  - component: {fileID: 1201358264}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1201358264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1201358263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be20740e4e8a1b844804fc030ecfc487, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WaveTester
+  waveManager: {fileID: 1920276687}
+--- !u!4 &1201358265
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1201358263}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 54.11695, y: 9.02837, z: 34.9}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1231828114
 GameObject:
   m_ObjectHideFlags: 0
@@ -25356,11 +25395,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   _cameraTransform: {fileID: 222439264}
   _shouldFaceMoveDirection: 1
-  moveSpeed: 5
-  gravity: -20
-  jumpForce: 1.5
   walkSpeed: 2.5
   runSpeed: 5
+  gravity: -20
+  jumpForce: 1.5
   animator: {fileID: 1399739129}
   controller: {fileID: 0}
   velocity: {x: 0, y: 0, z: 0}
@@ -25383,15 +25421,10 @@ MonoBehaviour:
   jumpSound: {fileID: 8300000, guid: b25e4db74ca0d404eafcfbc9058549f4, type: 3}
   drawSwordSound: {fileID: 8300000, guid: 2557004d9a4112c4fbf0557f004603e0, type: 3}
   sheathSwordSound: {fileID: 8300000, guid: 9163a32e3d4679c4f8c912f2ddec6fa9, type: 3}
-  _horizontalInput: 0
-  _verticalInput: 0
-  _moveDirection: {x: 0, y: 0, z: 0}
-  _moveX: 0
-  _moveY: 0
   rotateSpeed: 10
   aimRotateSpeed: 15
-  CollectedItemGuid: 
   isAiming: 0
+  CollectedItemGuid: 
 --- !u!1 &1403872190
 GameObject:
   m_ObjectHideFlags: 0
@@ -39157,3 +39190,4 @@ SceneRoots:
   - {fileID: 1266232976}
   - {fileID: 1260121022}
   - {fileID: 1960675334}
+  - {fileID: 1201358265}

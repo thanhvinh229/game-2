@@ -48,6 +48,7 @@ public class DeathManager : MonoBehaviour
     public void RevivePlayer()
     {
        deathScreenPanel.SetActive(false);
+       Time.timeScale = 1.0f;
 
       // 1. Reset Stats (Máu, Mana, biến isDead trong code)
     PlayerStats stats = player.GetComponent<PlayerStats>();
@@ -101,4 +102,6 @@ public class DeathManager : MonoBehaviour
         UnityEditor.EditorApplication.isPlaying = false;
         #endif
     }
+
+    
 }

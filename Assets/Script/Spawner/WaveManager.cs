@@ -130,6 +130,8 @@ public class WaveManager : MonoBehaviour
         _waveIsActive = false;
         StopAllCoroutines(); // Ngay lập tức dừng sinh quái
         StartCoroutine(ShowAnnouncement("DEFEAT", defeatColor, defeatClip, true));
+
+        AudioSource audioSource = GetComponent<AudioSource>();
     }
 
     // --- CÁC HÀM XỬ LÝ HIỆU ỨNG UI & AUDIO ---
@@ -250,4 +252,25 @@ public class WaveManager : MonoBehaviour
             waveStatusText.text = message;
         }
     }
+
+    public void ForceVictory()
+    {
+        _waveIsActive = false;
+        StopAllCoroutines(); // Dừng đẻ quái ngay lập tức
+        StartCoroutine(ShowVictoryEffect()); // Bật UI Chiến thắng
+    }
+
+
+    public void ResetWaveUI()
+{
+    if (waveAnnounceText != null)
+    {
+        waveAnnounceText.gameObject.SetActive(false);
+    }
+    
+    // Nếu bạn muốn reset luôn cả số quái đếm được về 0 để đánh lại wave đó:
+    _enemiesKilled = 0;
+    Wave currentWave = waves[currentWaveIndex];
+    UpdateUI($"Đang chiến đấu: {currentWave.waveName} ({_enemiesKilled}/{_enemiesToKill})");
+}
 }
