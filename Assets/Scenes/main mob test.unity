@@ -9602,7 +9602,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: a83cb996188defc4bb33a673689a5082, type: 3}
   - {fileID: 8300000, guid: 4ed648bb53684b74ea778685fe5f7f78, type: 3}
   - {fileID: 8300000, guid: 0c1b587abc414174c81b1357243361a5, type: 3}
-  footstepSound: {fileID: 8300000, guid: 4558ea96e4fb4f84881e738a97bf5f15, type: 3}
+  footstepSound: {fileID: 8300000, guid: 03735bb5108509549a7bdf8ef534a728, type: 3}
   jumpSound: {fileID: 8300000, guid: b25e4db74ca0d404eafcfbc9058549f4, type: 3}
   drawSwordSound: {fileID: 8300000, guid: 2557004d9a4112c4fbf0557f004603e0, type: 3}
   sheathSwordSound: {fileID: 8300000, guid: 9163a32e3d4679c4f8c912f2ddec6fa9, type: 3}

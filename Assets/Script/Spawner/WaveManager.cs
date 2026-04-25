@@ -263,14 +263,32 @@ public class WaveManager : MonoBehaviour
 
     public void ResetWaveUI()
 {
-    if (waveAnnounceText != null)
-    {
-        waveAnnounceText.gameObject.SetActive(false);
+        // 1. Tắt chữ DEFEAT trên màn hình
+        if (waveAnnounceText != null)
+        {
+            waveAnnounceText.gameObject.SetActive(false);
+        }
+        
+        // 2. Dừng mọi luồng đẻ quái nếu nó vẫn còn đang chạy ngầm
+        StopAllCoroutines();
+        _waveIsActive = false;
+
+        // 3. DỌN DẸP BẢN ĐỒ: Tìm và tiêu diệt mọi quái vật đang có
+        GameObject[] activeEnemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject enemy in activeEnemies)
+        {
+            Destroy(enemy);
+        }
+
+        // 4. RESET TIẾN ĐỘ: Đưa số quái đã giết về 0 (nhưng giữ nguyên currentWaveIndex để đánh lại wave hiện tại)
+        _enemiesKilled = 0;
+        Wave currentWave = waves[currentWaveIndex];
+        UpdateUI($"Chuẩn bị: {currentWave.waveName}"); // Đổi text để báo hiệu sẵn sàng
+
+        // 5. MỞ KHÓA TƯỢNG ĐÁ: Gọi WaveStarter để cho phép tương tác (ấn F) lại
+        if (waveStarterObject != null)
+        {
+            waveStarterObject.EnableInteraction();
+        }
     }
-    
-    // Nếu bạn muốn reset luôn cả số quái đếm được về 0 để đánh lại wave đó:
-    _enemiesKilled = 0;
-    Wave currentWave = waves[currentWaveIndex];
-    UpdateUI($"Đang chiến đấu: {currentWave.waveName} ({_enemiesKilled}/{_enemiesToKill})");
-}
 }

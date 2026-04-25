@@ -301,6 +301,37 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &8236601125982557034
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7129139950258974594}
+  m_Layer: 13
+  m_Name: DemonAttackPoint  (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7129139950258974594
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8236601125982557034}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.0000000014502123, y: 0.9998416, z: -0.00000008144744, w: -0.017802678}
+  m_LocalPosition: {x: -0.0003, y: -0.0413, z: 0.0939}
+  m_LocalScale: {x: 14.285709, y: 14.285713, z: 14.285709}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 460182709456348431}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8311174178284382559
 GameObject:
   m_ObjectHideFlags: 0
@@ -420,15 +451,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fbcc250cce2b1a04ebc3d98ae7892375, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 49.725
+      value: 49.55405
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fbcc250cce2b1a04ebc3d98ae7892375, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.536
+      value: 4.479
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fbcc250cce2b1a04ebc3d98ae7892375, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 55.69117
+      value: 60.663048
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fbcc250cce2b1a04ebc3d98ae7892375, type: 3}
       propertyPath: m_LocalRotation.w
@@ -462,6 +493,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: demonunwrapped
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fbcc250cce2b1a04ebc3d98ae7892375, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 2259480214968727764, guid: fbcc250cce2b1a04ebc3d98ae7892375, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -484,6 +519,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: fbcc250cce2b1a04ebc3d98ae7892375, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3030481577332760600}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: fbcc250cce2b1a04ebc3d98ae7892375, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7129139950258974594}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fbcc250cce2b1a04ebc3d98ae7892375, type: 3}
       insertIndex: -1
@@ -535,7 +573,7 @@ MonoBehaviour:
   attackRange: 2
   attackCooldown: 2
   attack4Chance: 20
-  attackPoint: {fileID: 0}
+  attackPoint: {fileID: 7129139950258974594}
   attackRadius: 1
   playerLayer:
     serializedVersion: 2
@@ -639,39 +677,47 @@ MonoBehaviour:
       dropChance: 0.732
       minQuantity: 1
       maxQuantity: 1
+    - item: {fileID: 11400000, guid: 30e143f475c37984ab4d3163c617e638, type: 2}
+      dropChance: 0.782
+      minQuantity: 1
+      maxQuantity: 1
   - rarity: 1
     poolChance: 0.757
     entries:
     - item: {fileID: 11400000, guid: bef80f08e7b66924bb09167f978a817a, type: 2}
-      dropChance: 0
+      dropChance: 0.559
       minQuantity: 1
-      maxQuantity: 0
+      maxQuantity: 1
     - item: {fileID: 11400000, guid: 77b4281ad78d45d48b755df8e239900c, type: 2}
-      dropChance: 0
+      dropChance: 0.607
       minQuantity: 1
       maxQuantity: 1
     - item: {fileID: 11400000, guid: b363e4aecd2228d44a23ad73d3b5606b, type: 2}
-      dropChance: 0
+      dropChance: 0.621
       minQuantity: 1
       maxQuantity: 1
     - item: {fileID: 11400000, guid: 049e97c16c7d215469910ff25df659e4, type: 2}
-      dropChance: 0
+      dropChance: 0.758
       minQuantity: 1
       maxQuantity: 1
     - item: {fileID: 11400000, guid: f304577680386a044a85d7c2c0396ff8, type: 2}
-      dropChance: 0
+      dropChance: 0.626
       minQuantity: 1
       maxQuantity: 1
     - item: {fileID: 11400000, guid: 416613b65925b4340a86bd246d82fadc, type: 2}
-      dropChance: 0
+      dropChance: 0.673
       minQuantity: 1
       maxQuantity: 1
     - item: {fileID: 11400000, guid: 416613b65925b4340a86bd246d82fadc, type: 2}
-      dropChance: 0
+      dropChance: 0.626
       minQuantity: 1
       maxQuantity: 1
     - item: {fileID: 11400000, guid: 8a5d2e849ef685046a61ff7f38a79977, type: 2}
-      dropChance: 0
+      dropChance: 0.63
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 7f1eba47e492e6e4cad21377496e26c1, type: 2}
+      dropChance: 0.63
       minQuantity: 1
       maxQuantity: 1
   - rarity: 2
@@ -705,6 +751,10 @@ MonoBehaviour:
       dropChance: 0.502
       minQuantity: 1
       maxQuantity: 1
+    - item: {fileID: 11400000, guid: 12e6f2d1437796147b5c3136dce4c432, type: 2}
+      dropChance: 0.502
+      minQuantity: 1
+      maxQuantity: 1
   - rarity: 3
     poolChance: 0.301
     entries:
@@ -725,6 +775,22 @@ MonoBehaviour:
       minQuantity: 1
       maxQuantity: 1
     - item: {fileID: 11400000, guid: 36e9f37dbf437014f8b6927828b8d018, type: 2}
+      dropChance: 0.253
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: beac1a8c5a258e5488d02e93745b0e5f, type: 2}
+      dropChance: 0.253
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: b7eaeded9cf27e84c8eba8882f48c3fa, type: 2}
+      dropChance: 0.253
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 5447e78c22e7a6346b422a2aa9180d9d, type: 2}
+      dropChance: 0.253
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 7c12d17960f37b64d833a98c8db73c8c, type: 2}
       dropChance: 0.253
       minQuantity: 1
       maxQuantity: 1

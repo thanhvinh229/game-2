@@ -10,20 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 688853c544000bf4496684ccac8fb62b, type: 3}
-  m_Name: R_AR_Legs_Plate
+  m_Name: E_AR_Wizard_Cloak
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  itemId: AR_Legs_Plate
-  itemName: "[R] Gi\xE0y Th\xE9p"
-  description: "Gi\xE1p ch\xE2n h\u1EA1ng n\u1EB7ng, gi\u1EA3m t\u1ED1c \u0111\u1ED9
-    nh\u01B0ng b\u1EA3o v\u1EC7 tuy\u1EC7t \u0111\u1ED1i."
-  icon: {fileID: 21300000, guid: a041c3b2d06fa144dba8b3f135c9c7bc, type: 3}
+  itemId: AR_Wizard_Cloak
+  itemName: "[E] \xC1o Cho\xE0ng Ph\xF9 Th\u1EE7y"
+  description: '
+
+'
+  icon: {fileID: 21300000, guid: 7e2479b2b19e87843872a47051b93e4b, type: 3}
   type: 1
-  equipSlot: 3
-  rarity: 2
+  equipSlot: 2
+  rarity: 3
   isStackable: 0
   maxStackSize: 1
-  weight: 4
-  value: 350
+  weight: 6
+  value: 8000
   stats:
   - statName: Defense
-    value: 18
+    value: 60
+  - statName: HP
+    value: 50

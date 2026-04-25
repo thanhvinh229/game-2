@@ -443,15 +443,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ee43d89e238bde34a91ec25ddc65da05, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 48.54575
+      value: 50.74275
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ee43d89e238bde34a91ec25ddc65da05, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.0031128
+      value: 3.0031123
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ee43d89e238bde34a91ec25ddc65da05, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 57.491604
+      value: 57.8001
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ee43d89e238bde34a91ec25ddc65da05, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1011,39 +1011,47 @@ MonoBehaviour:
       dropChance: 0.732
       minQuantity: 1
       maxQuantity: 1
+    - item: {fileID: 11400000, guid: 30e143f475c37984ab4d3163c617e638, type: 2}
+      dropChance: 0.782
+      minQuantity: 1
+      maxQuantity: 1
   - rarity: 1
     poolChance: 0.757
     entries:
     - item: {fileID: 11400000, guid: bef80f08e7b66924bb09167f978a817a, type: 2}
-      dropChance: 0
+      dropChance: 0.559
       minQuantity: 1
-      maxQuantity: 0
+      maxQuantity: 1
     - item: {fileID: 11400000, guid: 77b4281ad78d45d48b755df8e239900c, type: 2}
-      dropChance: 0
+      dropChance: 0.607
       minQuantity: 1
       maxQuantity: 1
     - item: {fileID: 11400000, guid: b363e4aecd2228d44a23ad73d3b5606b, type: 2}
-      dropChance: 0
+      dropChance: 0.621
       minQuantity: 1
       maxQuantity: 1
     - item: {fileID: 11400000, guid: 049e97c16c7d215469910ff25df659e4, type: 2}
-      dropChance: 0
+      dropChance: 0.758
       minQuantity: 1
       maxQuantity: 1
     - item: {fileID: 11400000, guid: f304577680386a044a85d7c2c0396ff8, type: 2}
-      dropChance: 0
+      dropChance: 0.626
       minQuantity: 1
       maxQuantity: 1
     - item: {fileID: 11400000, guid: 416613b65925b4340a86bd246d82fadc, type: 2}
-      dropChance: 0
+      dropChance: 0.673
       minQuantity: 1
       maxQuantity: 1
     - item: {fileID: 11400000, guid: 416613b65925b4340a86bd246d82fadc, type: 2}
-      dropChance: 0
+      dropChance: 0.626
       minQuantity: 1
       maxQuantity: 1
     - item: {fileID: 11400000, guid: 8a5d2e849ef685046a61ff7f38a79977, type: 2}
-      dropChance: 0
+      dropChance: 0.63
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 7f1eba47e492e6e4cad21377496e26c1, type: 2}
+      dropChance: 0.63
       minQuantity: 1
       maxQuantity: 1
   - rarity: 2
@@ -1077,6 +1085,10 @@ MonoBehaviour:
       dropChance: 0.502
       minQuantity: 1
       maxQuantity: 1
+    - item: {fileID: 11400000, guid: 12e6f2d1437796147b5c3136dce4c432, type: 2}
+      dropChance: 0.502
+      minQuantity: 1
+      maxQuantity: 1
   - rarity: 3
     poolChance: 0.301
     entries:
@@ -1097,6 +1109,22 @@ MonoBehaviour:
       minQuantity: 1
       maxQuantity: 1
     - item: {fileID: 11400000, guid: 36e9f37dbf437014f8b6927828b8d018, type: 2}
+      dropChance: 0.253
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: beac1a8c5a258e5488d02e93745b0e5f, type: 2}
+      dropChance: 0.253
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: b7eaeded9cf27e84c8eba8882f48c3fa, type: 2}
+      dropChance: 0.253
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 5447e78c22e7a6346b422a2aa9180d9d, type: 2}
+      dropChance: 0.253
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 7c12d17960f37b64d833a98c8db73c8c, type: 2}
       dropChance: 0.253
       minQuantity: 1
       maxQuantity: 1
