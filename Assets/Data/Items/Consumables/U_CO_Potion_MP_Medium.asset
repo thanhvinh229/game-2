@@ -15,7 +15,7 @@ MonoBehaviour:
   itemId: CO_Potion_MP_Medium
   itemName: "[U] Thu\u1ED1c H\u1ED3i Mana"
   description: "H\u1ED3i ph\u1EE5c 60 Mana. Ti\xEAu chu\u1EA9n cho cung ph\xE1p."
-  icon: {fileID: 1461235752, guid: 74f11f6a4abaed043b6915385908c219, type: 3}
+  icon: {fileID: -1862604785, guid: 1a1acb608dca943459dd27d960c194c4, type: 3}
   type: 3
   equipSlot: 0
   rarity: 1
