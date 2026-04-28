@@ -10,15 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6c97fc1de3a0fed4dbd9813a3bb93c3d, type: 3}
-  m_Name: Is Time
+  m_Name: Kill 3 mummy
   m_EditorClassIdentifier: Assembly-CSharp::QuestData
-  Id: Is Time
-  Description: "gi\u1EBFt nhi\u1EC1u qu\xE1i v\u1EADt"
+  Id: daily mummy
+  Description: kill 3 mummy
   Status: 0
   Reward:
-    Gold: 100
-    Exp: 100
+    Gold: 20
+    Exp: 50
     Items: []
   ObjectiveData:
-  - {fileID: 11400000, guid: ef0be7eacab83a54ba9f89a6191d2c3f, type: 2}
   - {fileID: 11400000, guid: 95b031d1e1e2c1a46850df8c543d6c4c, type: 2}

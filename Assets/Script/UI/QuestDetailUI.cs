@@ -29,7 +29,7 @@ public class QuestDetailUI : MonoBehaviour
  
     public void Show(QuestData questData, Quest questRuntime = null)
     {
-        _titleText.text       = questData.Description;
+        _titleText.text       = questData.Id;
         bool isCompleted      = questData.Status == QuestStatus.Completed;
         _statusText.text      = isCompleted ? "Hoàn thành" : "Đang hoạt động";
         _statusBadge.color    = isCompleted ? _completedStatusColor : _activeStatusColor;

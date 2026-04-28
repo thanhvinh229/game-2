@@ -102,4 +102,10 @@ public class InteractionController : MonoBehaviour
         Gizmos.color = Color.green;
         Gizmos.DrawRay(_interactCamera.transform.position, _interactCamera.transform.forward * _interactDistance);
     }
+
+    void OnDestroy()
+    {
+       
+        InputHandler.OnInteraction -= HandleAction;
+    }
 }

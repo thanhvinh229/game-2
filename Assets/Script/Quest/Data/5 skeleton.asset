@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ce02d00c1220f874bb7811d8a659bdee, type: 3}
-  m_Name: saydhi
+  m_Name: 5 skeleton
   m_EditorClassIdentifier: Assembly-CSharp::KillObjectiveData
-  Id: 'Saydhi '
-  Description: Kill 5 mummy
+  Id: obj_kill_skeletons
+  Description: Kill 5 Skeleton
   Status: 0
   EventChannel: {fileID: 11400000, guid: d439c91f745d2054ba33e880aeab51ff, type: 2}
   QuestId: 
-  targetEnemyType: saydhi
+  targetEnemyType: 'Skeleton '
   requiredKills: 5
   deathEventChannel: {fileID: 11400000, guid: 446c2ae1406ef6d47b8bd4be590c4c71, type: 2}

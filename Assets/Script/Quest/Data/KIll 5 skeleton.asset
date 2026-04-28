@@ -10,19 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6c97fc1de3a0fed4dbd9813a3bb93c3d, type: 3}
-  m_Name: Monster  Slayer
+  m_Name: KIll 5 skeleton
   m_EditorClassIdentifier: Assembly-CSharp::QuestData
   Id: Monster Slayer
-  Description: kill  enemy
+  Description: kill  5 skeleton
   Status: 0
   Reward:
     Gold: 60
     Exp: 100
-    Items:
-    - Icon: {fileID: 0}
-      ItemName: 
-      Quantity: 0
+    Items: []
   ObjectiveData:
   - {fileID: 11400000, guid: 33c5951b26bc9274881ad035800ef481, type: 2}
-  - {fileID: 11400000, guid: 94ed4cbd6b0c7794c988cc3c6e77b3f2, type: 2}
-  - {fileID: 11400000, guid: ef0be7eacab83a54ba9f89a6191d2c3f, type: 2}
