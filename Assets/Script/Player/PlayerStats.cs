@@ -85,7 +85,7 @@ public class PlayerStats : MonoBehaviour , IDamageable
         HandleSmoothUI();
     }
  
-    void HandleSmoothUI()
+    public void HandleSmoothUI()
     {
         if (healthSlider != null)
             healthSlider.value = Mathf.Lerp(healthSlider.value, currentHealth, Time.deltaTime * smoothSpeed);

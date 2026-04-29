@@ -777,6 +777,9 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 119e17ab36b2a2347ba462f14634a86f, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 6416759938556716251}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 119e17ab36b2a2347ba462f14634a86f, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 1327536779517650500}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 119e17ab36b2a2347ba462f14634a86f, type: 3}
       insertIndex: -1
@@ -796,9 +799,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 119e17ab36b2a2347ba462f14634a86f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3703231855643836093}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 119e17ab36b2a2347ba462f14634a86f, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6416759938556716251}
   m_SourcePrefab: {fileID: 100100000, guid: 119e17ab36b2a2347ba462f14634a86f, type: 3}
 --- !u!4 &451035588943158798 stripped
 Transform:
@@ -810,6 +810,184 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 119e17ab36b2a2347ba462f14634a86f, type: 3}
   m_PrefabInstance: {fileID: 128597810583534053}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6416759938556716251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 939483031393289396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e084be463180ba3458b06806fefa6da3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyLoot
+  maxDrops: 1
+  rarityPools:
+  - rarity: 0
+    poolChance: 0.695
+    entries:
+    - item: {fileID: 11400000, guid: 28dbf38e06fe9ec4e85667d8d6412c12, type: 2}
+      dropChance: 0.732
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 6c35839ab1f879e47b753cca566d458c, type: 2}
+      dropChance: 0.732
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 70df0ca7c63515c448942f43d7a5e5d0, type: 2}
+      dropChance: 0.732
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 54ec6762852e5d242831ba3eb3e96f3e, type: 2}
+      dropChance: 0.732
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 00fc9ae3389c1c14583d6ce5c5ff4a11, type: 2}
+      dropChance: 0.732
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: b0f6fc8eecff3bc48b9a4a99c765cc55, type: 2}
+      dropChance: 0.732
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 1be3f4420173de64da3b9a3232d244b8, type: 2}
+      dropChance: 0.732
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 30e143f475c37984ab4d3163c617e638, type: 2}
+      dropChance: 0.782
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: c149b927b3515fe4d80dcc428a084f48, type: 2}
+      dropChance: 0.782
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: a88c0e8fc226a8745a10b77bc454df00, type: 2}
+      dropChance: 0.782
+      minQuantity: 1
+      maxQuantity: 1
+  - rarity: 1
+    poolChance: 0.757
+    entries:
+    - item: {fileID: 11400000, guid: bef80f08e7b66924bb09167f978a817a, type: 2}
+      dropChance: 0.559
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 77b4281ad78d45d48b755df8e239900c, type: 2}
+      dropChance: 0.607
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: b363e4aecd2228d44a23ad73d3b5606b, type: 2}
+      dropChance: 0.621
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 049e97c16c7d215469910ff25df659e4, type: 2}
+      dropChance: 0.758
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: f304577680386a044a85d7c2c0396ff8, type: 2}
+      dropChance: 0.626
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 416613b65925b4340a86bd246d82fadc, type: 2}
+      dropChance: 0.673
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: cd82f5ca1b397d64b8ee5edf88bd0b9b, type: 2}
+      dropChance: 0.626
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 8a5d2e849ef685046a61ff7f38a79977, type: 2}
+      dropChance: 0.63
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 7f1eba47e492e6e4cad21377496e26c1, type: 2}
+      dropChance: 0.63
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 17bda523950f5a443aa93ea275eecd18, type: 2}
+      dropChance: 0.63
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: e4ca69578f339d64d8439c25cab5506e, type: 2}
+      dropChance: 0.63
+      minQuantity: 1
+      maxQuantity: 1
+  - rarity: 2
+    poolChance: 0.506
+    entries:
+    - item: {fileID: 11400000, guid: 33a2af0af95fce049b5d33403e5a3f88, type: 2}
+      dropChance: 0.502
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 494df6fbae81d4c488f948bbfa251806, type: 2}
+      dropChance: 0.502
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 0a15f1521c3a9cf4bae6527bdd7b798c, type: 2}
+      dropChance: 0.502
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 2dd32808470ab324b8a20683435699c0, type: 2}
+      dropChance: 0.502
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 805d510556c41c049844ec364b6619f1, type: 2}
+      dropChance: 0.502
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 547a766318b7f2646838b4bb1538a380, type: 2}
+      dropChance: 0.502
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 9bf7faaaf7b1a3a42a515b9c067bf732, type: 2}
+      dropChance: 0.502
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 12e6f2d1437796147b5c3136dce4c432, type: 2}
+      dropChance: 0.502
+      minQuantity: 1
+      maxQuantity: 1
+  - rarity: 3
+    poolChance: 0.301
+    entries:
+    - item: {fileID: 11400000, guid: 7c12d17960f37b64d833a98c8db73c8c, type: 2}
+      dropChance: 0.253
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: ceadf5c8566765f4391af8873a809dc7, type: 2}
+      dropChance: 0.253
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 33bfb7f225dc4334090f4195e77c0231, type: 2}
+      dropChance: 0.253
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 2bbdcc2713736f640b425f79099d69ea, type: 2}
+      dropChance: 0.253
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 36e9f37dbf437014f8b6927828b8d018, type: 2}
+      dropChance: 0.253
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: beac1a8c5a258e5488d02e93745b0e5f, type: 2}
+      dropChance: 0.253
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: b7eaeded9cf27e84c8eba8882f48c3fa, type: 2}
+      dropChance: 0.253
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 5447e78c22e7a6346b422a2aa9180d9d, type: 2}
+      dropChance: 0.253
+      minQuantity: 1
+      maxQuantity: 1
+    - item: {fileID: 11400000, guid: 7c12d17960f37b64d833a98c8db73c8c, type: 2}
+      dropChance: 0.253
+      minQuantity: 1
+      maxQuantity: 1
 --- !u!136 &1327536779517650500
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1026,168 +1204,6 @@ MonoBehaviour:
   iconType: 1
   iconSprite: {fileID: 21300000, guid: 64f5428e485e0204db94d129eab4847f, type: 3}
   iconSize: 10
---- !u!114 &6416759938556716251
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 939483031393289396}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e084be463180ba3458b06806fefa6da3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyLoot
-  maxDrops: 2
-  rarityPools:
-  - rarity: 0
-    poolChance: 0.695
-    entries:
-    - item: {fileID: 11400000, guid: 28dbf38e06fe9ec4e85667d8d6412c12, type: 2}
-      dropChance: 0.732
-      minQuantity: 1
-      maxQuantity: 1
-    - item: {fileID: 11400000, guid: 6c35839ab1f879e47b753cca566d458c, type: 2}
-      dropChance: 0.732
-      minQuantity: 1
-      maxQuantity: 1
-    - item: {fileID: 11400000, guid: 70df0ca7c63515c448942f43d7a5e5d0, type: 2}
-      dropChance: 0.732
-      minQuantity: 1
-      maxQuantity: 1
-    - item: {fileID: 11400000, guid: 54ec6762852e5d242831ba3eb3e96f3e, type: 2}
-      dropChance: 0.732
-      minQuantity: 1
-      maxQuantity: 1
-    - item: {fileID: 11400000, guid: 00fc9ae3389c1c14583d6ce5c5ff4a11, type: 2}
-      dropChance: 0.732
-      minQuantity: 1
-      maxQuantity: 1
-    - item: {fileID: 11400000, guid: b0f6fc8eecff3bc48b9a4a99c765cc55, type: 2}
-      dropChance: 0.732
-      minQuantity: 1
-      maxQuantity: 1
-    - item: {fileID: 11400000, guid: 1be3f4420173de64da3b9a3232d244b8, type: 2}
-      dropChance: 0.732
-      minQuantity: 1
-      maxQuantity: 1
-    - item: {fileID: 11400000, guid: 30e143f475c37984ab4d3163c617e638, type: 2}
-      dropChance: 0.782
-      minQuantity: 1
-      maxQuantity: 1
-  - rarity: 1
-    poolChance: 0.757
-    entries:
-    - item: {fileID: 11400000, guid: bef80f08e7b66924bb09167f978a817a, type: 2}
-      dropChance: 0.559
-      minQuantity: 1
-      maxQuantity: 1
-    - item: {fileID: 11400000, guid: 77b4281ad78d45d48b755df8e239900c, type: 2}
-      dropChance: 0.607
-      minQuantity: 1
-      maxQuantity: 1
-    - item: {fileID: 11400000, guid: b363e4aecd2228d44a23ad73d3b5606b, type: 2}
-      dropChance: 0.621
-      minQuantity: 1
-      maxQuantity: 1
-    - item: {fileID: 11400000, guid: 049e97c16c7d215469910ff25df659e4, type: 2}
-      dropChance: 0.758
-      minQuantity: 1
-      maxQuantity: 1
-    - item: {fileID: 11400000, guid: f304577680386a044a85d7c2c0396ff8, type: 2}
-      dropChance: 0.626
-      minQuantity: 1
-      maxQuantity: 1
-    - item: {fileID: 11400000, guid: 416613b65925b4340a86bd246d82fadc, type: 2}
-      dropChance: 0.673
-      minQuantity: 1
-      maxQuantity: 1
-    - item: {fileID: 11400000, guid: 416613b65925b4340a86bd246d82fadc, type: 2}
-      dropChance: 0.626
-      minQuantity: 1
-      maxQuantity: 1
-    - item: {fileID: 11400000, guid: 8a5d2e849ef685046a61ff7f38a79977, type: 2}
-      dropChance: 0.63
-      minQuantity: 1
-      maxQuantity: 1
-    - item: {fileID: 11400000, guid: 7f1eba47e492e6e4cad21377496e26c1, type: 2}
-      dropChance: 0.63
-      minQuantity: 1
-      maxQuantity: 1
-  - rarity: 2
-    poolChance: 0.506
-    entries:
-    - item: {fileID: 11400000, guid: 33a2af0af95fce049b5d33403e5a3f88, type: 2}
-      dropChance: 0.502
-      minQuantity: 1
-      maxQuantity: 1
-    - item: {fileID: 11400000, guid: 494df6fbae81d4c488f948bbfa251806, type: 2}
-      dropChance: 0.502
-      minQuantity: 1
-      maxQuantity: 1
-    - item: {fileID: 11400000, guid: 0a15f1521c3a9cf4bae6527bdd7b798c, type: 2}
-      dropChance: 0.502
-      minQuantity: 1
-      maxQuantity: 1
-    - item: {fileID: 11400000, guid: 2dd32808470ab324b8a20683435699c0, type: 2}
-      dropChance: 0.502
-      minQuantity: 1
-      maxQuantity: 1
-    - item: {fileID: 11400000, guid: 805d510556c41c049844ec364b6619f1, type: 2}
-      dropChance: 0.502
-      minQuantity: 1
-      maxQuantity: 1
-    - item: {fileID: 11400000, guid: 547a766318b7f2646838b4bb1538a380, type: 2}
-      dropChance: 0.502
-      minQuantity: 1
-      maxQuantity: 1
-    - item: {fileID: 11400000, guid: 9bf7faaaf7b1a3a42a515b9c067bf732, type: 2}
-      dropChance: 0.502
-      minQuantity: 1
-      maxQuantity: 1
-    - item: {fileID: 11400000, guid: 12e6f2d1437796147b5c3136dce4c432, type: 2}
-      dropChance: 0.502
-      minQuantity: 1
-      maxQuantity: 1
-  - rarity: 3
-    poolChance: 0.301
-    entries:
-    - item: {fileID: 11400000, guid: 7c12d17960f37b64d833a98c8db73c8c, type: 2}
-      dropChance: 0.253
-      minQuantity: 1
-      maxQuantity: 1
-    - item: {fileID: 11400000, guid: ceadf5c8566765f4391af8873a809dc7, type: 2}
-      dropChance: 0.253
-      minQuantity: 1
-      maxQuantity: 1
-    - item: {fileID: 11400000, guid: 33bfb7f225dc4334090f4195e77c0231, type: 2}
-      dropChance: 0.253
-      minQuantity: 1
-      maxQuantity: 1
-    - item: {fileID: 11400000, guid: 2bbdcc2713736f640b425f79099d69ea, type: 2}
-      dropChance: 0.253
-      minQuantity: 1
-      maxQuantity: 1
-    - item: {fileID: 11400000, guid: 36e9f37dbf437014f8b6927828b8d018, type: 2}
-      dropChance: 0.253
-      minQuantity: 1
-      maxQuantity: 1
-    - item: {fileID: 11400000, guid: beac1a8c5a258e5488d02e93745b0e5f, type: 2}
-      dropChance: 0.253
-      minQuantity: 1
-      maxQuantity: 1
-    - item: {fileID: 11400000, guid: b7eaeded9cf27e84c8eba8882f48c3fa, type: 2}
-      dropChance: 0.253
-      minQuantity: 1
-      maxQuantity: 1
-    - item: {fileID: 11400000, guid: 5447e78c22e7a6346b422a2aa9180d9d, type: 2}
-      dropChance: 0.253
-      minQuantity: 1
-      maxQuantity: 1
-    - item: {fileID: 11400000, guid: 7c12d17960f37b64d833a98c8db73c8c, type: 2}
-      dropChance: 0.253
-      minQuantity: 1
-      maxQuantity: 1
 --- !u!95 &5810288584631633012 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 119e17ab36b2a2347ba462f14634a86f, type: 3}

@@ -26,4 +26,6 @@ MonoBehaviour:
   value: 400
   stats:
   - statName: Defense
+    value: 30
+  - statName: HP
     value: 20

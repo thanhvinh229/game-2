@@ -644,7 +644,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e084be463180ba3458b06806fefa6da3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyLoot
-  maxDrops: 2
+  maxDrops: 1
   rarityPools:
   - rarity: 0
     poolChance: 0.695

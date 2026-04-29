@@ -8,6 +8,8 @@ using UnityEngine.EventSystems;
 public class EquipDropZone : MonoBehaviour, IDropHandler, IPointerClickHandler ,IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     [SerializeField] public EquipSlot slot;
+    [SerializeField] private GameObject emptyIconObj;
+
  
     private Image  _image;
     private Sprite _originalSprite;
@@ -113,11 +115,17 @@ public class EquipDropZone : MonoBehaviour, IDropHandler, IPointerClickHandler ,
         {
             _image.sprite = item.icon;
             _image.color  = Color.white;
+            
+            
+            if (emptyIconObj != null) emptyIconObj.SetActive(false); 
         }
         else
         {
             _image.sprite = _originalSprite;
             _image.color  = _originalColor;
+            
+            
+            if (emptyIconObj != null) emptyIconObj.SetActive(true); 
         }
     }
  

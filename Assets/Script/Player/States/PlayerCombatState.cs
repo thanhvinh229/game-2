@@ -8,7 +8,7 @@ public class PlayerCombatState : PlayerMoveState
     private const float ROTATION_SPEED  = 10f;
     private const int   MAX_COMBO       = 3;
     private const float COMBO_RESET_TIME  = 0.5f;
-    private const float COMBO_COOLDOWN    = 1.0f;
+    private const float COMBO_COOLDOWN    = 0.5f;
     private const float BUFFER_WINDOW    = 0.25f;
  
     public float autoSheatheTime = 5f; // Giây không hành động thì tự về idle

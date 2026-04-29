@@ -23,7 +23,8 @@ public enum EquipSlot
      Weapon2,
     Shield,
     Ring,
-    Ring2 
+    Ring2 ,
+    Belt
 }
 public enum ItemRarity
 {

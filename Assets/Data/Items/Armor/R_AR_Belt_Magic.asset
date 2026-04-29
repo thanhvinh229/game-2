@@ -10,20 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 688853c544000bf4496684ccac8fb62b, type: 3}
-  m_Name: E_WP_Sword_Excalibur
+  m_Name: R_AR_Belt_Magic
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  itemId: WP_Sword_Excalibur
-  itemName: "[E] Ki\u1EBFm Huy\u1EC1n Tho\u1EA1i"
-  description: "V\u0169 kh\xED c\u1EE7a anh h\xF9ng. \xC1nh s\xE1ng th\xE1nh thi\xEAng
-    t\u1ECFa ra t\u1EEB l\u01B0\u1EE1i ki\u1EBFm."
-  icon: {fileID: 21300000, guid: 8d6b7005c0b907c418e96c6394be40f2, type: 3}
-  type: 0
-  equipSlot: 6
-  rarity: 3
+  itemId: AR_Belt_Magic
+  itemName: "[R] \u0110ai l\u01B0ng ma thu\u1EADt"
+  description: 
+  icon: {fileID: 21300000, guid: 4eba08e8434a6e940aa54d3f63ead11a, type: 3}
+  type: 2
+  equipSlot: 11
+  rarity: 2
   isStackable: 0
   maxStackSize: 1
-  weight: 2.8
-  value: 5000
+  weight: 4
+  value: 350
   stats:
-  - statName: Attack
-    value: 85
+  - statName: Defense
+    value: 40
+  - statName: HP
+    value: 40
