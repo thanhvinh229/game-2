@@ -38,6 +38,13 @@ public class DeathManager : MonoBehaviour
 
         // 3. Hiện màn hình xám và nút bấm
         deathScreenPanel.SetActive(true);
+        
+        //4. Gọi WaveManager để kích hoạt Slow motion, hiện chữ DEFEAT và phát nhạc
+        WaveManager waveManager = FindFirstObjectByType<WaveManager>();
+        if (waveManager != null)
+        {
+            waveManager.TriggerDefeat();
+        }
 
         // Mở khóa con trỏ chuột để bấm nút (nếu game bạn đang khóa chuột ở giữa màn hình)
         Cursor.lockState = CursorLockMode.None;
@@ -51,7 +58,7 @@ public class DeathManager : MonoBehaviour
        Time.timeScale = 1.0f;
 
       // 1. Reset Stats (Máu, Mana, biến isDead trong code)
-    PlayerStats stats = player.GetComponent<PlayerStats>();
+     PlayerStats stats = player.GetComponent<PlayerStats>();
     if (stats != null) stats.ResetStats(); 
 
     // 2. Xử lý vị trí và Vật lý (SyncTransforms)
@@ -89,7 +96,16 @@ public class DeathManager : MonoBehaviour
     Cursor.lockState = CursorLockMode.Locked;
     Cursor.visible = false;
     
+
+    // 5. Gọi WaveManager để dọn sạch quái cũ và reset lại thông báo Wave
+        WaveManager waveManager = FindFirstObjectByType<WaveManager>();
+        if (waveManager != null)
+        {
+            waveManager.ResetWaveUI();
+        }
  }
+
+ 
 
     // Hàm này gán vào nút Quit
     public void QuitGame()

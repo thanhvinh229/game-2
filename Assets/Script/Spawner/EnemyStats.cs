@@ -22,6 +22,10 @@ public class EnemyStats : MonoBehaviour, IDamageable
     public string enemyType = "Enemy";
     public EnemyDeathEventChannel deathEventChannel;
 
+    [Header("Damage UI")]
+    public GameObject damagePopupPrefab;
+    public Transform popupSpawnPoint;
+
     void Start()
     {
         currentHealth = maxHealth;
@@ -38,7 +42,18 @@ public class EnemyStats : MonoBehaviour, IDamageable
      if (IsDead) return;
 
      currentHealth -= amount;
-
+    
+     if (damagePopupPrefab != null)
+     {
+        // Lấy vị trí sinh text (nếu không gán popupSpawnPoint thì lấy vị trí quái + 1.5m lên trên)
+        Vector3 spawnPos = popupSpawnPoint != null ? popupSpawnPoint.position : transform.position + Vector3.up * 1.5f;
+        
+        // Sinh ra Prefab
+        GameObject popup = Instantiate(damagePopupPrefab, spawnPos, Quaternion.identity);
+        
+        // Truyền sát thương vào script, set isPlayerHit = false
+        popup.GetComponent<DamagePopup>().Setup(amount, false);
+     }
      // Cập nhật thanh máu UI
      if (healthBarUI != null) healthBarUI.SetActive(true);
      if (healthSlider != null) healthSlider.value = currentHealth;

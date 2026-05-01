@@ -34,6 +34,8 @@ public class PlayerSkills : MonoBehaviour
     {
         if (playerStats == null) playerStats = GetComponent<PlayerStats>();
         if (animator == null) animator = GetComponent<Animator>();
+
+       
  
     }
  

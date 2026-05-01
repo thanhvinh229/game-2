@@ -17,6 +17,9 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private AudioSource _audioSource; 
     [SerializeField] private AudioClip _clickSound;
 
+    [Range(0f, 1f)] [SerializeField] private float _greetingVolume = 1f;
+    [Range(0f, 1f)] [SerializeField] private float _clickVolume = 0.5f;
+
     // Biến lưu trữ Animator của NPC đang nói chuyện
     private Animator _currentNpcAnimator; 
 
@@ -81,11 +84,13 @@ public class DialogueManager : MonoBehaviour
     {
         GameObject btnObj = Instantiate(_choiceButtonPrefab, _choiceContainer);
         btnObj.GetComponentInChildren<TextMeshProUGUI>().text = text;
-        btnObj.GetComponent<Button>().onClick.AddListener(action);
-        if (_audioSource != null && _clickSound != null)
+        btnObj.GetComponent<Button>().onClick.AddListener(() => {
+            if (_audioSource != null && _clickSound != null)
             {
-                _audioSource.PlayOneShot(_clickSound); 
+                _audioSource.PlayOneShot(_clickSound, _clickVolume); 
             }
+            action(); 
+        });
            
     }
 

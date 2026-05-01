@@ -14,6 +14,12 @@ public class MainMenuManager : MonoBehaviour
     public GameObject optionsPanel;
     public GameObject pauseMenuPanel;
 
+    [Header("Audio Settings")]
+    [SerializeField] private AudioSource _audioSource; 
+    [SerializeField] private AudioClip _clickSound;
+    [Range(0f, 1f)] [SerializeField] private float _clickVolume = 0.5f;
+
+
     private static bool _isPlaying = false;
     private static bool _isLoading = false; 
     private bool _isPaused = false;
@@ -116,6 +122,7 @@ public class MainMenuManager : MonoBehaviour
     // --- CÁC NÚT ĐIỀU KHIỂN ---
     public void StartNewGame()
     {
+        PlayClickSound();
         PlayerPrefs.DeleteKey("HasSaveData"); // Xóa file save cũ
         _isPlaying = true;
         _isLoading = false; // Báo cho hệ thống biết là KHÔNG load data
@@ -124,6 +131,7 @@ public class MainMenuManager : MonoBehaviour
 
     public void LoadGame()
     {
+        PlayClickSound();
         if (PlayerPrefs.HasKey("HasSaveData"))
         {
             _isPlaying = true;
@@ -138,6 +146,7 @@ public class MainMenuManager : MonoBehaviour
 
     public void QuitToMainMenu()
     {
+        PlayClickSound();
         SaveGameData(); // TỰ ĐỘNG LƯU TRƯỚC KHI THOÁT RA MENU
 
         _isPlaying = false;
@@ -147,6 +156,7 @@ public class MainMenuManager : MonoBehaviour
 
     public void PauseGame()
     {
+        PlayClickSound();
         pauseMenuPanel.SetActive(true);
         Time.timeScale = 0f;
         _isPaused = true;
@@ -154,6 +164,7 @@ public class MainMenuManager : MonoBehaviour
 
     public void ResumeGame()
     {
+        PlayClickSound();
         pauseMenuPanel.SetActive(false);
         Time.timeScale = 1f;
         _isPaused = false;
@@ -161,6 +172,7 @@ public class MainMenuManager : MonoBehaviour
 
     public void OpenOptions()
     {
+        PlayClickSound();
         optionsPanel.SetActive(true);
         if (!_isPlaying) mainMenuPanel.SetActive(false); 
         else pauseMenuPanel.SetActive(false); 
@@ -168,6 +180,7 @@ public class MainMenuManager : MonoBehaviour
 
     public void CloseOptions()
     {
+        PlayClickSound();
         optionsPanel.SetActive(false);
         if (!_isPlaying) mainMenuPanel.SetActive(true); 
         else pauseMenuPanel.SetActive(true); 
@@ -186,8 +199,17 @@ public class MainMenuManager : MonoBehaviour
         }
     }
 
+    public void PlayClickSound()
+    {
+        if (_audioSource != null && _clickSound != null)
+        {
+            _audioSource.PlayOneShot(_clickSound, _clickVolume);
+        }
+    }
+
     public void QuitGame() 
     {
+        PlayClickSound();
         Application.Quit(); 
     }
 }

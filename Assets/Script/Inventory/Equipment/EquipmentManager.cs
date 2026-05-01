@@ -13,28 +13,26 @@ public class EquipmentManager : MonoBehaviour
  
     void Awake()
     {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
+        if (Instance != null && Instance != this) { Destroy(gameObject); return; }
         Instance = this;
     }
  
-    public bool Equip(ItemData item)
+    public bool Equip(ItemData item) => Equip(item, item.equipSlot);
+ 
+    public bool Equip(ItemData item, EquipSlot targetSlot)
     {
-        if (item.equipSlot == EquipSlot.None) return false;
+        if (item == null || targetSlot == EquipSlot.None) return false;
  
-        // Tháo đồ cũ trả về inventory trước
-        if (equipped.ContainsKey(item.equipSlot))
-            Unequip(item.equipSlot);
+        if (equipped.ContainsKey(targetSlot))
+            Unequip(targetSlot);
  
-        equipped[item.equipSlot] = item;
+        equipped[targetSlot] = item;
         PlayerStats.Instance.ApplyModifiers(item.stats, add: true);
-        OnEquipped?.Invoke(item.equipSlot, item);
+        OnEquipped?.Invoke(targetSlot, item);
         return true;
     }
  
+    // Tháo đồ → trả về inventory (dùng khi player tháo bình thường)
     public void Unequip(EquipSlot slot)
     {
         if (!equipped.TryGetValue(slot, out var item)) return;
@@ -44,8 +42,19 @@ public class EquipmentManager : MonoBehaviour
         OnUnequipped?.Invoke(slot);
     }
  
+    // Tháo đồ KHÔNG trả về inventory (dùng khi swap giữa 2 ô equipment)
+    public ItemData UnequipSilent(EquipSlot slot)
+    {
+        if (!equipped.TryGetValue(slot, out var item)) return null;
+        PlayerStats.Instance.ApplyModifiers(item.stats, add: false);
+        equipped.Remove(slot);
+        OnUnequipped?.Invoke(slot);
+        return item;
+    }
+ 
     public ItemData GetEquipped(EquipSlot slot) =>
         equipped.TryGetValue(slot, out var item) ? item : null;
  
     public Dictionary<EquipSlot, ItemData> GetAllEquipped() => equipped;
 }
+ 

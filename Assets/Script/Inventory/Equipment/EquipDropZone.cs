@@ -5,18 +5,25 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(Image))]
-public class EquipDropZone : MonoBehaviour, IDropHandler, IPointerClickHandler ,IBeginDragHandler, IDragHandler, IEndDragHandler
+public class EquipDropZone : MonoBehaviour,
+    IDropHandler, IPointerClickHandler,
+    IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     [SerializeField] public EquipSlot slot;
+ 
+    [Tooltip("Loại item được chấp nhận. Để None = dùng chính slot bên trên.")]
+    [SerializeField] private EquipSlot acceptedItemSlot = EquipSlot.None;
+ 
     [SerializeField] private GameObject emptyIconObj;
-
  
     private Image  _image;
     private Sprite _originalSprite;
     private Color  _originalColor;
  
-    private static GameObject   _dragGhost;
+    private static GameObject    _dragGhost;
     public  static EquipDropZone DragSource { get; private set; }
+ 
+    EquipSlot AcceptedSlot => acceptedItemSlot == EquipSlot.None ? slot : acceptedItemSlot;
  
     void Start()
     {
@@ -38,14 +45,13 @@ public class EquipDropZone : MonoBehaviour, IDropHandler, IPointerClickHandler ,
         EquipmentManager.Instance.OnUnequipped -= OnUnequipped;
     }
  
-    // ── Kéo item ra khỏi ô equipment ──
+    // ── Kéo item ra khỏi ô ──────────────────────────────────────────────
     public void OnBeginDrag(PointerEventData e)
     {
         var item = EquipmentManager.Instance.GetEquipped(slot);
         if (item == null) return;
  
         DragSource = this;
- 
         _dragGhost = new GameObject("EquipDragGhost");
         _dragGhost.transform.SetParent(transform.root, false);
         var img = _dragGhost.AddComponent<Image>();
@@ -56,8 +62,7 @@ public class EquipDropZone : MonoBehaviour, IDropHandler, IPointerClickHandler ,
  
     public void OnDrag(PointerEventData e)
     {
-        if (_dragGhost != null)
-            _dragGhost.transform.position = e.position;
+        if (_dragGhost != null) _dragGhost.transform.position = e.position;
     }
  
     public void OnEndDrag(PointerEventData e)
@@ -66,39 +71,55 @@ public class EquipDropZone : MonoBehaviour, IDropHandler, IPointerClickHandler ,
         DragSource = null;
     }
  
-    // ── Nhận drop từ inventory hoặc equipment slot khác ──
+    // ── Nhận drop ───────────────────────────────────────────────────────
     public void OnDrop(PointerEventData e)
     {
-        // Từ inventory → equip
+        // Trường hợp 1: Kéo từ INVENTORY vào ô equipment
         var invSrc = SlotUI.DragSource;
         if (invSrc != null)
         {
             var slots = InventoryManager.Instance.GetSlots();
             if (invSrc.SlotIndex >= slots.Count) return;
+ 
             var item = slots[invSrc.SlotIndex].item;
-            if (item == null || item.equipSlot != slot)
+            if (item == null) return;
+ 
+            if (item.equipSlot != AcceptedSlot)
             {
-                Debug.Log($"[EquipDropZone] {item?.itemName} không khớp slot {slot}");
+                Debug.Log($"{item.itemName} cần [{item.equipSlot}], ô này nhận [{AcceptedSlot}]");
                 return;
             }
-            EquipmentManager.Instance.Equip(item);
+ 
+            // Equip vào đúng slot đích (Weapon2, Ring2...)
+            EquipmentManager.Instance.Equip(item, slot);
             InventoryManager.Instance.RemoveItem(invSrc.SlotIndex);
             return;
         }
  
-        // Từ equipment slot khác → swap
+        // Trường hợp 2: Kéo từ ô EQUIPMENT KHÁC sang ô này (swap)
         if (DragSource != null && DragSource != this)
         {
-            var dragItem = EquipmentManager.Instance.GetEquipped(DragSource.slot);
-            if (dragItem != null && dragItem.equipSlot == slot)
-            {
-                EquipmentManager.Instance.Unequip(DragSource.slot);
-                EquipmentManager.Instance.Equip(dragItem);
-            }
+            var srcSlot  = DragSource.slot;
+            var dragItem = EquipmentManager.Instance.GetEquipped(srcSlot);
+ 
+            if (dragItem == null || dragItem.equipSlot != AcceptedSlot) return;
+ 
+            // Lấy item đang ở ô đích (nếu có)
+            var dstItem = EquipmentManager.Instance.GetEquipped(slot);
+ 
+            // Dùng UnequipSilent để KHÔNG trả về inventory
+            EquipmentManager.Instance.UnequipSilent(srcSlot);
+            if (dstItem != null)
+                EquipmentManager.Instance.UnequipSilent(slot);
+ 
+            // Equip lại đúng vị trí — không qua inventory nên không bị nhân bản
+            EquipmentManager.Instance.Equip(dragItem, slot);
+            if (dstItem != null)
+                EquipmentManager.Instance.Equip(dstItem, srcSlot);
         }
     }
  
-    // ── Click phải để tháo ──
+    // ── Click phải tháo đồ (trả về inventory) ───────────────────────────
     public void OnPointerClick(PointerEventData e)
     {
         if (e.button != PointerEventData.InputButton.Right) return;
@@ -111,21 +132,19 @@ public class EquipDropZone : MonoBehaviour, IDropHandler, IPointerClickHandler ,
     void Refresh()
     {
         var item = EquipmentManager.Instance.GetEquipped(slot);
-        if (item != null && item.icon != null)
+        bool has = item != null;
+ 
+        if (has)
         {
             _image.sprite = item.icon;
             _image.color  = Color.white;
-            
-            
-            if (emptyIconObj != null) emptyIconObj.SetActive(false); 
+            if (emptyIconObj != null) emptyIconObj.SetActive(false);
         }
         else
         {
             _image.sprite = _originalSprite;
             _image.color  = _originalColor;
-            
-            
-            if (emptyIconObj != null) emptyIconObj.SetActive(true); 
+            if (emptyIconObj != null) emptyIconObj.SetActive(true);
         }
     }
  

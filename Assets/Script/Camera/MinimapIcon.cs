@@ -8,11 +8,14 @@ public class MinimapIcon : MonoBehaviour
     [Header("Icon Settings")]
     public IconType iconType = IconType.Enemy;
  
-    [Tooltip("Sprite icon trên minimap. Để trống sẽ dùng hình tròn mặc định")]
+    [Tooltip("Sprite icon trên minimap (Nên dùng ảnh mũi tên/nón hướng lên trên).")]
     public Sprite iconSprite;
  
     [Range(6, 20)]
     public int iconSize = 10;
+
+    [Tooltip("Bật tùy chọn này để icon xoay theo hướng nhìn của object.")]
+    public bool showDirection = false;
  
     // ── Màu mặc định theo loại ───────────────────────────────────────────
     static readonly Color ColorPlayer = new Color(0.29f, 0.91f, 0.63f);
@@ -29,27 +32,15 @@ public class MinimapIcon : MonoBehaviour
  
     void Start()
     {
-        // Unity 6: FindFirstObjectByType thay thế FindObjectOfType (đã deprecated)
         MinimapUI mapUI = Object.FindFirstObjectByType<MinimapUI>();
-        if (mapUI == null)
-        {
-            Debug.LogWarning("[MinimapIcon] Không tìm thấy MinimapUI trong scene!");
-            enabled = false;
-            return;
-        }
+        if (mapUI == null) return;
  
         minimapCamScript = Object.FindFirstObjectByType<MinimapCamera>();
-        if (minimapCamScript == null)
-        {
-            Debug.LogWarning("[MinimapIcon] Không tìm thấy MinimapCamera trong scene!");
-            enabled = false;
-            return;
-        }
+        if (minimapCamScript == null) return;
  
         minimapCam = minimapCamScript.GetComponent<Camera>();
         mapRect    = mapUI.minimapDisplay.rectTransform;
  
-        // Tạo icon là con của RawImage minimap
         iconGO = new GameObject($"Icon_{gameObject.name}");
         iconGO.transform.SetParent(mapRect, false);
  
@@ -62,9 +53,14 @@ public class MinimapIcon : MonoBehaviour
         iconRect.anchorMin = new Vector2(0.5f, 0.5f);
         iconRect.anchorMax = new Vector2(0.5f, 0.5f);
         iconRect.pivot     = new Vector2(0.5f, 0.5f);
+        
+        // Giữ nguyên logic kích thước cũ của bạn
         iconRect.sizeDelta = iconType == IconType.Player
                              ? new Vector2(14, 14)
                              : new Vector2(iconSize, iconSize);
+
+        // Mặc định bật xoay hướng cho Player
+        if (iconType == IconType.Player) showDirection = true;
     }
  
     void LateUpdate()
@@ -87,11 +83,16 @@ public class MinimapIcon : MonoBehaviour
             (viewportPos.y - 0.5f) * mapH
         );
  
-        // Xoay icon Player theo hướng nhìn
-        if (iconType == IconType.Player)
+        // Xoay icon theo hướng nhìn nếu được bật
+        if (showDirection)
         {
             float angle = transform.eulerAngles.y - minimapCamScript.transform.eulerAngles.y;
             iconRect.localRotation = Quaternion.Euler(0f, 0f, -angle);
+        }
+        else
+        {
+            // Cố định icon nếu không cần hiển thị hướng (dành cho NPC, item...)
+            iconRect.localRotation = Quaternion.identity; 
         }
     }
  

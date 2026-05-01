@@ -18,7 +18,7 @@ MonoBehaviour:
     ph\u1EE5c nhanh h\u01A1n khi c\u1EA7m."
   icon: {fileID: 557107510, guid: 28d7745480866e24293d1baaaebb3838, type: 3}
   type: 0
-  equipSlot: 5
+  equipSlot: 6
   rarity: 2
   isStackable: 0
   maxStackSize: 1

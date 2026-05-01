@@ -603,6 +603,8 @@ MonoBehaviour:
   knockbackDuration: 0.12
   enemyType: Enemy
   deathEventChannel: {fileID: 11400000, guid: 446c2ae1406ef6d47b8bd4be590c4c71, type: 2}
+  damagePopupPrefab: {fileID: 64587286699469748, guid: 43f651a8c865c824fbc360219d1ad46a, type: 3}
+  popupSpawnPoint: {fileID: 0}
 --- !u!114 &4121570201471202309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -630,8 +632,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MinimapIcon
   iconType: 1
-  iconSprite: {fileID: 21300000, guid: 64f5428e485e0204db94d129eab4847f, type: 3}
+  iconSprite: {fileID: 54528995, guid: 7f39c493a82034e4fa9a2a4ba685f122, type: 3}
   iconSize: 10
+  showDirection: 1
 --- !u!114 &3112937332404117501
 MonoBehaviour:
   m_ObjectHideFlags: 0
