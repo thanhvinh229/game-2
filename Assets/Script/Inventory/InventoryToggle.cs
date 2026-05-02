@@ -31,7 +31,7 @@ public class InventoryToggle : MonoBehaviour
             Toggle();
     }
 
-    void Toggle()
+   public  void Toggle()
     {
         // Đọc trạng thái THẬT từ GameObject, không dùng bool
         bool willOpen = !inventoryRoot.activeSelf;

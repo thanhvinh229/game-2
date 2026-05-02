@@ -7,9 +7,9 @@ public class SlotUI : MonoBehaviour ,
 IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler,
     IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler {
 
-    [SerializeField] private Image itemIcon;
+       [SerializeField] private Image           itemIcon;
     [SerializeField] private TextMeshProUGUI quantityText;
-    [SerializeField] private Image highlight;
+    [SerializeField] private Image           highlight;
  
     private int slotIndex;
     private InventorySlot data;
@@ -34,7 +34,7 @@ IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler,
         }
     }
  
-    // ── Drag từ inventory ──
+    // ── Drag ────────────────────────────────────────────────────────────
     public void OnBeginDrag(PointerEventData e)
     {
         if (data.IsEmpty) return;
@@ -57,7 +57,36 @@ IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler,
     public void OnEndDrag(PointerEventData e)
     {
         Destroy(dragGhost);
-        StartCoroutine(ResetDragSource());
+ 
+        // Kiểm tra có thả trúng UI object nào không
+        bool droppedOnUI = e.pointerCurrentRaycast.gameObject != null;
+ 
+        if (!droppedOnUI && dragSource == this && !data.IsEmpty)
+        {
+            // Thả ra ngoài UI → vứt item xuống đất
+            DropItemToGround();
+        }
+        else
+        {
+            // Thả trúng UI → chờ 1 frame để OnDrop xử lý swap trước
+            StartCoroutine(ResetDragSource());
+        }
+    }
+ 
+    void DropItemToGround()
+    {
+        if (ItemDropManager.Instance == null)
+        {
+            Debug.LogWarning("[SlotUI] ItemDropManager chưa có trong scene!");
+            StartCoroutine(ResetDragSource());
+            return;
+        }
+ 
+        // Vứt toàn bộ stack xuống đất
+        ItemDropManager.Instance.DropItem(data.item, data.quantity);
+        InventoryManager.Instance.RemoveItem(slotIndex, data.quantity);
+ 
+        dragSource = null;
     }
  
     private System.Collections.IEnumerator ResetDragSource()
@@ -66,7 +95,7 @@ IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler,
         dragSource = null;
     }
  
-    // ── Nhận drop ──
+    // ── Drop (nhận từ slot khác hoặc equipment) ─────────────────────────
     public void OnDrop(PointerEventData e)
     {
         // Nhận từ inventory slot khác → swap
@@ -81,12 +110,10 @@ IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler,
         {
             var equipSlot = EquipDropZone.DragSource.slot;
             EquipmentManager.Instance.Unequip(equipSlot);
-            // Unequip tự gọi AddItem → item vào slot trống đầu tiên
-            // Không cần làm gì thêm
         }
     }
  
-    // ── Hover tooltip ──
+    // ── Hover tooltip ────────────────────────────────────────────────────
     public void OnPointerEnter(PointerEventData e)
     {
         if (highlight != null) highlight.enabled = true;
@@ -101,7 +128,7 @@ IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler,
             ItemTooltip.Instance.Hide();
     }
  
-    // ── Click phải context menu ──
+    // ── Click phải context menu ──────────────────────────────────────────
     public void OnPointerClick(PointerEventData e)
     {
         if (e.button == PointerEventData.InputButton.Right && !data.IsEmpty)

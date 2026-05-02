@@ -19,7 +19,7 @@ public class QuestLogToggle : MonoBehaviour
     private bool _previousCursorVisible;
     private CursorLockMode _previousLockMode;
 
-    void Update()
+     void Update()
     {
         if (Keyboard.current[_toggleKey].wasPressedThisFrame)
             ToggleQuestLog();
@@ -39,7 +39,7 @@ public class QuestLogToggle : MonoBehaviour
         }
     }
 
-    private void ToggleQuestLog()
+    public void ToggleQuestLog()
 {
     bool isOpen = !_questLogPanel.activeSelf;
 
@@ -55,7 +55,7 @@ public class QuestLogToggle : MonoBehaviour
     }
 }
 
-    private void OnQuestLogOpened()
+    public void OnQuestLogOpened()
     {
         GameStateManager.SetUIOpen(true);
         Time.timeScale = 0f;
@@ -72,7 +72,7 @@ public class QuestLogToggle : MonoBehaviour
         }
     }
 
-    private void OnQuestLogClosed()
+    public void OnQuestLogClosed()
     {
         GameStateManager.SetUIOpen(false);
         Time.timeScale = 1f;
@@ -94,7 +94,7 @@ public class QuestLogToggle : MonoBehaviour
 
     // Phải dùng PlayOneShot trực tiếp thay vì Play()
     // vì timeScale = 0 làm AudioSource.Play() bị câm
-    private void PlaySoundUnscaled(AudioClip clip)
+    public void PlaySoundUnscaled(AudioClip clip)
     {
         if (_audioSource == null || clip == null) return;
         _audioSource.ignoreListenerPause = true;
@@ -112,10 +112,13 @@ public class QuestLogToggle : MonoBehaviour
 
     public void CloseQuestLog()
     {
+        Debug.Log("Đã bấm nút X!");
         if (_questLogPanel.activeSelf)
         {
-            _questLogPanel.SetActive(false);
             OnQuestLogClosed();
+            _questLogPanel.SetActive(false);
+            
         }   
+        
     }
 }
