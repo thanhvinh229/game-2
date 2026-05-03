@@ -12,6 +12,11 @@ public class PlayerCombatState : PlayerMoveState
     private const float BUFFER_WINDOW    = 0.25f;
  
     public float autoSheatheTime = 5f; // Giây không hành động thì tự về idle
+    private float _sheathTime         = -999f;
+    private const float SHEATHE_LOCK  = 1.2f;  
+    private bool _isFirstEnter = false;
+
+    public void RefreshCombatTimer() => _lastCombatActionTime = Time.time;
  
     // ── Combo ─────────────────────────────────────────────────────────────────
     private int   _comboStep       = 0;
@@ -34,10 +39,25 @@ public class PlayerCombatState : PlayerMoveState
     public override void Enter()
     {
         _lastCombatActionTime = Time.time;
+
+        _attackBuffered   = false;
+        _bufferTimer      = 0f;
+        _comboStep        = 0;
+        _comboCoolingDown = false;
+        _comboTimer       = 0f;
+        _isFacingCamera   = false;
+
+         if (_isFirstEnter)
+        {
+         _lastCombatActionTime = Time.time;
+         _isFirstEnter = false;
+        }
     }
  
     public override void Update()
     {
+
+        
         Vector3 move      = player.GetMoveInput();
         bool isMoving     = move.magnitude > 0.1f;
         bool isAttacking  = Input.GetMouseButtonDown(0);
@@ -66,14 +86,10 @@ public class PlayerCombatState : PlayerMoveState
         UpdateComboTimer();
         TryConsumeBuffer();
  
-        if (isMoving || isJumping)
-            _lastCombatActionTime = Time.time;
- 
-        // Tự động về idle sau autoSheatheTime giây không hành động
         if (Time.time - _lastCombatActionTime > autoSheatheTime)
         {
-            ExitCombatState();
-            return;
+          ExitCombatState();
+          return;
         }
  
         HandleRotation(move, isAttacking);
@@ -83,6 +99,12 @@ public class PlayerCombatState : PlayerMoveState
         player.velocity.z = movement.z;
  
         UpdateCombatAnimator(move, 0.5f);
+
+         if (Time.time - _sheathTime < SHEATHE_LOCK)
+        {
+         player.ChangeState(player.idleState);
+         return;
+        }
     }
  
     // ── Buffer ────────────────────────────────────────────────────────────────
@@ -198,8 +220,20 @@ public class PlayerCombatState : PlayerMoveState
  
     // ── Public API ────────────────────────────────────────────────────────────
     /// <summary>Gọi từ bên ngoài (ví dụ: PlayerSkills) để vào combat.</summary>
-    public void EnterCombatState()
+    public void EnterCombatState(bool forceEnter = false)
     {
+          
+         if (!forceEnter && Time.time - _sheathTime < SHEATHE_LOCK) return;
+
+         if (forceEnter) _sheathTime = -999f;
+
+         if (player.isEquipped)
+        {
+          _lastCombatActionTime = Time.time;
+         return;
+        }
+
+         _isFirstEnter = true;
         _lastCombatActionTime = Time.time;
         player.animator.SetBool("IsCombat", true);
         player.isEquipped = true;
@@ -209,9 +243,13 @@ public class PlayerCombatState : PlayerMoveState
     /// <summary>Thoát combat, cất kiếm và về Idle.</summary>
     public void ExitCombatState()
     {
+
+        _sheathTime = Time.time;
+
         _comboCoolingDown = false;
         _comboStep        = 0;
         _attackBuffered   = false;
+         _isFirstEnter     = false;
  
         player.isEquipped = false;
         player.animator.SetBool("IsCombat", false);

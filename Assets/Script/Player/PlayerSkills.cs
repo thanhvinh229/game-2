@@ -84,6 +84,8 @@ public class PlayerSkills : MonoBehaviour
     if (combatState != null)
     {
         combatState.EnterCombatState();
+
+        combatState.RefreshCombatTimer();
     }
     if (playerController != null) 
     {

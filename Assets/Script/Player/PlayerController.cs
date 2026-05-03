@@ -45,6 +45,11 @@ public class PlayerController : MonoBehaviour
     public AudioClip   jumpSound;
     public AudioClip   drawSwordSound;
     public AudioClip   sheathSwordSound;
+
+    [Header("Hurt & Knockback")]
+    public float knockbackForce = 8f; 
+    public float hurtDuration = 0.4f;
+
  
     // ── States ────────────────────────────────────────────────────────────────
     [HideInInspector] public PlayerIdleState   idleState;
@@ -53,6 +58,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public PlayerFallState   fallState;
     [HideInInspector] public PlayerRunState    runState;
     [HideInInspector] public PlayerCombatState combatState;
+    [HideInInspector] public PlayerHurtState hurtState;
  
     public float rotateSpeed    = 10f;
     public float aimRotateSpeed = 15f;
@@ -75,6 +81,7 @@ public class PlayerController : MonoBehaviour
         jumpState   = new PlayerJumpState(this);
         fallState   = new PlayerFallState(this);
         combatState = new PlayerCombatState(this);
+        hurtState = new PlayerHurtState(this);  
     }
  
     void Start()
@@ -181,6 +188,23 @@ public class PlayerController : MonoBehaviour
                 Debug.Log($"[Attack] Gây {totalDamage} damage (base: {meleeDamage} + equip: {equipBonus})");
             }
         }
+    }
+
+    public void OnHit(Transform attacker)
+    {
+       // 1. Kích hoạt Animation bị đánh
+       animator.SetTrigger("Hit"); 
+
+       // 2. Tính hướng đẩy lùi (ngược hướng với kẻ địch)
+       Vector3 knockbackDir = (transform.position - attacker.position).normalized;
+       knockbackDir.y = 0; // Không để player bay lên trời
+ 
+       // 3. Gán lực đẩy vào velocity
+       velocity.x = knockbackDir.x * knockbackForce;
+       velocity.z = knockbackDir.z * knockbackForce;
+
+       // 4. Chuyển sang HurtState để khóa di chuyển trong chốc lát
+       ChangeState(hurtState);
     }
  
     public bool IsAttacking()                      => animator.GetCurrentAnimatorStateInfo(1).IsTag("Attack");

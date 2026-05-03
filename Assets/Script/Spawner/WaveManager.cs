@@ -21,7 +21,7 @@ public class WaveManager : MonoBehaviour
     public Transform[] spawnPoints; // Kéo thả các Empty Object nằm ngoài rìa map vào đây
     
     [Header("Events & Status UI")]
-    public EnemyDeathEventChannel deathEventChannel; // Kéo SO Event Channel của bạn vào đây
+    public EnemyDeathEventChannel deathEventChannel; 
     public TextMeshProUGUI waveStatusText;           // Text hiển thị góc màn hình (VD: Wave 1: 5/10)
     public WaveStarter waveStarterObject;            // Object tảng đá tương tác
 
@@ -35,7 +35,7 @@ public class WaveManager : MonoBehaviour
     [Header("Audio Settings")]
     public AudioSource audioSource;
     public AudioClip warHornClip;      // Tiếng tù và khi bắt đầu (WAVE X)
-    public AudioClip waveCompleteClip; // Tiếng khi xong màn 1-9 (Tùy chọn)
+    public AudioClip waveCompleteClip; // Tiếng khi xong màn 1-9 
     public AudioClip victoryClip;      // Nhạc chiến thắng màn 10
     public AudioClip defeatClip;       // Nhạc thất bại
 

@@ -88,12 +88,16 @@ public class PlayerStats : MonoBehaviour, IDamageable
     // ── Nhận sát thương — Defense giảm damage ──────────────────────────
     public void TakeDamage(float rawDamage)
     {
+      TakeDamage(rawDamage, null);
+    }
+    public void TakeDamage(float rawDamage, Transform attackerTransform = null )
+    {
         if (IsDead) return;
 
         // Công thức: damage thực = rawDamage * 100 / (100 + Defense)
         // Defense = 10  → giảm ~9%  | Defense = 50  → giảm ~33%
         // Defense = 100 → giảm ~50% | Defense = 200 → giảm ~67%
-        float actualDamage = rawDamage * 100f / (100f + Defense);
+        float actualDamage = rawDamage * 100f / (100f + Defense);   
         actualDamage = Mathf.Max(1f, actualDamage); // tối thiểu 1 damage
 
         currentHealth  -= actualDamage;
@@ -110,6 +114,12 @@ public class PlayerStats : MonoBehaviour, IDamageable
          var dp = popup.GetComponent<DamagePopup>();
         if (dp != null) dp.Setup(actualDamage, true);
         }
+
+        PlayerController pc = GetComponent<PlayerController>();
+       if (pc != null && attackerTransform != null)
+       {
+         pc.OnHit(attackerTransform); 
+       }
 
         Debug.Log($"[PlayerStats] Nhận {rawDamage:F0} raw → {actualDamage:F1} thực (DEF:{Defense:F0})");
 

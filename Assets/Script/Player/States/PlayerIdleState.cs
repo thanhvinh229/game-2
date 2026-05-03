@@ -32,8 +32,8 @@ public class PlayerIdleState : PlayerMoveState
  
         if (Input.GetMouseButtonDown(0) && player.isEquipped)
         {
-            player.ChangeState(player.combatState);
-            return;
+           player.combatState.EnterCombatState();
+           return;
         }
  
         player.animator.SetFloat("MoveX", 0f, DAMP_TIME, Time.deltaTime);

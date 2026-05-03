@@ -123,15 +123,17 @@ public class EnemyAI : MonoBehaviour
         Collider[] hits = Physics.OverlapSphere(attackPoint.position, attackRadius, playerLayer);
         
         foreach (Collider hit in hits)
+    {
+        // Thử lấy PlayerStats trực tiếp để truyền transform
+        PlayerStats pStats = hit.GetComponent<PlayerStats>();
+        if (pStats != null)
         {
-            IDamageable damageable = hit.GetComponent<IDamageable>();
-            if (damageable != null)
-            {
-                damageable.TakeDamage(damageAmount);
-                Debug.Log("Quái đã chém trúng Player!");
-                break; 
-            }
+            // TRUYỀN THÊM transform của quái ở đây
+            pStats.TakeDamage(damageAmount, transform); 
+            Debug.Log("Quái đã chém trúng Player và truyền vị trí!");
+            break; 
         }
+    }
     }
 
     private void OnDrawGizmosSelected()

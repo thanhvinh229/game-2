@@ -320,7 +320,7 @@ GameObject:
   - component: {fileID: 8901277509104604422}
   - component: {fileID: 4660626607261324945}
   m_Layer: 13
-  m_Name: EnemyHealthCanvas (1)
+  m_Name: 'WendigoHealthCanvas '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -439,15 +439,15 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: d21f5fa05d5285f44afcc81489de80f9, type: 2}
     - target: {fileID: -8679921383154817045, guid: 119e17ab36b2a2347ba462f14634a86f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 48.27746
+      value: 49.026966
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 119e17ab36b2a2347ba462f14634a86f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.0031123
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 119e17ab36b2a2347ba462f14634a86f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 57.81726
+      value: 63.31722
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 119e17ab36b2a2347ba462f14634a86f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -720,7 +720,7 @@ PrefabInstance:
     - target: {fileID: 5866666021909216657, guid: 119e17ab36b2a2347ba462f14634a86f, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: ece66780a134c1743a86bb2e46e83d87, type: 2}
+      objectReference: {fileID: 9100000, guid: 2f04787273be94645a633f883a9c1d80, type: 2}
     - target: {fileID: 6180659925938036706, guid: 119e17ab36b2a2347ba462f14634a86f, type: 3}
       propertyPath: m_Layer
       value: 13
@@ -1035,7 +1035,7 @@ MonoBehaviour:
   attackSounds:
   - {fileID: 8300000, guid: e85fa0b86cb84744eba089fa0d2cead2, type: 3}
   footstepSound: {fileID: 8300000, guid: cbbf8fcb01ae84b45a6e5f9c84d6cfc5, type: 3}
-  hitSound: {fileID: 8300000, guid: e85fa0b86cb84744eba089fa0d2cead2, type: 3}
+  hitSound: {fileID: 8300000, guid: a65f32353e91e3248a4c1d140f42a591, type: 3}
 --- !u!114 &1220068250658570627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1062,7 +1062,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4df71f4bd561c4143a794ef316914921, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyStats
-  maxHealth: 50
+  maxHealth: 200
   healthSlider: {fileID: 6692689561183255788}
   healthBarUI: {fileID: 8960994045306987658}
   animator: {fileID: 5810288584631633012}
