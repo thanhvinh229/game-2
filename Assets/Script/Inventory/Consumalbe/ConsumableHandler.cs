@@ -9,6 +9,10 @@ public class ConsumableHandler : MonoBehaviour
     [Header("Popup thông báo (có thể để trống)")]
     [SerializeField] private TextMeshProUGUI feedbackText;
     [SerializeField] private float           feedbackDuration = 1.5f;
+
+    [Header("Audio Settings")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip   potionSound;
  
     void Awake()
     {
@@ -78,6 +82,10 @@ public class ConsumableHandler : MonoBehaviour
             ShowFeedback(feedbackMessage, feedbackColor);
             Debug.Log($"[Consumable] {item.itemName} → {feedbackMessage}");
         }
+        if (audioSource != null && potionSound != null)
+            {
+                audioSource.PlayOneShot(potionSound);
+            }
  
         return used;
     }
