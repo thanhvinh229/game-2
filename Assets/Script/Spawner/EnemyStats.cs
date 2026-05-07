@@ -8,6 +8,7 @@ public class EnemyStats : MonoBehaviour, IDamageable
     public float maxHealth = 50f;
     private float currentHealth;
     private bool IsDead = false;
+    public bool IsAlive => currentHealth > 0;
 
     [Header("UI & Animation")]
     public Slider healthSlider;

@@ -14,6 +14,7 @@ public class PlayerStats : MonoBehaviour, IDamageable
     public float currentHealth;
     public Slider healthSlider;
     public TextMeshProUGUI healthText;
+    public bool IsAlive => currentHealth > 0;
     public bool IsDead { get; private set; }
 
     [Header("Mana Settings")]

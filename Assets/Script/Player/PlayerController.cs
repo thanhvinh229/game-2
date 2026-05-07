@@ -50,6 +50,14 @@ public class PlayerController : MonoBehaviour
     public float knockbackForce = 8f; 
     public float hurtDuration = 0.4f;
 
+    [Header("Auto Combat Detection")]
+    public float enemyDetectionRange = 5f;
+    public LayerMask enemyDetectionLayer;
+
+    private float _detectionCheckInterval = 0.2f; // Check mỗi 0.2s thay vì mỗi frame
+    private float _nextDetectionTime;
+
+
  
     // ── States ────────────────────────────────────────────────────────────────
     [HideInInspector] public PlayerIdleState   idleState;
@@ -59,6 +67,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public PlayerRunState    runState;
     [HideInInspector] public PlayerCombatState combatState;
     [HideInInspector] public PlayerHurtState hurtState;
+    [HideInInspector] public bool isInCombatState = false;
  
     public float rotateSpeed    = 10f;
     public float aimRotateSpeed = 15f;
@@ -86,6 +95,7 @@ public class PlayerController : MonoBehaviour
  
     void Start()
     {
+        ChangeState(idleState); 
         _weaponHolder = GetComponentInChildren<WeaponHolder>();
  
         audioSource.playOnAwake  = false;
@@ -96,6 +106,7 @@ public class PlayerController : MonoBehaviour
  
     void Update()
     {
+       
         // Khi UI mở: dừng animation và bỏ qua mọi input
         if (GameStateManager.IsUIOpen)
         {
@@ -107,11 +118,17 @@ public class PlayerController : MonoBehaviour
         }
  
         _currentState.Update();
- 
-       
         ApplyGravity();
         controller.Move(velocity * Time.deltaTime);
- 
+
+        
+        if (!isEquipped && Time.time >= _nextDetectionTime)
+        {
+        _nextDetectionTime = Time.time + _detectionCheckInterval;
+        CheckEnemyProximity();
+        }
+
+
         // Xoay theo hướng di chuyển 
         if (_shouldFaceMoveDirection && !IsAttacking())
         {
@@ -162,11 +179,17 @@ public class PlayerController : MonoBehaviour
             velocity.y += gravity * Time.deltaTime;
         }
     }
+
+    public void ResetDetectionTimer(float delay = 2f)
+    {
+    _nextDetectionTime = Time.time + delay;
+    }
  
     // ── Combat ────────────────────────────────────────────────────────────────
     public void ToggleWeaponVisibility(int isCombat)
     {
         bool inCombat = isCombat == 0;
+        Debug.Log($"[ToggleWeapon] isCombat={isCombat} | SwordOnHand={inCombat} | Sword={!inCombat}");
         SwordOnHand.SetActive(inCombat);
         Sword.SetActive(!inCombat);
     }
@@ -245,14 +268,31 @@ public class PlayerController : MonoBehaviour
         audioSource.pitch = UnityEngine.Random.Range(0.9f, 1.1f);
         audioSource.PlayOneShot(sheathSwordSound);
     }
- 
+    
+    private void CheckEnemyProximity()
+   {
+      Collider[] nearby = Physics.OverlapSphere(transform.position, enemyDetectionRange, enemyLayer);
+        Debug.Log($"[Detection] found={nearby.Length} | isEquipped={isEquipped} | range={enemyDetectionRange} | layer={enemyLayer.value}");
+
+      if (nearby.Length > 0)
+        combatState.EnterCombatState();
+   }
+
+
     // ── Gizmos ────────────────────────────────────────────────────────────────
     private void OnDrawGizmosSelected()
     {
+        // Vùng attack
         if (attackPoint == null) return;
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+    
+        // Vùng auto-detect
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, enemyDetectionRange);
     }
+
+   
 }
 
 

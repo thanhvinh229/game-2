@@ -38,6 +38,7 @@ public class PlayerCombatState : PlayerMoveState
     // ── State Lifecycle ───────────────────────────────────────────────────────
     public override void Enter()
     {
+        Debug.Log("[CombatState] Enter() called");
         _lastCombatActionTime = Time.time;
 
         _attackBuffered   = false;
@@ -46,18 +47,19 @@ public class PlayerCombatState : PlayerMoveState
         _comboCoolingDown = false;
         _comboTimer       = 0f;
         _isFacingCamera   = false;
-
-         if (_isFirstEnter)
-        {
-         _lastCombatActionTime = Time.time;
-         _isFirstEnter = false;
-        }
+        _isFirstEnter     = false;
+        _lastCombatActionTime = Time.time;
     }
  
     public override void Update()
     {
+        //  SHEATHE_LOCK    
+        if (Time.time - _sheathTime < SHEATHE_LOCK)
+        {
+         player.ChangeState(player.idleState);
+         return;
+        }
 
-        
         Vector3 move      = player.GetMoveInput();
         bool isMoving     = move.magnitude > 0.1f;
         bool isAttacking  = Input.GetMouseButtonDown(0);
@@ -88,9 +90,20 @@ public class PlayerCombatState : PlayerMoveState
  
         if (Time.time - _lastCombatActionTime > autoSheatheTime)
         {
-          ExitCombatState();
-          return;
-        }
+            Collider[] nearby = Physics.OverlapSphere( player.transform.position,player.enemyDetectionRange,  player.enemyLayer );
+    
+            bool hasLiveEnemy = System.Array.Exists(nearby, col => {IDamageable d = col.GetComponent<IDamageable>();return d != null ; });
+
+         if (nearby.Length == 0)
+
+         {
+             ExitCombatState();
+         }
+         else
+         {
+             _lastCombatActionTime = Time.time;
+         }
+        } 
  
         HandleRotation(move, isAttacking);
  
@@ -100,11 +113,7 @@ public class PlayerCombatState : PlayerMoveState
  
         UpdateCombatAnimator(move, 0.5f);
 
-         if (Time.time - _sheathTime < SHEATHE_LOCK)
-        {
-         player.ChangeState(player.idleState);
-         return;
-        }
+         
     }
  
     // ── Buffer ────────────────────────────────────────────────────────────────
@@ -221,24 +230,25 @@ public class PlayerCombatState : PlayerMoveState
     // ── Public API ────────────────────────────────────────────────────────────
     /// <summary>Gọi từ bên ngoài (ví dụ: PlayerSkills) để vào combat.</summary>
     public void EnterCombatState(bool forceEnter = false)
+{
+    Debug.Log($"[EnterCombatState] forceEnter={forceEnter} | isInCombatState={player.isInCombatState} | sheathDiff={Time.time - _sheathTime}");
+    if (!forceEnter && Time.time - _sheathTime < SHEATHE_LOCK) return;
+    if (forceEnter) _sheathTime = -999f;
+
+    if (player.isInCombatState)
     {
-          
-         if (!forceEnter && Time.time - _sheathTime < SHEATHE_LOCK) return;
-
-         if (forceEnter) _sheathTime = -999f;
-
-         if (player.isEquipped)
-        {
-          _lastCombatActionTime = Time.time;
-         return;
-        }
-
-         _isFirstEnter = true;
         _lastCombatActionTime = Time.time;
-        player.animator.SetBool("IsCombat", true);
-        player.isEquipped = true;
-        player.ChangeState(player.combatState);
+        return;
     }
+
+    _isFirstEnter = true;
+    _lastCombatActionTime = Time.time;
+    player.animator.SetBool("IsCombat", true);
+    player.animator.SetTrigger("drawWeapon"); // ← chuyển vào đây từ MoveState
+    player.isEquipped = true;
+    player.isInCombatState = true;
+    player.ChangeState(player.combatState);
+}
  
     /// <summary>Thoát combat, cất kiếm và về Idle.</summary>
     public void ExitCombatState()
@@ -259,6 +269,24 @@ public class PlayerCombatState : PlayerMoveState
  
         player.ChangeState(player.idleState);
     }
+
+    public override void Exit()
+    {
+     player.isInCombatState = false;
+    }
+
+    public void Reset()
+    {
+      _sheathTime           = -999f;
+      _lastCombatActionTime = -999f;
+      _attackBuffered       = false;
+      _bufferTimer          = 0f;
+      _comboStep            = 0;
+      _comboCoolingDown     = false;
+      _comboTimer           = 0f;
+      _isFirstEnter         = false;
+      _isFacingCamera       = false;
+    }
  
     // ── Coroutine ─────────────────────────────────────────────────────────────
     private System.Collections.IEnumerator DisableRootMotionAfterDelay(float delay)
@@ -266,6 +294,8 @@ public class PlayerCombatState : PlayerMoveState
         yield return new WaitForSeconds(delay);
         player.animator.applyRootMotion = false;
     }
+
+    
 }
     
     

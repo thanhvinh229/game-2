@@ -32,7 +32,7 @@ public class PlayerMoveState : PlayerState
         {
             player.isEquipped = true;
             player.animator.SetTrigger("drawWeapon");
-            player.ChangeState(player.combatState);
+            player.combatState.EnterCombatState();
             return;
         }
  

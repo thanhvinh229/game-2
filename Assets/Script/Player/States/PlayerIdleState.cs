@@ -8,6 +8,7 @@ public class PlayerIdleState : PlayerMoveState
  
     public override void Enter()
     {
+        Debug.Log("[IdleState] Enter() called");
         player.velocity.x = 0f;
         player.velocity.z = 0f;
         player.animator?.SetFloat("Speed", 0f);

@@ -77,24 +77,33 @@ public class DeathManager : MonoBehaviour
     Animator anim = player.GetComponent<Animator>();
     if (anim != null)
     {
-        // Reset tất cả tham số liên quan đến cái chết
         anim.SetBool("IsDead", false);
-        anim.ResetTrigger("Die"); // Xóa trigger Die nếu nó còn đang chờ
-
-        // Ép Animator chuyển ngay lập tức về trạng thái Idle hoặc Locomotion
-        // Thay "Locomotion" bằng tên trạng thái di chuyển trong Animator của bạn
-        anim.Play("Locomotion", 0, 0f); 
-
-        // Nếu bạn có Combat Layer (Layer 1), hãy trả lại quyền điều khiển cho nó
-        anim.SetLayerWeight(1, 1f); 
+        anim.ResetTrigger("Die");
+        anim.SetBool("IsCombat", false);
+        anim.Play("LocoMotion", 0, 0f);
+        anim.Play("New State", 1, 0f); // ← reset Combat Layer về empty/default
+        anim.SetLayerWeight(1, 1f);
     }
 
     // 4. Kích hoạt lại điều khiển
-    player.GetComponent<PlayerController>().enabled = true;
-    
+    PlayerController pc = player.GetComponent<PlayerController>();
+    pc.enabled = true;
+
+    pc.isEquipped      = false;
+    pc.isInCombatState = false;
+    pc.animator.SetBool("IsCombat", false);
+    pc.StartCoroutine(DelayedToggle(pc));
+    pc.combatState.Reset(); 
+    pc.ResetDetectionTimer(2f);
+    pc.ChangeState(pc.idleState);
+
     // Mở lại chuột để chơi tiếp        
     Cursor.lockState = CursorLockMode.Locked;
     Cursor.visible = false;
+
+   
+    
+    
     
 
     // 5. Gọi WaveManager để dọn sạch quái cũ và reset lại thông báo Wave
@@ -119,5 +128,9 @@ public class DeathManager : MonoBehaviour
         #endif
     }
 
-    
+    private System.Collections.IEnumerator DelayedToggle(PlayerController pc)
+{
+    yield return null; // đợi 1 frame
+    pc.ToggleWeaponVisibility(1);
+}
 }

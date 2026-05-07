@@ -6572,6 +6572,11 @@ MonoBehaviour:
   sheathSwordSound: {fileID: 8300000, guid: 9163a32e3d4679c4f8c912f2ddec6fa9, type: 3}
   knockbackForce: 8
   hurtDuration: 0.4
+  enemyDetectionRange: 5
+  enemyDetectionLayer:
+    serializedVersion: 2
+    m_Bits: 8192
+  isInCombatState: 0
   rotateSpeed: 10
   aimRotateSpeed: 15
   isAiming: 0
