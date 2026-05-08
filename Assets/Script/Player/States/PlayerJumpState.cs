@@ -23,13 +23,15 @@ public class PlayerJumpState : PlayerState
  
         if (player.HasMoveInput())
         {
-            
-            player.ChangeState(player.isEquipped ? (PlayerState)player.combatState : player.moveState);
-        }
-        else
-        {
-            player.ChangeState(player.idleState);
-        }
+    if (player.isEquipped)
+        player.ChangeState(player.combatState); // ← trực tiếp, không drawWeapon
+    else
+        player.ChangeState(player.moveState);
+}
+else
+{
+    player.ChangeState(player.idleState);
+}
     }
 }
  

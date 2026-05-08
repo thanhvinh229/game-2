@@ -30,9 +30,7 @@ public class PlayerMoveState : PlayerState
  
         if (Input.GetMouseButtonDown(0))
         {
-            player.isEquipped = true;
-            player.animator.SetTrigger("drawWeapon");
-            player.combatState.EnterCombatState();
+            player.combatState.EnterCombatState(); // ← thay toàn bộ 3 dòng cũ
             return;
         }
  

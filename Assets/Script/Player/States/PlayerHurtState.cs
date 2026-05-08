@@ -23,7 +23,10 @@ public class PlayerHurtState : PlayerState
         // Hết thời gian choáng -> Quay lại trạng thái đứng im để có thể di chuyển tiếp
         if (timer <= 0)
         {
-            player.ChangeState(player.idleState);
-        }
+    if (player.isEquipped)
+        player.ChangeState(player.combatState); // ← trực tiếp, không drawWeapon
+    else
+        player.ChangeState(player.idleState);
+}
     }
 }

@@ -42,6 +42,7 @@ public class PlayerCombatState : PlayerMoveState
     public override void Enter()
     {
         Debug.Log("[CombatState] Enter() called");
+         player.isInCombatState = true;
         _lastCombatActionTime = Time.time;
 
         _attackBuffered   = false;
@@ -232,12 +233,15 @@ public class PlayerCombatState : PlayerMoveState
         return;
     }
 
-    _isFirstEnter = true;
-    _lastCombatActionTime = Time.time;
+    bool wasEquipped = player.isEquipped; // ← lưu TRƯỚC
+    _lastCombatActionTime  = Time.time;
     player.animator.SetBool("IsCombat", true);
-    player.animator.SetTrigger("drawWeapon"); // ← chuyển vào đây từ MoveState
-    player.isEquipped = true;
+    player.isEquipped      = true;
     player.isInCombatState = true;
+
+    if (!wasEquipped) // ← chỉ draw nếu chưa cầm
+        player.animator.SetTrigger("drawWeapon");
+
     player.ChangeState(player.combatState);
 }
  
