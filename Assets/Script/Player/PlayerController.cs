@@ -100,7 +100,11 @@ public class PlayerController : MonoBehaviour
  
         audioSource.playOnAwake  = false;
         audioSource.spatialBlend = 0f;
- 
+        
+        Sword.SetActive(true);
+        SwordOnHand.SetActive(true);
+        ToggleWeaponVisibility(1);
+
         ChangeState(idleState);
     }
  
@@ -188,10 +192,12 @@ public class PlayerController : MonoBehaviour
     // ── Combat ────────────────────────────────────────────────────────────────
     public void ToggleWeaponVisibility(int isCombat)
     {
-        bool inCombat = isCombat == 0;
-        Debug.Log($"[ToggleWeapon] isCombat={isCombat} | SwordOnHand={inCombat} | Sword={!inCombat}");
-        SwordOnHand.SetActive(inCombat);
-        Sword.SetActive(!inCombat);
+     bool inCombat = isCombat == 0;
+       
+        foreach (Renderer r in SwordOnHand.GetComponentsInChildren<Renderer>(true))
+        r.enabled = inCombat;
+        foreach (Renderer r in Sword.GetComponentsInChildren<Renderer>(true))
+        r.enabled = !inCombat;
     }
  
     public void DealMeleeDamage()
@@ -271,9 +277,9 @@ public class PlayerController : MonoBehaviour
     
     private void CheckEnemyProximity()
    {
-      Collider[] nearby = Physics.OverlapSphere(transform.position, enemyDetectionRange, enemyLayer);
-        Debug.Log($"[Detection] found={nearby.Length} | isEquipped={isEquipped} | range={enemyDetectionRange} | layer={enemyLayer.value}");
+      if (Time.time < combatState.AutoSheatheLockUntil) return;
 
+     Collider[] nearby = Physics.OverlapSphere(transform.position, enemyDetectionRange, enemyLayer);
       if (nearby.Length > 0)
         combatState.EnterCombatState();
    }

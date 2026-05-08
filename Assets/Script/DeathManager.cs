@@ -82,6 +82,9 @@ public class DeathManager : MonoBehaviour
         anim.SetBool("IsCombat", false);
         anim.Play("LocoMotion", 0, 0f);
         anim.Play("New State", 1, 0f); // ← reset Combat Layer về empty/default
+        anim.ResetTrigger("drawWeapon");   
+        anim.ResetTrigger("sheathWeapon");
+        anim.Update(0f); 
         anim.SetLayerWeight(1, 1f);
     }
 
@@ -92,10 +95,11 @@ public class DeathManager : MonoBehaviour
     pc.isEquipped      = false;
     pc.isInCombatState = false;
     pc.animator.SetBool("IsCombat", false);
-    pc.StartCoroutine(DelayedToggle(pc));
     pc.combatState.Reset(); 
     pc.ResetDetectionTimer(2f);
     pc.ChangeState(pc.idleState);
+
+    pc.StartCoroutine(DelayedToggle(pc));  
 
     // Mở lại chuột để chơi tiếp        
     Cursor.lockState = CursorLockMode.Locked;

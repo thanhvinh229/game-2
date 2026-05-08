@@ -14,6 +14,9 @@ public class PlayerCombatState : PlayerMoveState
     public float autoSheatheTime = 5f; // Giây không hành động thì tự về idle
     private float _sheathTime         = -999f;
     private const float SHEATHE_LOCK  = 1.2f;  
+    private float _autoSheatheLockUntil = -999f;
+    private const float AUTO_SHEATHE_DETECTION_LOCK = 4f;
+    public float AutoSheatheLockUntil => _autoSheatheLockUntil;
     private bool _isFirstEnter = false;
 
     public void RefreshCombatTimer() => _lastCombatActionTime = Time.time;
@@ -90,21 +93,9 @@ public class PlayerCombatState : PlayerMoveState
  
         if (Time.time - _lastCombatActionTime > autoSheatheTime)
         {
-            Collider[] nearby = Physics.OverlapSphere( player.transform.position,player.enemyDetectionRange,  player.enemyLayer );
-    
-            bool hasLiveEnemy = System.Array.Exists(nearby, col => {IDamageable d = col.GetComponent<IDamageable>();return d != null ; });
-
-         if (nearby.Length == 0)
-
-         {
-             ExitCombatState();
-         }
-         else
-         {
-             _lastCombatActionTime = Time.time;
-         }
-        } 
- 
+          ExitCombatState();
+          return;
+        }
         HandleRotation(move, isAttacking);
  
         Vector3 movement  = move * player.walkSpeed;
@@ -255,17 +246,18 @@ public class PlayerCombatState : PlayerMoveState
     {
 
         _sheathTime = Time.time;
+        _autoSheatheLockUntil = Time.time + AUTO_SHEATHE_DETECTION_LOCK;
 
         _comboCoolingDown = false;
         _comboStep        = 0;
-        _attackBuffered   = false;
+        _attackBuffered   = false;  
          _isFirstEnter     = false;
  
         player.isEquipped = false;
         player.animator.SetBool("IsCombat", false);
         player.animator.SetTrigger("sheathWeapon");
         ResetAllAttackTriggers();
-        player.ToggleWeaponVisibility(1);
+        
  
         player.ChangeState(player.idleState);
     }
