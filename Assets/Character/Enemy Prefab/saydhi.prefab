@@ -1086,6 +1086,18 @@ MonoBehaviour:
       dropChance: 0.782
       minQuantity: 1
       maxQuantity: 1
+    - item: {fileID: 11400000, guid: c149b927b3515fe4d80dcc428a084f48, type: 2}
+      dropChance: 0.9
+      minQuantity: 1
+      maxQuantity: 2
+    - item: {fileID: 11400000, guid: eaf0a30d2cd9afa4ea60b62b9d4a92a6, type: 2}
+      dropChance: 0.9
+      minQuantity: 1
+      maxQuantity: 2
+    - item: {fileID: 11400000, guid: a88c0e8fc226a8745a10b77bc454df00, type: 2}
+      dropChance: 0.9
+      minQuantity: 1
+      maxQuantity: 2
   - rarity: 1
     poolChance: 0.757
     entries:
@@ -1125,6 +1137,14 @@ MonoBehaviour:
       dropChance: 0.63
       minQuantity: 1
       maxQuantity: 1
+    - item: {fileID: 11400000, guid: e4ca69578f339d64d8439c25cab5506e, type: 2}
+      dropChance: 0.63
+      minQuantity: 1
+      maxQuantity: 2
+    - item: {fileID: 11400000, guid: 17bda523950f5a443aa93ea275eecd18, type: 2}
+      dropChance: 0.63
+      minQuantity: 1
+      maxQuantity: 2
   - rarity: 2
     poolChance: 0.506
     entries:
@@ -1160,6 +1180,14 @@ MonoBehaviour:
       dropChance: 0.502
       minQuantity: 1
       maxQuantity: 1
+    - item: {fileID: 11400000, guid: 4c386fd2afd01174a8c730d348f2b5cf, type: 2}
+      dropChance: 0.3
+      minQuantity: 1
+      maxQuantity: 2
+    - item: {fileID: 11400000, guid: f9da97136751dea49be06ffe55d5c8e8, type: 2}
+      dropChance: 0.3
+      minQuantity: 1
+      maxQuantity: 2
   - rarity: 3
     poolChance: 0.301
     entries:
