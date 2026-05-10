@@ -67,8 +67,14 @@ public class MinimapUI : MonoBehaviour
  
     void OnDestroy()
     {
-        if (renderTexture == null) return;
-        minimapCamera.targetTexture = null;
+       if (renderTexture == null) return;
+        
+        
+        if (minimapCamera != null)
+        {
+            minimapCamera.targetTexture = null;
+        }
+        
         renderTexture.Release();
         Destroy(renderTexture);
     }

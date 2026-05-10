@@ -8,6 +8,7 @@ public class PlayerJumpState : PlayerState
     {
         player.velocity.y = Mathf.Sqrt(player.jumpForce * -2f * player.gravity);
         player.animator.SetTrigger("Jump");
+        player.SetCombatLayerWeight(0f);
     }
  
     public override void Update()
@@ -21,17 +22,20 @@ public class PlayerJumpState : PlayerState
        
         if (!player.controller.isGrounded || player.velocity.y >= 0) return;
  
+        if (player.isEquipped)
+        {
+            player.SetCombatLayerWeight(1f);
+        }
         if (player.HasMoveInput())
         {
-    if (player.isEquipped)
-        player.ChangeState(player.combatState); // ← trực tiếp, không drawWeapon
-    else
-        player.ChangeState(player.moveState);
-}
-else
-{
-    player.ChangeState(player.idleState);
-}
+            player.ChangeState(player.isEquipped ? (PlayerState)player.combatState : player.moveState);
+        }
+        else
+        {
+            player.ChangeState(player.idleState);
+        }
+       
+
     }
 }
  
