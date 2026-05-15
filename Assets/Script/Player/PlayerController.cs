@@ -45,6 +45,8 @@ public class PlayerController : MonoBehaviour
     public AudioClip   jumpSound;
     public AudioClip   drawSwordSound;
     public AudioClip   sheathSwordSound;
+    private float _lastFootstepTime = 0f;
+    private const float FOOTSTEP_COOLDOWN = 0.32f; 
 
     [Header("Hurt & Knockback")]
     public float knockbackForce = 8f; 
@@ -250,6 +252,10 @@ public class PlayerController : MonoBehaviour
     public void PlayFootstep(float volume)
     {
         if (footstepSound == null) return;
+
+         if (Time.time - _lastFootstepTime < FOOTSTEP_COOLDOWN) return;
+
+         _lastFootstepTime = Time.time;
         audioSource.pitch = UnityEngine.Random.Range(0.9f, 1.1f);
         audioSource.PlayOneShot(footstepSound, volume);
     }
