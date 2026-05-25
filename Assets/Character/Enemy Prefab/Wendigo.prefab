@@ -439,15 +439,15 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: d21f5fa05d5285f44afcc81489de80f9, type: 2}
     - target: {fileID: -8679921383154817045, guid: 119e17ab36b2a2347ba462f14634a86f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 49.026966
+      value: 40.737064
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 119e17ab36b2a2347ba462f14634a86f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 3.013
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 119e17ab36b2a2347ba462f14634a86f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 63.31722
+      value: 66.9745
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 119e17ab36b2a2347ba462f14634a86f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -721,6 +721,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 2f04787273be94645a633f883a9c1d80, type: 2}
+    - target: {fileID: 5866666021909216657, guid: 119e17ab36b2a2347ba462f14634a86f, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6180659925938036706, guid: 119e17ab36b2a2347ba462f14634a86f, type: 3}
       propertyPath: m_Layer
       value: 13
@@ -1045,7 +1049,7 @@ MonoBehaviour:
     m_Bits: 1024
   damageAmount: 20
   attackSounds:
-  - {fileID: 8300000, guid: e85fa0b86cb84744eba089fa0d2cead2, type: 3}
+  - {fileID: 8300000, guid: a65f32353e91e3248a4c1d140f42a591, type: 3}
   footstepSound: {fileID: 8300000, guid: cbbf8fcb01ae84b45a6e5f9c84d6cfc5, type: 3}
   hitSound: {fileID: 8300000, guid: a65f32353e91e3248a4c1d140f42a591, type: 3}
 --- !u!114 &1220068250658570627
