@@ -286,7 +286,9 @@ public class PlayerController : MonoBehaviour
       if (Time.time < combatState.AutoSheatheLockUntil) return;
 
      Collider[] nearby = Physics.OverlapSphere(transform.position, enemyDetectionRange, enemyLayer);
-      if (nearby.Length > 0)
+    Debug.Log($"[Detection] found={nearby.Length} | autoLockDiff={Time.time - combatState.AutoSheatheLockUntil:F2}");
+    
+    if (nearby.Length > 0)
         combatState.EnterCombatState();
    }
 
@@ -303,7 +305,8 @@ public class PlayerController : MonoBehaviour
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, enemyDetectionRange);
     }
-
+    
+    
    
 }
 

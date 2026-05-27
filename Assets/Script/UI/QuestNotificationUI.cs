@@ -20,152 +20,119 @@ public class QuestNotificationUI : MonoBehaviour
     [SerializeField] private Sprite _questReceivedIcon;
     [SerializeField] private Sprite _questCompletedIcon;
     [SerializeField] private Sprite _objectiveCompletedIcon;
-
+ 
     [Header("Audio")]
     [SerializeField] private AudioSource _audioSource;
     [SerializeField] private AudioClip _notificationSfx;
-    [Range(0f, 1f)] [SerializeField] private float _volume = 0.7f;
+    [Range(0f, 1f)][SerializeField] private float _volume = 0.7f;
  
     private Coroutine _currentNotification;
  
     void Awake()
     {
-        // Start hidden
+       
         if (_canvasGroup != null)
         {
             _canvasGroup.alpha = 0f;
+            _canvasGroup.interactable = false;
+            _canvasGroup.blocksRaycasts = false;
         }
-        gameObject.SetActive(false);
     }
  
-    /// <summary>
-    /// Hiển thị notification khi nhận quest mới
-    /// </summary>
     public void ShowQuestReceived(string questTitle)
     {
-        ShowNotification(
-            _questReceivedIcon,
-            "Nhiệm vụ mới",
-            questTitle
-        );
+        ShowNotification(_questReceivedIcon, "Nhiệm vụ mới", questTitle);
     }
  
-    /// <summary>
-    /// Hiển thị notification khi hoàn thành quest
-    /// </summary>
     public void ShowQuestCompleted(string questTitle)
     {
-        ShowNotification(
-            _questCompletedIcon,
-            "Hoàn thành",
-            questTitle
-        );
+        ShowNotification(_questCompletedIcon, "Hoàn thành", questTitle);
     }
  
-    /// <summary>
-    /// Hiển thị notification khi hoàn thành objective
-    /// </summary>
     public void ShowObjectiveCompleted(string objectiveDescription)
     {
-        ShowNotification(
-            _objectiveCompletedIcon,
-            "Mục tiêu hoàn thành",
-            objectiveDescription
-        );
+        ShowNotification(_objectiveCompletedIcon, "Mục tiêu hoàn thành", objectiveDescription);
     }
  
-    /// <summary>
-    /// Core notification display method
-    /// </summary>
     public void ShowNotification(Sprite icon, string title, string message)
     {
-        gameObject.SetActive(true);
-
-        // Cancel previous notification if exists
+        
         if (_currentNotification != null)
         {
             StopCoroutine(_currentNotification);
+            _currentNotification = null;
         }
  
-        // Update content
+        // Cập nhật nội dung
         if (_iconImage != null && icon != null)
-        {
             _iconImage.sprite = icon;
-        }
  
         if (_titleText != null)
-        {
             _titleText.text = title;
-        }
  
         if (_messageText != null)
-        {
             _messageText.text = message;
-        }
  
-        // Start display coroutine
-        _currentNotification = StartCoroutine(DisplayNotificationCoroutine());
-
-        // Phát âm thanh 
+        // Phát âm thanh
         if (_audioSource != null && _notificationSfx != null)
-        {
             _audioSource.PlayOneShot(_notificationSfx, _volume);
-        }
-
-        if (_currentNotification != null) StopCoroutine(_currentNotification);
-        
-        if (_iconImage != null && icon != null) _iconImage.sprite = icon;
-        if (_titleText != null) _titleText.text = title;
-        if (_messageText != null) _messageText.text = message;
  
+       
         _currentNotification = StartCoroutine(DisplayNotificationCoroutine());
     }
  
     private IEnumerator DisplayNotificationCoroutine()
     {
         
+        if (_canvasGroup != null)
+        {
+            _canvasGroup.alpha = 0f;
+            _canvasGroup.interactable = true;
+            _canvasGroup.blocksRaycasts = true;
+        }
  
         // Fade in
-        yield return FadeCanvasGroup(_canvasGroup, 0f, 1f, _fadeInDuration);
+        yield return FadeCanvasGroup(0f, 1f, _fadeInDuration);
  
-        // Display
+        // Hiển thị
         yield return new WaitForSeconds(_displayDuration);
  
         // Fade out
-        yield return FadeCanvasGroup(_canvasGroup, 1f, 0f, _fadeOutDuration);
+        yield return FadeCanvasGroup(1f, 0f, _fadeOutDuration);
  
-        gameObject.SetActive(false);
+        if (_canvasGroup != null)
+        {
+            _canvasGroup.interactable = false;
+            _canvasGroup.blocksRaycasts = false;
+        }
+ 
         _currentNotification = null;
     }
  
-    private IEnumerator FadeCanvasGroup(CanvasGroup canvasGroup, float startAlpha, float endAlpha, float duration)
+    private IEnumerator FadeCanvasGroup(float startAlpha, float endAlpha, float duration)
     {
-        if (canvasGroup == null) yield break;
+        if (_canvasGroup == null) yield break;
  
         float elapsed = 0f;
+        _canvasGroup.alpha = startAlpha;
+ 
         while (elapsed < duration)
         {
             elapsed += Time.deltaTime;
-            float t = elapsed / duration;
-            canvasGroup.alpha = Mathf.Lerp(startAlpha, endAlpha, t);
+            _canvasGroup.alpha = Mathf.Lerp(startAlpha, endAlpha, Mathf.Clamp01(elapsed / duration));
             yield return null;
         }
  
-        canvasGroup.alpha = endAlpha;
+        _canvasGroup.alpha = endAlpha;
     }
  
-    #if UNITY_EDITOR
+#if UNITY_EDITOR
     void OnValidate()
     {
-        // Auto-find components
         if (_canvasGroup == null)
-        {
             _canvasGroup = GetComponent<CanvasGroup>();
-        }
-        if (_audioSource == null) 
-        {
+        if (_audioSource == null)
             _audioSource = GetComponent<AudioSource>();
-        }
     }
-    #endif
+#endif
 }

@@ -83,9 +83,12 @@ public class PlayerSkills : MonoBehaviour
     // 1. Vào trạng thái chiến đấu
     if (combatState != null)
     {
-        combatState.EnterCombatState();
+        combatState.EnterCombatState(forceEnter: true);
 
         combatState.RefreshCombatTimer();
+        
+
+        
     }
     if (playerController != null) 
     {
