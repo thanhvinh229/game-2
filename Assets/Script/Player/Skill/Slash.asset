@@ -16,7 +16,8 @@ MonoBehaviour:
   description: "Vung ki\u1EBFm t\u1EA1o ra m\u1ED9t lu\u1ED3ng ki\u1EBFm kh\xED bay
     v\u1EC1 ph\xEDa tr\u01B0\u1EDBc, g\xE2y s\xE1t th\u01B0\u01A1ng cho k\u1EBB \u0111\u1ECBch
     tr\xEAn \u0111\u01B0\u1EDDng bay"
-  skillIcon: {fileID: 21300000, guid: 6c8f4fde537ca344f88d3876c6c3d5e9, type: 3}
+  skillIcon: {fileID: -800851825, guid: 6c8f4fde537ca344f88d3876c6c3d5e9, type: 3}
+  isBuffSkill: 0
   manaCost: 10
   cooldown: 6
   damageMultiplier: 1
@@ -24,3 +25,6 @@ MonoBehaviour:
   attackSound: {fileID: 8300000, guid: 16901f96c5e565e46b1e9d0af937b031, type: 3}
   hitSound: {fileID: 8300000, guid: 16901f96c5e565e46b1e9d0af937b031, type: 3}
   animationTriggerName: Skill1
+  isProjectile: 0
+  projectileSpeed: 10
+  projectileDuration: 4

@@ -223,7 +223,7 @@ public class PlayerCombatState : PlayerMoveState
     /// <summary>Gọi từ bên ngoài (ví dụ: PlayerSkills) để vào combat.</summary>
     public void EnterCombatState(bool forceEnter = false)
 {
-   Debug.Log($"[EnterCombatState] forceEnter={forceEnter} | isInCombatState={player.isInCombatState} | wasEquipped={player.isEquipped} | sheathDiff={Time.time - _sheathTime} | autoLockDiff={Time.time - _autoSheatheLockUntil}");
+    
     if (!forceEnter && Time.time - _sheathTime < SHEATHE_LOCK) return;
     if (forceEnter) _sheathTime = -999f;
 

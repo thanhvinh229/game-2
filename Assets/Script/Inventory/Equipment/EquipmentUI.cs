@@ -34,6 +34,11 @@ public class EquipmentUI : MonoBehaviour
  
         RefreshStats();
     }
+    void Update()
+    {
+      if (gameObject.activeInHierarchy)
+        RefreshStats();
+    }
  
     void RefreshStats()
     {

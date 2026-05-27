@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SkillData
   skillName: Cast
   description: "Tri\u1EC7u h\u1ED3i"
-  skillIcon: {fileID: 21300000, guid: 9a3705c2beb59584eb8e3c39aca0cbdd, type: 3}
+  skillIcon: {fileID: 405928557, guid: 9a3705c2beb59584eb8e3c39aca0cbdd, type: 3}
   isBuffSkill: 0
   manaCost: 40
   cooldown: 20

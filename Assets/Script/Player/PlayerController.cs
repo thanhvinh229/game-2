@@ -286,7 +286,7 @@ public class PlayerController : MonoBehaviour
       if (Time.time < combatState.AutoSheatheLockUntil) return;
 
      Collider[] nearby = Physics.OverlapSphere(transform.position, enemyDetectionRange, enemyLayer);
-    Debug.Log($"[Detection] found={nearby.Length} | autoLockDiff={Time.time - combatState.AutoSheatheLockUntil:F2}");
+   
     
     if (nearby.Length > 0)
         combatState.EnterCombatState();

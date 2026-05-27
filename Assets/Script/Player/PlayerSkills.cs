@@ -29,7 +29,16 @@ public class PlayerSkills : MonoBehaviour
     public SkillSlot[] skillSlots;
     private SkillData currentActiveSkill;
      // Các slot kỹ năng nhân vật đang trang bị
- 
+    
+    [Header("Skill 2 — Buff Settings")]
+    [Tooltip("Thời gian buff tồn tại (giây)")]
+    public float buffDuration = 5f;
+    [Tooltip("Tăng thêm bao nhiêu Defense")]
+    public float buffDefenseBonus = 20f;
+    [Tooltip("Nhân tốc độ di chuyển lên bao nhiêu lần (1.5 = +50%)")]
+    public float buffSpeedMultiplier = 1.5f;
+    private Coroutine _speedBuffCoroutine;
+    
     void Start()
     {
         if (playerStats == null) playerStats = GetComponent<PlayerStats>();
@@ -147,8 +156,36 @@ public class PlayerSkills : MonoBehaviour
     public void OnBuff() {
     // Tăng damageMultiplier của các kỹ năng khác tạm thời
     // Hoặc hồi máu/mana ngay lập tức
-    playerStats.Heal(20f);    
+    playerStats.Heal(20f);   
+
+    playerStats.ApplyTempBuff(0f, buffDefenseBonus, buffDuration);
+
+    // Buff tốc độ di chuyển qua PlayerController
+    if (_speedBuffCoroutine != null)
+        StopCoroutine(_speedBuffCoroutine);
+    _speedBuffCoroutine = StartCoroutine(SpeedBuffCoroutine()); 
 }  
+
+IEnumerator SpeedBuffCoroutine()
+{
+   
+    if (playerController == null) yield break;
+
+    float originalWalk = playerController.walkSpeed;
+    float originalRun  = playerController.runSpeed;
+
+    playerController.walkSpeed *= buffSpeedMultiplier;
+    playerController.runSpeed  *= buffSpeedMultiplier;
+
+    Debug.Log($"[Buff] Walk: {originalWalk}→{playerController.walkSpeed} | Run: {originalRun}→{playerController.runSpeed} trong {buffDuration}s");
+
+    yield return new WaitForSeconds(buffDuration);
+
+    playerController.walkSpeed = originalWalk;
+    playerController.runSpeed  = originalRun;
+    Debug.Log("[Buff] Hết hiệu lực buff tốc độ");
+    _speedBuffCoroutine = null;
+}
  
  
 // --- CẢM GIÁC HÀNH ĐỘNG (GAME FEEL) ---
