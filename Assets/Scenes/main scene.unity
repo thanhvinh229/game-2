@@ -12962,7 +12962,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3282b41f0edebb45a9985809dd272db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TimeManager
-  dayLengthInMinutes: 10
+  dayLengthInMinutes: 6
   currentTimeInHours: 8
   transitionSpeed: 1.5
   directionalLight: {fileID: 1570689919}
@@ -27382,71 +27382,6 @@ MonoBehaviour:
   m_Spacing: {x: 13, y: 11}
   m_Constraint: 1
   m_ConstraintCount: 6
---- !u!1001 &1706132635
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1264433200921298619, guid: b91f2cacb0bef7f4bac8f61b0f00b4c6, type: 3}
-      propertyPath: m_Name
-      value: PT_Skeleton_Male_Modular
-      objectReference: {fileID: 0}
-    - target: {fileID: 1929787907488324609, guid: b91f2cacb0bef7f4bac8f61b0f00b4c6, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 45.01857
-      objectReference: {fileID: 0}
-    - target: {fileID: 1929787907488324609, guid: b91f2cacb0bef7f4bac8f61b0f00b4c6, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 3.003115
-      objectReference: {fileID: 0}
-    - target: {fileID: 1929787907488324609, guid: b91f2cacb0bef7f4bac8f61b0f00b4c6, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 58.951267
-      objectReference: {fileID: 0}
-    - target: {fileID: 1929787907488324609, guid: b91f2cacb0bef7f4bac8f61b0f00b4c6, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1929787907488324609, guid: b91f2cacb0bef7f4bac8f61b0f00b4c6, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1929787907488324609, guid: b91f2cacb0bef7f4bac8f61b0f00b4c6, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1929787907488324609, guid: b91f2cacb0bef7f4bac8f61b0f00b4c6, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1929787907488324609, guid: b91f2cacb0bef7f4bac8f61b0f00b4c6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1929787907488324609, guid: b91f2cacb0bef7f4bac8f61b0f00b4c6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1929787907488324609, guid: b91f2cacb0bef7f4bac8f61b0f00b4c6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5544606768726005225, guid: b91f2cacb0bef7f4bac8f61b0f00b4c6, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5544606768726005225, guid: b91f2cacb0bef7f4bac8f61b0f00b4c6, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: b91f2cacb0bef7f4bac8f61b0f00b4c6, type: 3}
 --- !u!4 &1710521358 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1852576806548013000, guid: 2e7e625066891e1478e19fcd71a16acc, type: 3}
@@ -29336,8 +29271,8 @@ MonoBehaviour:
     - {fileID: 1264433200921298619, guid: b91f2cacb0bef7f4bac8f61b0f00b4c6, type: 3}
     - {fileID: 939483031393289396, guid: 0284cc90b4454d641ad0648fdc3c7e3b, type: 3}
     - {fileID: 939483031393289396, guid: 0284cc90b4454d641ad0648fdc3c7e3b, type: 3}
-    - {fileID: 0}
-    - {fileID: 0}
+    - {fileID: 948347543305879477, guid: 18f30925a9e699d4287bc37d75498708, type: 3}
+    - {fileID: 948347543305879477, guid: 18f30925a9e699d4287bc37d75498708, type: 3}
     totalEnemies: 7
     spawnDelay: 0
   - waveName: 
@@ -34791,4 +34726,3 @@ SceneRoots:
   - {fileID: 1960675334}
   - {fileID: 1201358265}
   - {fileID: 2091171145}
-  - {fileID: 1706132635}
