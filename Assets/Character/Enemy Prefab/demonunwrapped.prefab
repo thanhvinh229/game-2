@@ -599,7 +599,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4df71f4bd561c4143a794ef316914921, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyStats
-  maxHealth: 50
+  maxHealth: 250
   healthSlider: {fileID: 7666943784835672066}
   healthBarUI: {fileID: 3841639727953071700}
   animator: {fileID: 5801420722640387957}
